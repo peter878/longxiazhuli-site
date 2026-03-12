@@ -8,6 +8,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <div class="news-filters">
     <button class="filter-btn active" data-filter="all">全部</button>
+    <button class="filter-btn" data-filter="security">安全提醒</button>
     <button class="filter-btn" data-filter="official">官方动态</button>
     <button class="filter-btn" data-filter="community">社区新闻</button>
     <button class="filter-btn" data-filter="industry">行业资讯</button>
@@ -15,6 +16,33 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </div>
 
   <div class="news-list">
+    <article class="news-card" data-category="security">
+      <div class="news-meta">
+        <span class="news-tag security">安全提醒</span>
+        <time datetime="2026-03-12">2026-03-12</time>
+      </div>
+      <h3>工信部发布 AI 助理安全使用指南：本地部署成首选方案</h3>
+      <p>【综合报道】2026 年 3 月，中国工业和信息化部联合国家互联网应急中心（CNCERT）发布《人工智能助理应用安全使用指南》，针对近期 AI 助理工具广泛使用带来的安全风险提出多项建议。</p>
+      <p><strong>核心要点：</strong></p>
+      <ul>
+        <li><strong>数据隐私保护</strong>：指南强调，用户应优先选择支持本地部署的 AI 助理工具，避免敏感数据上传至云端。OpenClaw 等开源工具因支持完全本地化部署，被推荐为企业和个人用户的首选方案。</li>
+        <li><strong>API Key 管理</strong>：多地网安部门提醒，用户应妥善保管 API Key，不得在公开代码仓库、论坛等场所泄露。建议定期更换密钥，并设置访问权限控制。</li>
+        <li><strong>权限最小化原则</strong>：AI 助理的系统和文件访问权限应遵循"最小必要"原则，仅授予完成特定任务所需的最低权限。</li>
+        <li><strong>内容审核机制</strong>：提醒用户在将 AI 生成内容用于正式发布前，应进行人工审核，避免传播虚假信息或违规内容。</li>
+      </ul>
+      <p><strong>各地安全厂商补充提醒：</strong></p>
+      <p>360 安全中心、腾讯电脑管家、火绒安全等厂商联合发布提示，建议用户在安装和使用 AI 助理工具时注意以下几点：</p>
+      <ol>
+        <li>从官方渠道下载软件，避免使用来路不明的修改版本</li>
+        <li>定期检查软件更新，及时修复安全漏洞</li>
+        <li>启用防火墙和杀毒软件，监控异常网络行为</li>
+        <li>不要在 AI 对话中输入银行卡号、密码等敏感信息</li>
+        <li>启用操作日志记录，便于追溯异常行为</li>
+      </ol>
+      <p>OpenClaw 项目团队表示，将积极响应工信部指南，持续加强安全防护功能，包括权限配置、操作审计、数据加密等，为用户提供安全可靠的 AI 助理使用体验。</p>
+      <a href="#" class="read-more">阅读更多 →</a>
+    </article>
+
     <article class="news-card" data-category="official">
       <div class="news-meta">
         <span class="news-tag official">官方动态</span>
@@ -174,6 +202,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     .news-tag.tutorial {
       background: #fef3c7;
       color: #d97706;
+    }
+    
+    .news-tag.security {
+      background: #fee2e2;
+      color: #dc2626;
+      font-weight: 600;
     }
     
     .news-meta time {
