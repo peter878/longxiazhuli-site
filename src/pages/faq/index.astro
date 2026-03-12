@@ -10,6 +10,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <h3>📑 问题分类</h3>
     <ul>
       <li><a href="#install">🔧 安装配置</a></li>
+      <li><a href="#gateway">🦞 Gateway 配置</a></li>
       <li><a href="#ai-behavior">🤖 AI 行为</a></li>
       <li><a href="#files">📁 文件操作</a></li>
       <li><a href="#network">🌐 网络问题</a></li>
@@ -34,6 +35,66 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
     <div class="meta">
       <span class="badge frequency">出现频率：高</span>
+      <span class="badge difficulty">难度：低</span>
+    </div>
+  </div>
+
+  <h2 id="gateway">🦞 Gateway 配置问题</h2>
+
+  <div class="faq-item">
+    <h3>Q - Control UI 显示"gateway token missing"怎么办？</h3>
+    <div class="problem">
+      <strong>问题描述：</strong>打开 OpenClaw Control UI 时显示错误：<code>unauthorized: gateway token missing (open the dashboard URL and paste the token in Control UI settings)</code>
+    </div>
+    <div class="solution">
+      <h4>解决方案：</h4>
+      <ol>
+        <li><strong>打开 Gateway Dashboard</strong>：<pre><code>http://127.0.0.1:18789/</code></pre></li>
+        <li><strong>找到配置入口</strong>：
+          <ul>
+            <li>点击左侧菜单"设置" → "配置"</li>
+            <li>或者直接在 Control UI 中找到"网关令牌"输入框</li>
+          </ul>
+        </li>
+        <li><strong>查找 Token</strong>：
+          <ul>
+            <li>打开配置文件：<code>C:\Users\你的用户名\.openclaw\openclaw.json</code></li>
+            <li>找到 <code>"gateway"</code> → <code>"auth"</code> → <code>"token"</code></li>
+            <li>复制 token 字符串（引号中间的部分）</li>
+          </ul>
+        </li>
+        <li><strong>粘贴 Token</strong>：
+          <ul>
+            <li>在 Control UI 的"网关令牌"输入框中粘贴 token</li>
+            <li>点击"连接"按钮</li>
+            <li>等待状态从"离线"变为"在线"</li>
+          </ul>
+        </li>
+        <li><strong>验证成功</strong>：
+          <ul>
+            <li>刷新 Control UI 页面</li>
+            <li>错误提示应该消失</li>
+            <li>可以正常使用所有功能</li>
+          </ul>
+        </li>
+      </ol>
+      
+      <h4>如果无法复制粘贴：</h4>
+      <ul>
+        <li>试试<strong>手动输入</strong> token</li>
+        <li>或者用<strong>右键 → 复制</strong>代替 Ctrl+C</li>
+        <li>或者用<strong>Shift+Insert</strong>代替 Ctrl+V</li>
+      </ul>
+      
+      <h4>预防措施：</h4>
+      <ul>
+        <li>确保 <code>openclaw.json</code> 中有正确的 gateway 配置</li>
+        <li>Gateway 服务保持运行：<code>openclaw gateway status</code></li>
+        <li>重启 Gateway 后可能需要重新配置：<code>openclaw gateway restart</code></li>
+      </ul>
+    </div>
+    <div class="meta">
+      <span class="badge frequency">出现频率：中</span>
       <span class="badge difficulty">难度：低</span>
     </div>
   </div>
