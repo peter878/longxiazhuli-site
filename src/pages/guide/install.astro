@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="5 分钟快速安装 OpenClaw - 龙虾助理">
@@ -10,12 +10,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <p><strong>一句话总结：</strong>选择你的操作系统，跟着步骤走，10 分钟搞定！</p>
   </div>
 
-  <h2>选择你的操作系统</h2>
-  
-  <div class="os-selector">
-    <a href="#windows" class="os-btn">🪟 Windows</a>
-    <a href="#macos" class="os-btn">🍎 macOS</a>
-    <a href="#linux" class="os-btn">🐧 Linux</a>
+  <div class="toc">
+    <h3>📑 目录</h3>
+    <ul>
+      <li><a href="#windows">🪟 Windows 安装指南</a></li>
+      <li><a href="#macos">🍎 macOS 安装指南</a></li>
+      <li><a href="#linux">🐧 Linux 安装指南</a></li>
+      <li><a href="#api-key">配置 API Key</a></li>
+      <li><a href="#faq">常见问题</a></li>
+    </ul>
   </div>
 
   <h2 id="windows">🪟 Windows 安装指南</h2>
@@ -27,39 +30,40 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <li>PowerShell 或 CMD</li>
   </ul>
 
-  <h3>步骤 1 - 安装 Node.js</h3>
-  <ol>
-    <li>访问 <a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></li>
-    <li>下载 LTS 版本（推荐 20.x）</li>
-    <li>运行安装程序，一路 Next</li>
-    <li>验证安装：<pre><code>node --version
-npm --version</code></pre></li>
-  </ol>
+  <div class="step">
+    <span class="step-number">1</span>
+    <h3>安装 Node.js</h3>
+    <ol>
+      <li>访问 <a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></li>
+      <li>下载 LTS 版本（推荐 20.x）</li>
+      <li>运行安装程序，一路 Next</li>
+      <li>验证安装：
+        <pre><code>node --version
+npm --version</code></pre>
+      </li>
+    </ol>
+  </div>
 
-  <h3>步骤 2 - 安装 OpenClaw</h3>
-  <p>以管理员身份打开 PowerShell，运行：</p>
-  <pre><code>npm install -g openclaw</code></pre>
-  
-  <p>或使用 pnpm（如果你有的话）：</p>
-  <pre><code>pnpm add -g openclaw</code></pre>
+  <div class="step">
+    <span class="step-number">2</span>
+    <h3>安装 OpenClaw</h3>
+    <p>以管理员身份打开 PowerShell，运行：</p>
+    <pre class="language-bash"><code>npm install -g openclaw</code></pre>
+  </div>
 
-  <h3>步骤 3 - 配置环境变量（如果需要）</h3>
-  <p>如果提示"找不到 openclaw 命令"：</p>
-  <ol>
-    <li>打开"此电脑" → 属性 → 高级系统设置</li>
-    <li>点击"环境变量"</li>
-    <li>在"系统变量"中找到 Path，点击编辑</li>
-    <li>新建，添加：<pre><code>C:\Users\你的用户名\AppData\Roaming\npm</code></pre></li>
-    <li>确定保存，重新打开 PowerShell</li>
-  </ol>
-
-  <h3>步骤 4 - 初始化工作区</h3>
-  <pre><code>mkdir my-assistant
+  <div class="step">
+    <span class="step-number">3</span>
+    <h3>初始化工作区</h3>
+    <pre class="language-bash"><code>mkdir my-assistant
 cd my-assistant
 openclaw init</code></pre>
+  </div>
 
-  <h3>步骤 5 - 启动 OpenClaw</h3>
-  <pre><code>openclaw start</code></pre>
+  <div class="step">
+    <span class="step-number">4</span>
+    <h3>启动 OpenClaw</h3>
+    <pre class="language-bash"><code>openclaw start</code></pre>
+  </div>
 
   <hr/>
 
@@ -72,41 +76,23 @@ openclaw init</code></pre>
     <li>Terminal</li>
   </ul>
 
-  <h3>步骤 1 - 安装 Homebrew（如果没有）</h3>
-  <pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+  <div class="step">
+    <span class="step-number">1</span>
+    <h3>安装 Homebrew（如果没有）</h3>
+    <pre class="language-bash"><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+  </div>
 
-  <h3>步骤 2 - 安装 Node.js</h3>
-  <pre><code>brew install node</code></pre>
-  
-  <p>验证安装：</p>
-  <pre><code>node --version
-npm --version</code></pre>
+  <div class="step">
+    <span class="step-number">2</span>
+    <h3>安装 Node.js</h3>
+    <pre class="language-bash"><code>brew install node</code></pre>
+  </div>
 
-  <h3>步骤 3 - 安装 OpenClaw</h3>
-  <pre><code>npm install -g openclaw</code></pre>
-  
-  <p>或使用 pnpm：</p>
-  <pre><code>pnpm add -g openclaw</code></pre>
-
-  <h3>步骤 4 - 配置环境变量（如果需要）</h3>
-  <p>如果提示"找不到 openclaw 命令"，添加到 shell 配置：</p>
-  <pre><code># Intel Mac
-export PATH="/usr/local/share/npm/bin:$PATH"
-
-# Apple Silicon Mac
-export PATH="/opt/homebrew/share/npm/bin:$PATH"</code></pre>
-  
-  <p>添加到 <code>~/.zshrc</code> 或 <code>~/.bash_profile</code>：</p>
-  <pre><code>echo 'export PATH="/opt/homebrew/share/npm/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc</code></pre>
-
-  <h3>步骤 5 - 初始化工作区</h3>
-  <pre><code>mkdir my-assistant
-cd my-assistant
-openclaw init</code></pre>
-
-  <h3>步骤 6 - 启动 OpenClaw</h3>
-  <pre><code>openclaw start</code></pre>
+  <div class="step">
+    <span class="step-number">3</span>
+    <h3>安装 OpenClaw</h3>
+    <pre class="language-bash"><code>npm install -g openclaw</code></pre>
+  </div>
 
   <hr/>
 
@@ -119,49 +105,32 @@ openclaw init</code></pre>
     <li>sudo 权限</li>
   </ul>
 
-  <h3>步骤 1 - 安装 Node.js</h3>
-  
-  <h4>Ubuntu/Debian:</h4>
-  <pre><code>curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+  <div class="step">
+    <span class="step-number">1</span>
+    <h3>安装 Node.js</h3>
+    
+    <h4>Ubuntu/Debian:</h4>
+    <pre class="language-bash"><code>curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs</code></pre>
 
-  <h4>CentOS/RHEL:</h4>
-  <pre><code>curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
+    <h4>CentOS/RHEL:</h4>
+    <pre class="language-bash"><code>curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
 sudo yum install -y nodejs</code></pre>
+  </div>
 
-  <h4>Arch Linux:</h4>
-  <pre><code>sudo pacman -S nodejs npm</code></pre>
-
-  <p>验证安装：</p>
-  <pre><code>node --version
-npm --version</code></pre>
-
-  <h3>步骤 2 - 安装 OpenClaw</h3>
-  <pre><code>sudo npm install -g openclaw</code></pre>
-  
-  <p>或使用 pnpm：</p>
-  <pre><code>sudo pnpm add -g openclaw</code></pre>
-
-  <h3>步骤 3 - 配置环境变量（如果需要）</h3>
-  <p>添加到 <code>~/.bashrc</code> 或 <code>~/.zshrc</code>：</p>
-  <pre><code>export PATH=$PATH:$(npm config get prefix)/bin</code></pre>
-  
-  <p>生效：</p>
-  <pre><code>source ~/.bashrc</code></pre>
-
-  <h3>步骤 4 - 初始化工作区</h3>
-  <pre><code>mkdir my-assistant
-cd my-assistant
-openclaw init</code></pre>
-
-  <h3>步骤 5 - 启动 OpenClaw</h3>
-  <pre><code>openclaw start</code></pre>
+  <div class="step">
+    <span class="step-number">2</span>
+    <h3>安装 OpenClaw</h3>
+    <pre class="language-bash"><code>sudo npm install -g openclaw</code></pre>
+  </div>
 
   <hr/>
 
-  <h2>配置 API Key（所有系统通用）</h2>
+  <h2 id="api-key">配置 API Key（所有系统通用）</h2>
 
-  <p>OpenClaw 需要配置大模型 API 才能工作。推荐使用阿里云百炼：</p>
+  <div class="tip warning">
+    <p>⚠️ <strong>重要：</strong>OpenClaw 需要配置大模型 API 才能工作</p>
+  </div>
 
   <ol>
     <li>访问阿里云百炼控制台 (<a href="https://bailian.console.aliyun.com/" target="_blank">链接</a>)</li>
@@ -171,80 +140,247 @@ openclaw init</code></pre>
   </ol>
 
   <h3>配置文件位置</h3>
-  <ul>
-    <li><strong>Windows:</strong> <code>%APPDATA%\openclaw\config.json</code></li>
-    <li><strong>Mac/Linux:</strong> <code>~/.openclaw/config.json</code></li>
-  </ul>
-  
-  <pre><code>{
+  <div class="code-compare">
+    <div>
+      <strong>Windows:</strong>
+      <pre><code>%APPDATA%\openclaw\config.json</code></pre>
+    </div>
+    <div>
+      <strong>Mac/Linux:</strong>
+      <pre><code>~/.openclaw/config.json</code></pre>
+    </div>
+  </div>
+
+  <h3>配置示例</h3>
+  <pre class="language-json"><code>{
   "defaultModel": "bailian/qwen3.5-plus",
   "apiKey": "你的 API_KEY"
 }</code></pre>
 
-  <h2>验证安装（所有系统通用）</h2>
+  <h2 id="verify">验证安装</h2>
 
-  <pre><code>openclaw --version
+  <pre class="language-bash"><code>openclaw --version
 openclaw status
 openclaw ask "你好，请介绍一下自己"</code></pre>
 
-  <h2>常见问题</h2>
+  <h2 id="faq">常见问题</h2>
 
-  <h3>Q - 安装失败怎么办？</h3>
-  <p>清理 npm 缓存后重试：</p>
-  <pre><code>npm cache clean --force
+  <div class="faq">
+    <h3>❓ 安装失败怎么办？</h3>
+    <p>清理 npm 缓存后重试：</p>
+    <pre class="language-bash"><code>npm cache clean --force
 npm install -g openclaw</code></pre>
-
-  <h3>Q - 权限错误（Linux/Mac）？</h3>
-  <p>使用 sudo 或修改 npm 目录权限：</p>
-  <pre><code># Mac/Linux
-sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}</code></pre>
-
-  <h3>Q - Windows Defender 报错？</h3>
-  <p>可能是 PowerShell 执行策略限制：</p>
-  <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
-
-  <h3>Q - API Key 无效？</h3>
-  <ul>
-    <li>检查 Key 是否正确复制（无多余空格）</li>
-    <li>确认账号有足够额度</li>
-    <li>检查模型名称是否正确</li>
-  </ul>
-
-  <div class="tip success">
-    <h3>✅ 安装成功！</h3>
-    <p>接下来学习 <a href="/guide/first-chat/">第一次和龙虾对话</a> 吧！</p>
   </div>
 
-  <div style="margin-top: 2rem; text-align: center;">
-    <a href="/guide/" class="btn">← 上一步：OpenClaw 是什么</a>
-    <a href="/guide/first-chat/" class="btn" style="margin-left: 1rem;">下一步：第一次对话 →</a>
+  <div class="faq">
+    <h3>❓ 找不到 openclaw 命令？</h3>
+    <p>检查 npm 全局路径是否在系统 PATH 中：</p>
+    <pre class="language-bash"><code>npm config get prefix</code></pre>
+    <p>将返回的路径添加到系统环境变量 PATH</p>
+  </div>
+
+  <div class="faq">
+    <h3>❓ API Key 无效？</h3>
+    <ul>
+      <li>检查 Key 是否正确复制（无多余空格）</li>
+      <li>确认账号有足够额度</li>
+      <li>检查模型名称是否正确</li>
+    </ul>
+  </div>
+
+  <div class="feedback-section">
+    <h3>📝 这篇文章有帮助吗？</h3>
+    <div class="feedback-buttons">
+      <button class="feedback-btn" data-feedback="yes">👍 有用</button>
+      <button class="feedback-btn" data-feedback="no">👎 无用</button>
+    </div>
+    <p class="feedback-note">你的反馈帮助我们改进内容</p>
+  </div>
+
+  <div class="nav-buttons">
+    <a href="/guide/" class="btn btn-secondary">← 上一步：OpenClaw 是什么</a>
+    <a href="/guide/first-chat/" class="btn">下一步：第一次对话 →</a>
   </div>
 
   <style>
-    .os-selector {
-      display: flex;
-      gap: 1rem;
-      margin: 1.5rem 0;
-      flex-wrap: wrap;
+    .toc {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin: 2rem 0;
+      border-left: 4px solid #dc2626;
     }
     
-    .os-btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: #f3f4f6;
-      border: 2px solid #e5e7eb;
-      border-radius: 8px;
+    .toc h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+    
+    .toc li {
+      margin: 0.5rem 0;
+    }
+    
+    .toc a {
+      color: #374151;
       text-decoration: none;
-      color: #1f2937;
-      font-weight: 500;
+    }
+    
+    .toc a:hover {
+      color: #dc2626;
+      text-decoration: underline;
+    }
+    
+    .step {
+      position: relative;
+      padding-left: 4rem;
+      margin: 2rem 0;
+    }
+    
+    .step-number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: #dc2626;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+    
+    .step h3 {
+      margin-top: 0;
+    }
+    
+    .tip {
+      padding: 1rem 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .tip.warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+    }
+    
+    .code-compare {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .code-compare div {
+      background: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+    
+    .faq {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid #0ea5e9;
+    }
+    
+    .faq h3 {
+      margin-top: 0;
+      color: #0369a1;
+    }
+    
+    .feedback-section {
+      background: #f0fdf4;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      margin: 3rem 0;
+      text-align: center;
+      border: 1px solid #bbf7d0;
+    }
+    
+    .feedback-section h3 {
+      margin-top: 0;
+    }
+    
+    .feedback-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    
+    .feedback-btn {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid #e5e7eb;
+      background: white;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
       transition: all 0.2s;
     }
     
-    .os-btn:hover {
-      background: #dc2626;
+    .feedback-btn:hover {
       border-color: #dc2626;
+      background: #fef2f2;
+    }
+    
+    .feedback-note {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin: 0;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #dc2626;
       color: white;
-      transform: translateY(-2px);
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    
+    .btn:hover {
+      background: #b91c1c;
+    }
+    
+    .btn-secondary {
+      background: #6b7280;
+    }
+    
+    .btn-secondary:hover {
+      background: #4b5563;
+    }
+    
+    pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+    
+    code {
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.875rem;
     }
     
     hr {
@@ -252,21 +388,21 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}</c
       border: none;
       border-top: 2px solid #e5e7eb;
     }
-    
-    h2 {
-      margin-top: 0;
-    }
-    
-    pre {
-      background: #1f2937;
-      color: #f3f4f6;
-      padding: 1rem;
-      border-radius: 6px;
-      overflow-x: auto;
-    }
-    
-    code {
-      font-family: 'Consolas', 'Monaco', monospace;
-    }
   </style>
+
+  <script>
+    // 反馈功能
+    document.querySelectorAll('.feedback-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const feedback = btn.dataset.feedback;
+        const section = btn.closest('.feedback-section');
+        
+        if (feedback === 'yes') {
+          section.innerHTML = '<p style="color: #16a34a; font-size: 1.25rem;">✅ 感谢你的反馈！</p>';
+        } else {
+          section.innerHTML = '<p style="color: #dc2626; font-size: 1.25rem;">💬 请告诉我们如何改进：contact@longxiazhuli.com</p>';
+        }
+      });
+    });
+  </script>
 </BaseLayout>
