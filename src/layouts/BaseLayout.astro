@@ -81,6 +81,28 @@
         border-color: var(--primary);
         box-shadow: 0 0 0 3px var(--primary-light);
       }
+      .breadcrumb {
+        padding: 0.75rem 0;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+        color: var(--text-light);
+        border-bottom: 1px solid var(--border);
+      }
+      .breadcrumb a {
+        color: var(--text);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--primary);
+        text-decoration: underline;
+      }
+      .last-updated {
+        font-size: 0.875rem;
+        color: var(--text-light);
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+      }
       .search-icon {
         position: absolute;
         left: 0.75rem;
@@ -268,6 +290,10 @@
     <div class="main-layout">
       <aside class="sidebar">
         <nav>
+          <div class="breadcrumb">
+            <a href="/">🏠 首页</a>
+            <slot name="breadcrumb" />
+          </div>
           <ul class="sidebar-nav">
             <li>
               <h3>入门教程</h3>
@@ -318,6 +344,9 @@
       <div class="container">
         <p>© 2026 龙虾助理 (longxiazhuli.com) - 教你养好 AI 龙虾 🦞</p>
         <p>OpenClaw 知识分享平台</p>
+        {Astro.props.lastUpdated && (
+          <p class="last-updated">最后更新：{Astro.props.lastUpdated}</p>
+        )}
       </div>
     </footer>
     
