@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const code1 = `npm install -g openclaw`;
+const code2 = `pnpm add -g openclaw`;
+const code3 = `mkdir my-assistant
+cd my-assistant
+openclaw init`;
+const code4 = `openclaw start`;
+const code5 = `{
+  "defaultModel": "bailian/qwen3.5-plus",
+  "apiKey": "你的 API_KEY"
+}`;
+const code6 = `openclaw --version
+openclaw status
+openclaw ask "你好，请介绍一下自己"`;
+const code7 = `npm cache clean --force
+npm install -g openclaw`;
+const code8 = `npm config get prefix`;
+---
+
+<BaseLayout title="5 分钟快速安装 OpenClaw - 龙虾助理">
+  <h1>📥 5 分钟快速安装 OpenClaw</h1>
+  <p class="tag">新手入门 第 2 篇</p>
+
+  <h2>前置要求</h2>
+  
+  <ul>
+    <li>Node.js 18+ (https://nodejs.org/)</li>
+    <li>npm 或 pnpm</li>
+    <li>一个 API Key (百炼/通义等)</li>
+    <li>10 分钟时间</li>
+  </ul>
+
+  <h2>安装步骤</h2>
+
+  <h3>步骤 1 - 安装 OpenClaw</h3>
+  
+  <p>使用 npm 全局安装：</p>
+  <pre><code>{code1}</code></pre>
+  
+  <p>或使用 pnpm：</p>
+  <pre><code>{code2}</code></pre>
+
+  <h3>步骤 2 - 初始化工作区</h3>
+  
+  <pre><code>{code3}</code></pre>
+
+  <h3>步骤 3 - 启动 OpenClaw</h3>
+  
+  <pre><code>{code4}</code></pre>
+
+  <h2>配置 API Key</h2>
+
+  <p>OpenClaw 需要配置大模型 API 才能工作。推荐使用阿里云百炼：</p>
+
+  <ol>
+    <li>访问阿里云百炼控制台 (https://bailian.console.aliyun.com/)</li>
+    <li>注册/登录账号</li>
+    <li>创建 API Key</li>
+    <li>复制 Key 到配置文件</li>
+  </ol>
+
+  <p>配置文件位置：</p>
+  <ul>
+    <li>Windows: %APPDATA%\openclaw\config.json</li>
+    <li>Mac/Linux: ~/.openclaw/config.json</li>
+  </ul>
+  
+  <pre><code>{code5}</code></pre>
+
+  <h2>验证安装</h2>
+
+  <pre><code>{code6}</code></pre>
+
+  <h2>常见问题</h2>
+
+  <h3>Q - 安装失败怎么办？</h3>
+  <pre><code>{code7}</code></pre>
+
+  <h3>Q - 找不到 openclaw 命令？</h3>
+  <p>检查 npm 全局路径是否在系统 PATH 中：</p>
+  <pre><code>{code8}</code></pre>
+  <p>将返回的路径添加到系统环境变量 PATH</p>
+
+  <h3>Q - API Key 无效？</h3>
+  <ul>
+    <li>检查 Key 是否正确复制（无多余空格）</li>
+    <li>确认账号有足够额度</li>
+    <li>检查模型名称是否正确</li>
+  </ul>
+
+  <div class="tip success">
+    <h3>✅ 安装成功！</h3>
+    <p>接下来学习 <a href="/guide/first-chat/">第一次和龙虾对话</a> 吧！</p>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/guide/first-chat/" class="btn">下一步：第一次对话 →</a>
+  </div>
+</BaseLayout>

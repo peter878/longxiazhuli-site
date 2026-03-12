@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="自动写日报周报 - 龙虾助理">
+  <h1>📝 自动写日报/周报</h1>
+  <p class="tag">实战案例 第 2 篇</p>
+
+  <div class="tip">
+    <p><strong>一句话总结：</strong>每天花 1 分钟告诉 AI 做了什么，下班时自动生成日报！</p>
+  </div>
+
+  <h2>痛点场景</h2>
+  
+  <ul>
+    <li>😫 每天下班忘记写日报</li>
+    <li>😫 周报要想半天写了什么</li>
+    <li>😫 重复内容懒得写</li>
+  </ul>
+
+  <h2>解决方案</h2>
+
+  <h3>步骤 1: 随时记录</h3>
+  <pre><code>你：今天上午完成了网站框架搭建
+
+AI: ✅ 已记录到 memory/2026-03-11.md
+
+你：下午写了 3 篇文章
+
+AI: ✅ 已追加记录</code></pre>
+
+  <h3>步骤 2: 一键生成</h3>
+  <pre><code>你：生成今天的日报
+
+AI: 
+## 📅 工作日报 - 2026-03-11
+
+### ✅ 完成的工作
+1. 网站框架搭建完成
+2. 内容创作 - 8 篇文章
+3. 项目进度：53%
+
+### 📊 统计数据
+- 代码行数：~1500 行
+- 文章字数：~15000 字
+
+### 🎯 明天计划
+1. 完成剩余 7 篇文章
+2. 部署到 Vercel</code></pre>
+
+  <h2>配置方法</h2>
+
+  <h3>简单记录</h3>
+  <pre><code># 在 HEARTBEAT.md 添加
+# 每天记录
+- [ ] 记录今天完成的工作
+- [ ] 18:00 生成日报</code></pre>
+
+  <h2>周报生成</h2>
+
+  <pre><code>你：生成这周的周报
+
+AI:
+## 📅 工作周报 - 2026 W11
+
+### 🎯 本周目标
+- 完成 longxiazhuli.com 网站
+
+### ✅ 完成情况
+- 网站框架搭建 ✅
+- 15 篇文章完成 ✅
+- 部署到 Vercel ✅
+
+### 📊 数据统计
+- 总文章：15 篇
+- 工作时长：12 小时</code></pre>
+
+  <h2>高级用法</h2>
+
+  <ul>
+    <li>自动发送到钉钉/飞书</li>
+    <li>多项目追踪</li>
+    <li>自定义模板</li>
+  </ul>
+
+  <div class="tip success">
+    <h3 style="margin-top: 0;">🎯 现在试试</h3>
+    <ol style="margin: 0;">
+      <li>告诉 AI 你今天做了什么</li>
+      <li>让 AI 生成日报</li>
+      <li>保存到 memory 文件</li>
+    </ol>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/cases/gold-price/" class="btn">← 上一篇：查金价</a>
+  </div>
+</BaseLayout>

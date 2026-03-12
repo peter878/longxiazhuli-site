@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const envExample = `export QVERIS_API_KEY="sk-xxxxx"`;
+const configExample = `{
+  "apiKey": "sk-xxxxx"
+}`;
+const badExample1 = `const API_KEY = "sk-xxxxx";  // 别这么干！`;
+const badExample2 = `git add .env  // 别提交！`;
+const checklist = `□ API Key 存在环境变量或配置文件
+□ 没有写在代码里
+□ 没有上传到 GitHub
+□ 设置了消费上限
+□ 开启了消费提醒
+□ 定期检查用量
+□ 知道如何快速撤销`;
+---
+
+<BaseLayout title="API Key 安全管理 - 龙虾助理">
+  <h1>🔐 API Key 安全管理</h1>
+  <p class="tag">安全防护 第 1 篇</p>
+
+  <div class="tip">
+    <p><strong>一句话总结：</strong>API Key 是你的"钱包钥匙"，丢了就被人随便花钱了！</p>
+  </div>
+
+  <h2>什么是 API Key？</h2>
+  
+  <p>API Key 是你访问大模型服务的"通行证"，比如：</p>
+  <ul>
+    <li>阿里云百炼 API Key</li>
+    <li>OpenAI API Key</li>
+    <li>月之暗面 (Kimi) API Key</li>
+  </ul>
+
+  <h2>⚠️ 泄露风险</h2>
+
+  <div class="tip" style="background: #fef2f2;">
+    <h3 style="margin-top: 0; color: #991b1b;">🚨 真实案例</h3>
+    <p>2026 年 2 月，有用户把 API Key 传到 GitHub，一晚上被刷了$500+！</p>
+  </div>
+
+  <h3>泄露后果</h3>
+  <ul>
+    <li>💰 被盗刷 API 费用</li>
+    <li>📧 用你的名义发邮件</li>
+    <li>📁 访问你的私有数据</li>
+    <li>🤖 操控你的 AI 助理</li>
+  </ul>
+
+  <h2>✅ 安全做法</h2>
+
+  <h3>1. 存在安全位置</h3>
+  <p>正确做法：</p>
+  <pre><code>{envExample}</code></pre>
+  <p>或配置文件：</p>
+  <pre><code>{configExample}</code></pre>
+  <p>错误做法：</p>
+  <pre><code>{badExample1}
+{badExample2}</code></pre>
+
+  <h3>2. 设置访问权限</h3>
+  <ul>
+    <li>只开通需要的服务</li>
+    <li>设置消费上限（如$100/月）</li>
+    <li>定期轮换 Key</li>
+  </ul>
+
+  <h3>3. 监控使用情况</h3>
+  <ul>
+    <li>定期检查用量统计</li>
+    <li>设置消费提醒邮件</li>
+  </ul>
+
+  <h2>泄露了怎么办？</h2>
+
+  <ol style="margin-left: 1.5rem;">
+    <li style="margin-bottom: 0.5rem;"><strong>立即撤销</strong> - 去控制台删除/禁用 Key</li>
+    <li style="margin-bottom: 0.5rem;"><strong>生成新的</strong> - 创建新的 API Key</li>
+    <li style="margin-bottom: 0.5rem;"><strong>检查账单</strong> - 看有没有异常消费</li>
+    <li style="margin-bottom: 0.5rem;"><strong>更新配置</strong> - 替换所有地方的旧 Key</li>
+  </ol>
+
+  <h2>检查清单</h2>
+
+  <pre><code>{checklist}</code></pre>
+
+  <div class="tip success">
+    <h3 style="margin-top: 0;">🎯 现在检查</h3>
+    <ol style="margin: 0;">
+      <li>打开你的 API 控制台</li>
+      <li>检查有没有异常消费</li>
+      <li>确认消费上限已设置</li>
+      <li>开启邮件提醒</li>
+    </ol>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/security/permissions/" class="btn">下一步：权限配置 →</a>
+  </div>
+</BaseLayout>

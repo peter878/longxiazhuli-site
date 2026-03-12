@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="工作区文件结构详解 - 龙虾助理">
+  <h1>📂 工作区文件结构详解</h1>
+  <p class="tag">新手入门 第 4 篇</p>
+
+  <div class="tip">
+    <p><strong>一句话总结：</strong>工作区就是你的"龙虾缸"，所有文件都放在这里，AI 龙虾只能在这个范围内活动。</p>
+  </div>
+
+  <h2>典型工作区结构</h2>
+  
+  <pre><code>my-assistant/
+├── AGENTS.md          # AI 的行为准则
+├── SOUL.md            # AI 的人设和性格
+├── USER.md            # 你的个人信息
+├── TOOLS.md           # 工具配置笔记
+├── MEMORY.md          # 长期记忆
+├── HEARTBEAT.md       # 心跳任务清单
+├── memory/            # 每日记忆文件夹
+│   └── 2026-03-11.md
+└── skills/            # 自定义技能
+    └── my-skill/
+        └── SKILL.md</code></pre>
+
+  <h2>核心文件说明</h2>
+
+  <h3>📋 AGENTS.md - 行为准则</h3>
+  <p>告诉 AI 应该怎么工作，比如：</p>
+  <pre><code># 你的工作规则
+
+1. 先理解用户意图，再行动
+2. 不确定的事情先问
+3. 重要操作前必须确认
+4. 每天主动汇报进度</code></pre>
+
+  <h3>🧠 SOUL.md - AI 的人设</h3>
+  <p>定义 AI 的性格和风格：</p>
+  <pre><code># 你是谁
+
+- **名字**: 小龙虾
+- **性格**: 正式但幽默
+- **Emoji**: 🦞
+- **原则**: 听话、不伤害用户、尽量不伤害别人</code></pre>
+
+  <h3>👤 USER.md - 你的信息</h3>
+  <p>让 AI 了解你：</p>
+  <pre><code># 关于你的主人
+
+- **名字**: Peter
+- **时区**: 东八区 (UTC+8)
+- **爱好**: 投资、科技
+- **禁忌**: 不要擅自删除文件</code></pre>
+
+  <h3>🔧 TOOLS.md - 工具笔记</h3>
+  <p>记录你的配置：</p>
+  <pre><code># 我的配置
+
+### API
+- 百炼 API Key: sk-xxxxx
+- 默认模型：qwen3.5-plus
+
+### 浏览器
+- 默认使用 Chrome
+- 无头模式：否</code></pre>
+
+  <h3>💾 MEMORY.md - 长期记忆</h3>
+  <p>AI 的"长期记忆"，记录重要事情：</p>
+  <pre><code># 重要记忆
+
+## 投资
+- 持有 JD 2000 股，成本 $27/股
+- 黄金 2.27 克，成本 1210 元/克
+
+## 项目
+- longxiazhuli.com 网站项目进行中
+- 目标：本周完成 10 篇教程</code></pre>
+
+  <h3>💓 HEARTBEAT.md - 心跳任务</h3>
+  <p>定期自动执行的任务清单：</p>
+  <pre><code># 心跳任务
+
+- [ ] 每天早上 9 点查金价
+- [ ] 每周一检查持仓
+- [ ] 每天下班前总结进度</code></pre>
+
+  <h3>📁 memory/ - 每日记忆</h3>
+  <p>按日期记录每天的日志：</p>
+  <pre><code># 2026-03-11 日志
+
+## 完成的工作
+- 网站框架搭建完成
+- 写了 4 篇文章
+
+## 明天计划
+- 继续写剩余 11 篇</code></pre>
+
+  <h2>文件作用对比</h2>
+
+  <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+    <thead>
+      <tr style="background: #f3f4f6;">
+        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">文件</th>
+        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">作用</th>
+        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">修改频率</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">AGENTS.md</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">工作规则</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">偶尔</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">SOUL.md</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">AI 人设</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">很少</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">USER.md</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">用户信息</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">偶尔</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">MEMORY.md</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">长期记忆</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">经常</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">memory/*.md</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">每日日志</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">每天</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>💡 最佳实践</h2>
+
+  <h3>✅ 推荐做法</h3>
+  <ul>
+    <li>工作区放在专用文件夹，不要和系统文件混在一起</li>
+    <li>定期整理 memory 文件夹，删除过期的日志</li>
+    <li>重要的信息写进 MEMORY.md，不要只靠 AI 记</li>
+    <li>给 AI 明确的边界，比如"不要修改工作区外的文件"</li>
+  </ul>
+
+  <h3>❌ 避免的做法</h3>
+  <ul>
+    <li>把工作区放在系统目录（如 C:\Windows）</li>
+    <li>在 USER.md 里写敏感信息（密码、银行卡号等）</li>
+    <li>MEMORY.md 写得太大（超过 10MB 会影响性能）</li>
+  </ul>
+
+  <div class="tip success">
+    <h3>🎯 小练习</h3>
+    <p>现在打开你的工作区，看看都有哪些文件。试着修改 USER.md，加上你的个人信息！</p>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/guide/first-chat/" class="btn">← 上一步：第一次对话</a>
+    <a href="/advanced/memory/" class="btn" style="margin-left: 1rem;">下一步：记忆系统 →</a>
+  </div>
+</BaseLayout>

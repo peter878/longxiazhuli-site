@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const installCmd = `npm install -g openclaw`;
+---
+
+<BaseLayout title="OpenClaw 是什么？- 龙虾助理">
+  
+  <div style="background: #f3f4f6; padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
+    <p style="margin: 0 0 0.5rem 0; color: #6b7280; font-size: 0.875rem;">快速安装</p>
+    <pre style="margin: 0; background: #1f2937;"><code>{installCmd}</code></pre>
+  </div>
+
+  <h1>🦞 OpenClaw 是什么？</h1>
+  <p class="tag">新手入门 第 1 篇</p>
+
+  <div class="tip">
+    <p><strong>一句话总结：</strong>OpenClaw 是一个开源的 AI 助理框架，让你可以"养"一只属于自己的 AI 龙虾 🦞</p>
+  </div>
+
+  <h2>为什么叫"龙虾"？</h2>
+  
+  <p>这里的"龙虾"是 OpenClaw 的昵称，因为：</p>
+  <ul>
+    <li>🦞 龙虾有坚硬的外壳（安全隔离）</li>
+    <li>🦞 龙虾很灵活（工具集成能力强）</li>
+    <li>🦞 龙虾是杂食动物（什么任务都能处理）</li>
+  </ul>
+
+  <h2>OpenClaw 能做什么？</h2>
+  
+  <p>OpenClaw 不是一个简单的聊天机器人，它是一个可以<strong>实际行动</strong>的 AI 助理：</p>
+
+  <h3>📁 文件操作</h3>
+  <ul>
+    <li>读取/写入文件</li>
+    <li>整理文件夹</li>
+    <li>批量处理文档</li>
+    <li>自动备份数据</li>
+  </ul>
+
+  <h3>🌐 网络访问</h3>
+  <ul>
+    <li>搜索网页信息</li>
+    <li>抓取公开数据</li>
+    <li>监控价格变化</li>
+    <li>定时检查更新</li>
+  </ul>
+
+  <h3>💻 代码执行</h3>
+  <ul>
+    <li>运行脚本</li>
+    <li>自动化任务</li>
+    <li>数据处理</li>
+    <li>定时执行</li>
+  </ul>
+
+  <h3>🧠 记忆系统</h3>
+  <ul>
+    <li>记住你的偏好设置</li>
+    <li>记录常用指令</li>
+    <li>保存项目上下文</li>
+    <li>存储历史对话</li>
+  </ul>
+
+  <h2>和其他 AI 的区别</h2>
+
+  <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+    <thead>
+      <tr style="background: #f3f4f6;">
+        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">特性</th>
+        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">普通 AI</th>
+        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">OpenClaw</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">文件操作</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">❌ 不能</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">✅ 可以</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">执行命令</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">❌ 不能</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">✅ 可以</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">长期记忆</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">❌ 没有</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">✅ 有</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">定时任务</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">❌ 不能</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">✅ 可以</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">自定义技能</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">❌ 不能</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">✅ 可以</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>快速开始</h2>
+
+  <ol style="margin-left: 1.5rem;">
+    <li style="margin-bottom: 0.5rem;">
+      <a href="/guide/install/">📥 5 分钟快速安装 OpenClaw</a>
+    </li>
+    <li style="margin-bottom: 0.5rem;">
+      <a href="/guide/first-chat/">💬 第一次和龙虾对话</a>
+    </li>
+    <li style="margin-bottom: 0.5rem;">
+      <a href="/guide/workspace/">📂 工作区文件结构详解</a>
+    </li>
+  </ol>
+
+  <div class="tip" style="background: #fef2f2;">
+    <h3 style="margin-top: 0; color: #991b1b;">💡 小提示</h3>
+    <p style="margin: 0;">OpenClaw 是开源的，你可以完全控制它的行为。但能力越大责任越大，请合理使用，不要让它做危险的事情哦！</p>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/guide/install/" class="btn">下一步：安装教程 →</a>
+  </div>
+</BaseLayout>

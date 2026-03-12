@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="记忆系统管理 - 龙虾助理">
+  <h1>🧠 记忆系统管理</h1>
+  <p class="tag">进阶使用 第 1 篇</p>
+
+  <div class="tip">
+    <p><strong>一句话总结：</strong>MEMORY.md 是 AI 的"长期记忆"，memory/*.md 是"短期记忆"，用好它们让 AI 越来越懂你。</p>
+  </div>
+
+  <h2>记忆系统的层次</h2>
+  
+  <pre><code>记忆系统
+├── MEMORY.md          # 长期记忆 (永久保存)
+└── memory/            # 短期记忆 (按日期)
+    ├── 2026-03-11.md  # 今天的日志
+    ├── 2026-03-10.md  # 昨天的日志
+    └── ...</code></pre>
+
+  <h2>MEMORY.md - 长期记忆</h2>
+
+  <h3>什么时候写？</h3>
+  <ul>
+    <li>学会了新技能</li>
+    <li>做了重要决定</li>
+    <li>记录了关键信息（持仓、账号等）</li>
+    <li>发现了 AI 的偏好设置</li>
+  </ul>
+
+  <h3>写什么？</h3>
+  <pre><code># 长期记忆
+
+## 投资持仓
+- **云赛智联**: 2000 股，成本 20.42 元
+- **京东 (JD)**: 2000 股，成本 $27/股
+- **黄金**: 2.27 克，成本 1210 元/克
+
+## 项目进度
+- **longxiazhuli.com**: 网站开发中，目标本周 10 篇
+
+## AI 偏好
+- 语气：轻松幽默
+- 称呼：Peter
+- 报告格式：表格 + 要点
+
+## 重要日期
+- 财报季：3 月、8 月
+- 生日：XX 月 XX 日</code></pre>
+
+  <h3>什么时候读？</h3>
+  <p>每次开始新对话时，AI 会自动读取 MEMORY.md，所以：
+  <ul>
+    <li>重要信息一定要写进去</li>
+    <li>定期更新过时的信息</li>
+    <li>保持简洁，不要太长</li>
+  </ul>
+
+  <h2>memory/*.md - 每日日志</h2>
+
+  <h3>命名规则</h3>
+  <pre><code>memory/2026-03-11.md  # YYYY-MM-DD.md</code></pre>
+
+  <h3>记录内容</h3>
+  <pre><code># 2026-03-11 日志
+
+## 完成的工作
+- 网站框架搭建完成
+- 写了 5 篇文章
+
+## 学到的东西
+- Astro 的 code block 需要用变量包裹
+- Vercel 部署很简单
+
+## 明天计划
+- 继续写剩余 10 篇文章
+- 部署到 Vercel
+
+## 心情/备注
+今天效率不错，继续加油！</code></pre>
+
+  <h2>记忆管理技巧</h2>
+
+  <h3>📥 输入记忆</h3>
+  <pre><code># 让 AI 记录
+"把这个记下来：我持有 2000 股云赛智联，成本 20.42 元"
+
+# AI 会自动：
+1. 更新 MEMORY.md 的持仓部分
+2. 在 memory/2026-03-11.md 写日志</code></pre>
+
+  <h3>📤 提取记忆</h3>
+  <pre><code># 让 AI 回忆
+"我持有哪些股票？"
+"我之前说过什么偏好？"
+
+# AI 会读取 MEMORY.md 回答</code></pre>
+
+  <h3>🧹 整理记忆</h3>
+  <pre><code># 定期清理（建议每月一次）
+"帮我把上个月的记忆整理一下"
+
+# AI 会：
+1. 读取 memory/2026-02-*.md
+2. 提取重要信息到 MEMORY.md
+3. 删除过期的日志</code></pre>
+
+  <h2>实战案例</h2>
+
+  <h3>案例 1：记录持仓</h3>
+  <pre><code>你：我今天买了 2000 股京东，成本$27
+
+AI: 已记录到 MEMORY.md：
+## 投资持仓
+- **京东 (JD)**: 2000 股，成本 $27/股
+
+明天我会帮你关注金价。</code></pre>
+
+  <h3>案例 2：记住偏好</h3>
+  <pre><code>你：我不喜欢吃香菜，记住
+
+AI: 已记录到 MEMORY.md：
+## 饮食偏好
+- 不吃：香菜
+
+下次点外卖会注意！</code></pre>
+
+  <h3>案例 3：项目进度</h3>
+  <pre><code>你：网站项目今天完成了 4 篇文章
+
+AI: 已更新：
+## 项目进度
+- **longxiazhuli.com**: 4/15 篇 (27%)
+
+继续加油！</code></pre>
+
+  <h2>注意事项</h2>
+
+  <div class="tip" style="background: #fef2f2;">
+    <h3 style="margin-top: 0; color: #991b1b;">⚠️ 安全提醒</h3>
+    <ul style="margin: 0;">
+      <li>不要在 MEMORY.md 里写密码、银行卡号等敏感信息</li>
+      <li>定期备份重要记忆（可以复制到云盘）</li>
+      <li>MEMORY.md 太大时（>10MB）会影响 AI 响应速度</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/guide/workspace/" class="btn">← 上一步：工作区结构</a>
+    <a href="/advanced/skills/" class="btn" style="margin-left: 1rem;">下一步：技能配置 →</a>
+  </div>
+</BaseLayout>

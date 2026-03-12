@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="防止 AI 误操作 - 龙虾助理">
+  <h1>🛡️ 防止 AI 误操作</h1>
+  <p class="tag">安全防护 第 3 篇</p>
+
+  <div class="tip">
+    <p><strong>一句话总结：</strong>给 AI 装上"刹车系统"，危险操作前必须确认，就像开车系安全带——平时不觉得，关键时刻能救命。</p>
+  </div>
+
+  <h2>常见误操作类型</h2>
+
+  <h3>文件操作</h3>
+  <pre><code>❌ 误删重要文件
+❌ 覆盖未保存的文档
+❌ 把文件传到错误的地方</code></pre>
+
+  <h3>消息发送</h3>
+  <pre><code>❌ 发错人/发错群
+❌ 发送未审核的内容
+❌ 泄露敏感信息</code></pre>
+
+  <h3>金钱相关</h3>
+  <pre><code>❌ 错误下单购物
+❌ 转错账
+❌ 重复支付</code></pre>
+
+  <h3>数据操作</h3>
+  <pre><code>❌ 删除数据库记录
+❌ 提交错误的代码
+❌ 发布未测试的功能</code></pre>
+
+  <h2>防护机制</h2>
+
+  <h3>1. 确认机制</h3>
+  <pre><code>危险操作前必须确认：
+
+AI: 你确定要删除这个文件吗？
+    文件：important.docx
+    位置：~/Documents/
+    ⚠️ 此操作不可恢复
+
+[确认] [取消]</code></pre>
+
+  <h3>2. 白名单机制</h3>
+  <pre><code>只有白名单内的操作可以自动执行：
+
+✅ 自动执行：
+- 读取工作区文件
+- 搜索网络
+- 写日志文件
+
+⚠️ 需要确认：
+- 发送邮件/消息
+- 删除文件
+- 运行外部命令</code></pre>
+
+  <h3>3. 沙箱隔离</h3>
+  <pre><code>敏感操作在隔离环境执行：
+
+工作区 (安全)
+├── 可以随意读写
+└── 不会影响系统
+
+系统区 (隔离)
+├── 需要特殊权限
+└── 操作有日志记录</code></pre>
+
+  <h3>4. 操作日志</h3>
+  <pre><code>所有操作都有记录：
+
+2026-03-12 10:30
+📁 读取：workspace/test.md
+📝 写入：workspace/output.md
+🌐 访问：https://example.com
+💬 发送：消息到群聊 (已确认)</code></pre>
+
+  <h2>实战防护</h2>
+
+  <h3>场景 1：删除文件</h3>
+  <pre><code>你：删除这个文件
+
+AI: ⚠️ 确认删除
+文件：old_project.zip
+大小：1.2GB
+位置：~/Downloads/
+
+这个操作会永久删除文件，确定吗？
+[输入"确认删除"继续]</code></pre>
+
+  <h3>场景 2：发送消息</h3>
+  <pre><code>你：帮我在群里说项目完成了
+
+AI: 📝 消息预览
+发送到：项目组群
+内容："项目完成了！"
+
+确认发送吗？
+[发送] [修改] [取消]</code></pre>
+
+  <h3>场景 3：执行命令</h3>
+  <pre><code>你：运行 rm -rf ./temp
+
+AI: ⚠️ 危险命令检测
+命令：rm -rf ./temp
+风险：删除目录
+
+建议使用安全替代：
+✅ trash ./temp (可恢复)
+
+还要继续吗？
+[用 trash] [坚持用 rm] [取消]</code></pre>
+
+  <h3>场景 4：代码提交</h3>
+  <pre><code>你：帮我把代码提交到 master
+
+AI: ⚠️ 提交前检查
+分支：master
+变更：+120 -45 行
+
+建议：
+1. 先推到测试分支？
+2. 先运行测试？
+3. 直接提交？
+
+[测试分支] [运行测试] [直接提交]</code></pre>
+
+  <h2>安全配置</h2>
+
+  <h3>配置文件示例</h3>
+  <pre><code># safety_config.yaml
+
+# 需要确认的操作
+require_confirm:
+  - file_delete
+  - file_move_outside_workspace
+  - message_send
+  - command_execute
+  - payment
+
+# 禁止的操作
+forbidden:
+  - rm_rf_root
+  - send_password
+  - transfer_money_auto
+
+# 白名单 (可自动执行)
+allowlist:
+  - file_read_workspace
+  - web_search
+  - write_log</code></pre>
+
+  <h2>误操作恢复</h2>
+
+  <h3>文件恢复</h3>
+  <pre><code>1. 检查回收站
+2. 查看 Git 历史 (如果是代码)
+3. 从备份恢复
+4. 联系 AI 查看操作日志</code></pre>
+
+  <h3>消息撤回</h3>
+  <pre><code>1. 立即说"撤回刚才的消息"
+2. AI 会尝试撤回 (如果平台支持)
+3. 如无法撤回，发送澄清消息</code></pre>
+
+  <h3>订单取消</h3>
+  <pre><code>1. 立即查看订单状态
+2. 能取消则取消
+3. 不能取消则申请退款
+4. 记录教训，加强防护</code></pre>
+
+  <h2>最佳实践</h2>
+
+  <div class="tip" style="background: #f0fdf4;">
+    <h3 style="margin-top: 0; color: #166534;">✅ 安全习惯</h3>
+    <ul style="margin: 0;">
+      <li>重要操作前 AI 会确认，不要嫌烦</li>
+      <li>定期查看操作日志</li>
+      <li>敏感文件放在隔离区</li>
+      <li>重要数据定期备份</li>
+      <li>发现异常立即暂停 AI</li>
+    </ul>
+  </div>
+
+  <h2>应急处理</h2>
+
+  <h3>发现 AI 行为异常</h3>
+  <pre><code>1. 立即说"停止所有操作"
+2. 检查是否有未完成的危险任务
+3. 查看操作日志定位问题
+4. 必要时重启 AI 会话</code></pre>
+
+  <h3>已经发生误操作</h3>
+  <pre><code>1. 不要慌，先评估损失
+2. 尝试恢复（文件/消息/订单）
+3. 记录事故经过
+4. 调整防护配置避免再犯</code></pre>
+
+  <h2>常见问题</h2>
+
+  <h3>Q: 确认太麻烦了怎么办？</h3>
+  <p>A: 可以设置"信任模式"——对常用操作免确认，但危险操作还是要确认。安全 > 便利。</p>
+
+  <h3>Q: AI 会不会绕过确认？</h3>
+  <p>A: 不会。确认机制是系统级别的，AI 无法绕过。这是为了保护你。</p>
+
+  <h3>Q: 怎么知道哪些操作危险？</h3>
+  <p>A: 我会告诉你：
+- 🔴 高危：删除、支付、发送敏感信息
+- 🟡 中危：修改配置、执行命令
+- 🟢 低危：读取文件、搜索网络</p>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/security/permissions/" class="btn">← 上一步：权限配置</a>
+    <a href="/cases/gold-price/" class="btn" style="margin-left: 1rem;">回到：实战案例 →</a>
+  </div>
+</BaseLayout>

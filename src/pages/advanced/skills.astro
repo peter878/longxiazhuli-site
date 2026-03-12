@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="技能配置指南 - 龙虾助理">
+  <h1>🧩 技能配置指南</h1>
+  <p class="tag">进阶使用 第 2 篇</p>
+
+  <div class="tip">
+    <p><strong>一句话总结：</strong>技能就是 AI 的"超能力"，安装技能=训练龙虾学会新本领。</p>
+  </div>
+
+  <h2>什么是技能？</h2>
+  
+  <p>技能（Skill）是 OpenClaw 的扩展能力，比如：</p>
+  <ul>
+    <li>🌤️ 天气查询 - 查天气</li>
+    <li>📈 股票查询 - 查股价</li>
+    <li>🌐 网页抓取 - 抓取网页内容</li>
+    <li>🎤 语音合成 - 文字转语音</li>
+    <li>📧 邮件发送 - 自动发邮件</li>
+  </ul>
+
+  <h2>技能来源</h2>
+
+  <h3>1. 官方技能</h3>
+  <p>OpenClaw 自带的技能，安装时就有：</p>
+  <pre><code>- file_read      # 读取文件
+- file_write     # 写入文件
+- web_search     # 搜索网页
+- browser        # 控制浏览器
+- exec           # 执行命令</code></pre>
+
+  <h3>2. 社区技能</h3>
+  <p>来自 ClawHub 的技能市场：</p>
+  <pre><code>npx clawhub@latest search "weather"
+npx clawhub@latest install weather-skill</code></pre>
+
+  <h3>3. 自定义技能</h3>
+  <p>自己写的技能（后面会教）</p>
+
+  <h2>安装技能</h2>
+
+  <h3>方式 1: ClawHub 安装</h3>
+  <pre><code># 搜索技能
+npx clawhub@latest search "股票"
+
+# 安装技能
+npx clawhub@latest install stock-price
+
+# 查看已安装
+npx clawhub@latest list</code></pre>
+
+  <h3>方式 2: 手动安装</h3>
+  <pre><code># 1. 在 skills 文件夹创建技能目录
+mkdir skills/my-skill
+
+# 2. 创建 SKILL.md 文件
+# 3. 配置技能参数</code></pre>
+
+  <h2>使用技能</h2>
+
+  <h3>自动调用</h3>
+  <p>大部分技能 AI 会自动调用：</p>
+  <pre><code>你：今天北京天气怎么样？
+
+AI: [自动调用 weather-skill]
+今天北京晴，25°C，空气质量优。</code></pre>
+
+  <h3>手动调用</h3>
+  <p>指定使用某个技能：</p>
+  <pre><code>你：用 stock-skill 查一下 AAPL 的股价
+
+AI: [调用 stock-skill]
+AAPL 当前股价：$175.50</code></pre>
+
+  <h2>推荐技能</h2>
+
+  <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+    <thead>
+      <tr style="background: #f3f4f6;">
+        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">技能</th>
+        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">用途</th>
+        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">推荐度</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">weather</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">天气查询</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">stock-price</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">股票查询</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">web-screenshot</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">网页截图</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">translate</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">翻译</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">calendar</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">日历管理</td>
+        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">⭐⭐⭐⭐</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>技能管理</h2>
+
+  <h3>查看已安装技能</h3>
+  <pre><code>npx clawhub@latest list
+
+# 输出：
+已安装技能：
+- weather (v1.2.0)
+- stock-price (v2.0.1)
+- translate (v1.0.0)</code></pre>
+
+  <h3>更新技能</h3>
+  <pre><code># 更新单个技能
+npx clawhub@latest update weather
+
+# 更新所有技能
+npx clawhub@latest update --all</code></pre>
+
+  <h3>卸载技能</h3>
+  <pre><code>npx clawhub@latest uninstall weather</code></pre>
+
+  <h2>⚠️ 安全提醒</h2>
+
+  <div class="tip" style="background: #fef2f2;">
+    <h3 style="margin-top: 0; color: #991b1b;">🚨 恶意技能警告</h3>
+    <p>2026 年 2 月曾发现 341+ 个恶意技能，会窃取 API Key 和数据！</p>
+    <ul style="margin: 0;">
+      <li>只安装官方或知名社区技能</li>
+      <li>安装前检查源码</li>
+      <li>不要给技能过高的权限</li>
+    </ul>
+  </div>
+
+  <h2>下一步</h2>
+  
+  <p>想自己写技能？继续学习：</p>
+  <ul>
+    <li><a href="/advanced/skill-creator/">创建自定义技能</a></li>
+    <li><a href="/advanced/browser/">浏览器自动化</a></li>
+    <li><a href="/advanced/cron/">定时任务</a></li>
+  </ul>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/advanced/memory/" class="btn">← 上一步：记忆系统</a>
+    <a href="/advanced/skill-creator/" class="btn" style="margin-left: 1rem;">下一步：创建技能 →</a>
+  </div>
+</BaseLayout>

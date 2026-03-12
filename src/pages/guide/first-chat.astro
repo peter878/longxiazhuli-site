@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="第一次和龙虾对话 - 龙虾助理">
+  <h1>💬 第一次和龙虾对话</h1>
+  <p class="tag">新手入门 · 第 3 篇</p>
+
+  <div class="toc">
+    <h3>📑 本文目录</h3>
+    <ul>
+      <li><a href="#启动对话">启动对话</a></li>
+      <li><a href="#基础命令">基础命令</a></li>
+      <li><a href="#第一次任务">第一次任务</a></li>
+      <li><a href="#对话技巧">对话技巧</a></li>
+    </ul>
+  </div>
+
+  <h2 id="启动对话">启动对话</h2>
+
+  <pre><code># 方式 1: 命令行交互
+openclaw
+
+# 方式 2: 直接发送消息
+openclaw ask "你好"</code></pre>
+
+  <h2 id="基础命令">基础命令</h2>
+
+  <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+    <tr style="background: #f3f4f6;">
+      <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">命令</th>
+      <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">说明</th>
+    </tr>
+    <tr>
+      <td style="padding: 0.75rem; border: 1px solid #e5e7eb;"><code>openclaw</code></td>
+      <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">进入交互模式</td>
+    </tr>
+    <tr>
+      <td style="padding: 0.75rem; border: 1px solid #e5e7eb;"><code>openclaw ask "问题"</code></td>
+      <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">单次问答</td>
+    </tr>
+    <tr>
+      <td style="padding: 0.75rem; border: 1px solid #e5e7eb;"><code>openclaw status</code></td>
+      <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">查看状态</td>
+    </tr>
+    <tr>
+      <td style="padding: 0.75rem; border: 1px solid #e5e7eb;"><code>openclaw help</code></td>
+      <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">查看帮助</td>
+    </tr>
+  </table>
+
+  <h2 id="第一次任务">第一次任务</h2>
+
+  <p>试试让 AI 帮你做些简单的事情：</p>
+
+  <h3>示例 1: 查询天气</h3>
+  <pre><code>帮我查一下北京今天的天气</code></pre>
+
+  <h3>示例 2: 写一封邮件</h3>
+  <pre><code>帮我写一封请假邮件，明天要去看医生</code></pre>
+
+  <h3>示例 3: 总结文章</h3>
+  <pre><code>帮我总结这篇文章的主要内容：[粘贴 URL]</code></pre>
+
+  <h2 id="对话技巧">对话技巧</h2>
+
+  <h3>✅ 好的提问方式</h3>
+  <ul>
+    <li>具体明确："帮我写一封 200 字的请假邮件"</li>
+    <li>提供上下文："我是程序员，帮我解释这个概念"</li>
+    <li>分步骤："第一步...第二步..."</li>
+  </ul>
+
+  <h3>❌ 避免的提问方式</h3>
+  <ul>
+    <li>太模糊："帮我做点事"</li>
+    <li>太宽泛："告诉我一切"</li>
+    <li>危险操作："删除所有文件"</li>
+  </ul>
+
+  <div style="margin-top: 2rem; padding: 1.5rem; background: #fef2f2; border-radius: 0.5rem;">
+    <h3 style="margin-top: 0;">🦞 龙虾小贴士</h3>
+    <p>AI 记得住对话上下文，所以你可以连续追问，不用每次都重复背景信息！</p>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/guide/workspace/" class="btn">下一步：工作区结构 →</a>
+  </div>
+</BaseLayout>

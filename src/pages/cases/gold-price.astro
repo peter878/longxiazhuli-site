@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const memoryExample = `## 投资持仓
+- **黄金**: 2.27 克，成本 1210 元/克
+- **京东 (JD)**: 2000 股，成本 $27/股
+- **云赛智联 (600602)**: 2000 股，成本 20.42 元`;
+const heartbeatExample = `# 每天早上 9 点查金价和股价
+- [ ] 查黄金价格（人民币/克）
+- [ ] 查 JD 股价（美元）
+- [ ] 查云赛智联股价（人民币）
+- [ ] 计算盈亏`;
+const cronExample = `{
+  "name": "每日金价检查",
+  "schedule": "0 9 * * *",
+  "payload": {
+    "kind": "systemEvent",
+    "text": "🦞 黄金价格监控提醒"
+  }
+}`;
+---
+
+<BaseLayout title="自动查金价股票 - 龙虾助理">
+  <h1>💰 自动查金价/股票</h1>
+  <p class="tag">实战案例 第 1 篇</p>
+
+  <div class="tip">
+    <p><strong>一句话总结：</strong>让 AI 每天自动帮你查金价、股价，不用自己打开 APP！</p>
+  </div>
+
+  <h2>案例背景</h2>
+  
+  <p>我有这些投资：</p>
+  <ul>
+    <li>黄金 2.27 克，成本 1210 元/克</li>
+    <li>京东 (JD) 2000 股，成本 $27/股</li>
+    <li>云赛智联 2000 股，成本 20.42 元</li>
+  </ul>
+
+  <h2>实现步骤</h2>
+
+  <h3>步骤 1: 记录持仓</h3>
+  <pre><code>{memoryExample}</code></pre>
+
+  <h3>步骤 2: 创建定时任务</h3>
+  <pre><code>{heartbeatExample}</code></pre>
+
+  <h3>步骤 3: 让 AI 执行</h3>
+  <p>对 AI 说："帮我查一下今天的金价和持仓股价"</p>
+
+  <h2>自动化配置</h2>
+
+  <h3>Cron 定时任务</h3>
+  <pre><code>{cronExample}</code></pre>
+
+  <h2>扩展用法</h2>
+
+  <ul>
+    <li>设置价格提醒（跌破/突破时通知）</li>
+    <li>自动记录每日价格到 memory 文件</li>
+    <li>生成周/月盈亏报告</li>
+  </ul>
+
+  <div class="tip success">
+    <h3 style="margin-top: 0;">🎯 现在试试</h3>
+    <ol style="margin: 0;">
+      <li>在 MEMORY.md 记录你的持仓</li>
+      <li>让 AI 帮你查当前价格</li>
+      <li>计算一下盈亏</li>
+    </ol>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/cases/auto-report/" class="btn">下一篇：自动写日报 →</a>
+  </div>
+</BaseLayout>
