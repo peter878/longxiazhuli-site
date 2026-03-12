@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="实战案例 - 龙虾助理">
+  <h1>💼 实战案例</h1>
+  <p class="tag">看看别人怎么用 AI 龙虾提效</p>
+
+  <div class="tip">
+    <p><strong>说明：</strong>这些案例都来自真实使用场景，你可以直接套用！</p>
+  </div>
+
+  <h2>案例列表</h2>
+
+  <div class="case-grid">
+    <div class="case-card">
+      <h3>💰 自动查金价/股票</h3>
+      <p>每天自动监控持仓价格，不用自己打开 APP</p>
+      <a href="/cases/gold-price/">查看案例 →</a>
+    </div>
+
+    <div class="case-card">
+      <h3>📝 自动写日报/周报</h3>
+      <p>每天花 1 分钟记录，下班自动生成日报</p>
+      <a href="/cases/auto-report/">查看案例 →</a>
+    </div>
+
+    <div class="case-card">
+      <h3>🛒 自动监控商品价格</h3>
+      <p>设置目标价，降价时自动提醒你</p>
+      <a href="/cases/price-monitor/">查看案例 →</a>
+    </div>
+
+    <div class="case-card">
+      <h3>📁 自动整理文件</h3>
+      <p>下载文件夹乱成狗？让 AI 自动分类整理</p>
+      <a href="/cases/file-organizer/">查看案例 →</a>
+    </div>
+
+    <div class="case-card">
+      <h3>✈️ 自动规划旅行行程</h3>
+      <p>告诉 AI 想去哪里，自动生成行程 + 预算</p>
+      <a href="/cases/travel-planner/">查看案例 →</a>
+    </div>
+  </div>
+
+  <h2>案例分类</h2>
+
+  <ul>
+    <li>📊 <strong>投资理财</strong>：查金价、股票监控、基金定投</li>
+    <li>💼 <strong>工作效率</strong>：日报周报、会议纪要、文件整理</li>
+    <li>🛒 <strong>生活购物</strong>：价格监控、比价、优惠券</li>
+    <li>✈️ <strong>旅行规划</strong>：行程安排、预算控制、语言帮助</li>
+    <li>🏠 <strong>家居生活</strong>：菜谱推荐、健身计划、学习规划</li>
+  </ul>
+
+  <h2>提交你的案例</h2>
+
+  <p>有好的使用案例？欢迎分享！</p>
+  <p>📧 邮箱：contact@longxiazhuli.com</p>
+  <p>💬 讨论区：即将上线</p>
+
+  <style>
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .case-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .case-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .case-card h3 {
+      margin-top: 0;
+      color: #1f2937;
+    }
+    
+    .case-card p {
+      color: #6b7280;
+      margin: 0.5rem 0 1rem;
+    }
+    
+    .case-card a {
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .case-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/advanced/" class="btn">← 回到：进阶使用</a>
+  </div>
+</BaseLayout>

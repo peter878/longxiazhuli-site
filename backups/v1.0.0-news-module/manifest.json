@@ -1,0 +1,15 @@
+{
+  "backupName": "v1.0.0-news-module",
+  "backupPath": "C:\\Users\\liu-p\\.openclaw\\workspace\\longxiazhuli-site\\backups\\v1.0.0-news-module",
+  "timestamp": "2026-03-12T04:42:11.013Z",
+  "files": [
+    "src/layouts/BaseLayout.astro",
+    "src/pages/index.astro",
+    "src/pages/faq/index.astro",
+    "src/pages/news/index.astro",
+    "src/pages/cases/index.astro",
+    "package.json",
+    "vercel.json"
+  ],
+  "gitCommit": "eca40cd43da158948ee49850b2dabeec08445057"
+}

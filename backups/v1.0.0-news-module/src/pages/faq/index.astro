@@ -1,0 +1,375 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="常见问题 FAQ - 龙虾助理">
+  <h1>❓ 常见问题 FAQ</h1>
+  <p class="lead">遇到问题？先看看这里有没有答案</p>
+
+  <div class="toc">
+    <h3>📑 问题分类</h3>
+    <ul>
+      <li><a href="#install">🔧 安装配置</a></li>
+      <li><a href="#ai-behavior">🤖 AI 行为</a></li>
+      <li><a href="#files">📁 文件操作</a></li>
+      <li><a href="#network">🌐 网络问题</a></li>
+    </ul>
+  </div>
+
+  <h2 id="install">🔧 安装配置问题</h2>
+
+  <div class="faq-item">
+    <h3>Q1 - 安装失败怎么办？</h3>
+    <div class="problem">
+      <strong>问题描述：</strong>运行 <code>npm install -g openclaw</code> 时报错
+    </div>
+    <div class="solution">
+      <h4>解决方案：</h4>
+      <ol>
+        <li>清理 npm 缓存：<pre><code>npm cache clean --force</code></pre></li>
+        <li>检查 Node.js 版本：<pre><code>node --version</code></pre>（需要 18+）</li>
+        <li>使用管理员权限运行</li>
+        <li>如果还不行，尝试用 pnpm：<pre><code>pnpm add -g openclaw</code></pre></li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="badge frequency">出现频率：高</span>
+      <span class="badge difficulty">难度：低</span>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <h3>Q2 - 找不到 openclaw 命令？</h3>
+    <div class="problem">
+      <strong>问题描述：</strong>安装成功后，运行 <code>openclaw</code> 提示"不是内部或外部命令"
+    </div>
+    <div class="solution">
+      <h4>解决方案：</h4>
+      
+      <h5>Windows:</h5>
+      <ol>
+        <li>找到 npm 全局路径：<pre><code>npm config get prefix</code></pre></li>
+        <li>添加到系统环境变量 PATH：<pre><code>C:\Users\你的用户名\AppData\Roaming\npm</code></pre></li>
+        <li>重启 PowerShell</li>
+      </ol>
+      
+      <h5>Mac/Linux:</h5>
+      <ol>
+        <li>添加到 shell 配置：<pre><code>export PATH=$(npm config get prefix)/bin:$PATH</code></pre></li>
+        <li>添加到 <code>~/.zshrc</code> 或 <code>~/.bashrc</code></li>
+        <li>执行 <code>source ~/.zshrc</code></li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="badge frequency">出现频率：高</span>
+      <span class="badge difficulty">难度：中</span>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <h3>Q3 - API Key 无效？</h3>
+    <div class="problem">
+      <strong>问题描述：</strong>配置 API Key 后，AI 无法响应或提示 Key 无效
+    </div>
+    <div class="solution">
+      <h4>检查清单：</h4>
+      <ul>
+        <li>✅ Key 是否正确复制（无多余空格、换行）</li>
+        <li>✅ 账号是否有足够额度（余额/免费额度）</li>
+        <li>✅ 模型名称是否正确（如 <code>bailian/qwen3.5-plus</code>）</li>
+        <li>✅ API Key 是否已激活</li>
+        <li>✅ 网络是否能访问 API 服务</li>
+      </ul>
+      
+      <h4>测试方法：</h4>
+      <pre><code>openclaw ask "你好"</code></pre>
+    </div>
+    <div class="meta">
+      <span class="badge frequency">出现频率：高</span>
+      <span class="badge difficulty">难度：低</span>
+    </div>
+  </div>
+
+  <h2 id="ai-behavior">🤖 AI 行为问题</h2>
+
+  <div class="faq-item">
+    <h3>Q4 - AI 不回应或响应空白？</h3>
+    <div class="problem">
+      <strong>问题描述：</strong>发送消息后，AI 没有任何回应
+    </div>
+    <div class="solution">
+      <h4>可能原因：</h4>
+      <ul>
+        <li>网络连接问题</li>
+        <li>API Key 无效或额度不足</li>
+        <li>模型服务暂时不可用</li>
+        <li>消息内容触发安全过滤</li>
+      </ul>
+      
+      <h4>排查步骤：</h4>
+      <ol>
+        <li>检查网络：<pre><code>ping bailian.aliyuncs.com</code></pre></li>
+        <li>测试 API：<pre><code>openclaw ask "1+1 等于几"</code></pre></li>
+        <li>查看日志：<pre><code>openclaw status</code></pre></li>
+        <li>尝试更换模型</li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="badge frequency">出现频率：中</span>
+      <span class="badge difficulty">难度：中</span>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <h3>Q5 - AI 回答错误或不准确？</h3>
+    <div class="problem">
+      <strong>问题描述：</strong>AI 的回答明显错误，或者答非所问
+    </div>
+    <div class="solution">
+      <h4>改进方法：</h4>
+      <ol>
+        <li><strong>问题更具体：</strong>
+          <pre><code>❌ "帮我写代码"
+✅ "帮我写一个 Python 函数，计算两个数的和"</code></pre>
+        </li>
+        <li><strong>提供上下文：</strong>
+          <pre><code>"我正在开发一个网站，需要..."</code></pre>
+        </li>
+        <li><strong>指定格式：</strong>
+          <pre><code>"请用表格形式列出..."</code></pre>
+        </li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="badge frequency">出现频率：高</span>
+      <span class="badge difficulty">难度：低</span>
+    </div>
+  </div>
+
+  <h2 id="files">📁 文件操作问题</h2>
+
+  <div class="faq-item">
+    <h3>Q6 - AI 无法读取我的文件？</h3>
+    <div class="problem">
+      <strong>问题描述：</strong>让 AI 读取文件，提示无法访问
+    </div>
+    <div class="solution">
+      <h4>检查清单：</h4>
+      <ul>
+        <li>✅ 文件路径是否正确（区分大小写）</li>
+        <li>✅ 文件是否在 AI 工作区内</li>
+        <li>✅ 文件是否被其他程序占用</li>
+        <li>✅ 是否有读取权限</li>
+      </ul>
+      
+      <h4>解决方法：</h4>
+      <ol>
+        <li>使用绝对路径</li>
+        <li>将文件移到工作区</li>
+        <li>关闭占用文件的程序</li>
+        <li>检查文件权限</li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="badge frequency">出现频率：中</span>
+      <span class="badge difficulty">难度：中</span>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <h3>Q7 - 文件内容是乱码？</h3>
+    <div class="problem">
+      <strong>问题描述：</strong>读取中文文件时显示乱码
+    </div>
+    <div class="solution">
+      <h4>原因：</h4>
+      <p>文件编码不是 UTF-8（Windows 默认 GBK）</p>
+      
+      <h4>解决方案：</h4>
+      <ol>
+        <li>用文本编辑器另存为 UTF-8</li>
+        <li>PowerShell 转换：<pre><code>Get-Content file.txt | Set-Content file-utf8.txt -Encoding UTF8</code></pre></li>
+      </ol>
+      
+      <h4>预防方法：</h4>
+      <p>所有文本文件统一用 UTF-8 编码保存</p>
+    </div>
+    <div class="meta">
+      <span class="badge frequency">出现频率：高</span>
+      <span class="badge difficulty">难度：低</span>
+    </div>
+  </div>
+
+  <h2 id="network">🌐 网络问题</h2>
+
+  <div class="faq-item">
+    <h3>Q8 - 网络错误无法访问 API？</h3>
+    <div class="problem">
+      <strong>问题描述：</strong>提示网络错误，无法连接 API 服务
+    </div>
+    <div class="solution">
+      <h4>排查步骤：</h4>
+      <ol>
+        <li>测试网络连通性：<pre><code>ping bailian.aliyuncs.com</code></pre></li>
+        <li>检查防火墙设置</li>
+        <li>尝试更换网络（如手机热点）</li>
+        <li>检查 DNS 设置</li>
+      </ol>
+      
+      <h4>临时方案：</h4>
+      <ul>
+        <li>使用代理服务器</li>
+        <li>等待网络恢复</li>
+      </ul>
+    </div>
+    <div class="meta">
+      <span class="badge frequency">出现频率：中</span>
+      <span class="badge difficulty">难度：中</span>
+    </div>
+  </div>
+
+  <div class="submit-question">
+    <h3>📝 提交问题</h3>
+    <p>遇到问题但这里没有答案？欢迎提交！</p>
+    <ul>
+      <li>📧 邮箱：contact@longxiazhuli.com</li>
+      <li>💬 讨论区：即将上线</li>
+    </ul>
+  </div>
+
+  <style>
+    .lead {
+      font-size: 1.25rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+    
+    .toc {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin: 2rem 0;
+      border-left: 4px solid #dc2626;
+    }
+    
+    .toc h3 {
+      margin-top: 0;
+    }
+    
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+    
+    .toc a {
+      color: #374151;
+      text-decoration: none;
+    }
+    
+    .toc a:hover {
+      color: #dc2626;
+      text-decoration: underline;
+    }
+    
+    .faq-item {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .faq-item h3 {
+      margin-top: 0;
+      color: #1f2937;
+    }
+    
+    .problem {
+      background: #fef2f2;
+      border-left: 4px solid #dc2626;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 0.375rem 0.375rem 0;
+    }
+    
+    .solution {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 0.375rem 0.375rem 0;
+    }
+    
+    .solution h4 {
+      margin-top: 0;
+      color: #166534;
+    }
+    
+    .solution h5 {
+      color: #166534;
+      margin: 1rem 0 0.5rem;
+    }
+    
+    .meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .badge.frequency {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    
+    .badge.difficulty {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    
+    .submit-question {
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      margin: 3rem 0;
+      border: 1px solid #bfdbfe;
+    }
+    
+    .submit-question h3 {
+      margin-top: 0;
+    }
+    
+    pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin: 0.5rem 0;
+    }
+    
+    code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    ul {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    li {
+      margin: 0.5rem 0;
+    }
+  </style>
+</BaseLayout>

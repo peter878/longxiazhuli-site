@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="OpenClaw 新闻资讯 - 龙虾助理">
+  <h1>📰 OpenClaw 新闻资讯</h1>
+  <p class="lead">追踪 OpenClaw 和 AI 助理领域的最新动态</p>
+
+  <div class="news-filters">
+    <button class="filter-btn active" data-filter="all">全部</button>
+    <button class="filter-btn" data-filter="official">官方动态</button>
+    <button class="filter-btn" data-filter="community">社区新闻</button>
+    <button class="filter-btn" data-filter="industry">行业资讯</button>
+    <button class="filter-btn" data-filter="tutorial">教程更新</button>
+  </div>
+
+  <div class="news-list">
+    <article class="news-card" data-category="official">
+      <div class="news-meta">
+        <span class="news-tag official">官方动态</span>
+        <time datetime="2026-03-10">2026-03-10</time>
+      </div>
+      <h3>OpenClaw v1.5.0 发布：支持浏览器自动化和定时任务</h3>
+      <p>本次更新带来了期待已久的浏览器自动化功能，现在 AI 可以帮你打开网页、点击按钮、填写表单。同时新增了 Cron 定时任务系统...</p>
+      <a href="#" class="read-more">阅读更多 →</a>
+    </article>
+
+    <article class="news-card" data-category="community">
+      <div class="news-meta">
+        <span class="news-tag community">社区新闻</span>
+        <time datetime="2026-03-08">2026-03-08</time>
+      </div>
+      <h3>社区贡献：用户分享了 10 个实用技能包</h3>
+      <p>感谢社区成员的积极贡献，本周新增了 10 个实用技能包，包括自动查股价、天气预报、邮件发送等功能...</p>
+      <a href="#" class="read-more">阅读更多 →</a>
+    </article>
+
+    <article class="news-card" data-category="industry">
+      <div class="news-meta">
+        <span class="news-tag industry">行业资讯</span>
+        <time datetime="2026-03-05">2026-03-05</time>
+      </div>
+      <h3>AI 助理市场竞争加剧，OpenClaw 凭借开源优势脱颖而出</h3>
+      <p>根据最新市场报告，开源 AI 助理工具在 2026 年第一季度增长迅速，OpenClaw 凭借灵活的配置和本地部署能力获得用户青睐...</p>
+      <a href="#" class="read-more">阅读更多 →</a>
+    </article>
+
+    <article class="news-card" data-category="tutorial">
+      <div class="news-meta">
+        <span class="news-tag tutorial">教程更新</span>
+        <time datetime="2026-03-01">2026-03-01</time>
+      </div>
+      <h3>新教程上线：5 分钟学会配置记忆系统</h3>
+      <p>记忆系统是 OpenClaw 的核心功能之一，本教程将带你快速掌握如何配置和使用记忆系统，让你的 AI 越来越懂你...</p>
+      <a href="#" class="read-more">阅读更多 →</a>
+    </article>
+
+    <article class="news-card" data-category="official">
+      <div class="news-meta">
+        <span class="news-tag official">官方动态</span>
+        <time datetime="2026-02-25">2026-02-25</time>
+      </div>
+      <h3>OpenClaw 中文文档站正式上线</h3>
+      <p>经过社区成员的共同努力，OpenClaw 中文文档站今天正式上线，包含入门教程、进阶使用、安全防护、实战案例等完整内容...</p>
+      <a href="#" class="read-more">阅读更多 →</a>
+    </article>
+
+    <article class="news-card" data-category="community">
+      <div class="news-meta">
+        <span class="news-tag community">社区新闻</span>
+        <time datetime="2026-02-20">2026-02-20</time>
+      </div>
+      <h3>第一次 OpenClaw 用户见面会成功举办</h3>
+      <p>上周末，第一次 OpenClaw 用户见面会在北京举行，来自各地的 20 多位用户分享了使用经验和最佳实践...</p>
+      <a href="#" class="read-more">阅读更多 →</a>
+    </article>
+  </div>
+
+  <div class="news-subscribe">
+    <h3>📧 订阅新闻</h3>
+    <p>获取最新的 OpenClaw 动态和 AI 助理资讯</p>
+    <form class="subscribe-form">
+      <input type="email" placeholder="你的邮箱地址" required>
+      <button type="submit">订阅</button>
+    </form>
+    <p class="subscribe-note">我们不会泄露你的邮箱，可随时取消订阅</p>
+  </div>
+
+  <style>
+    .lead {
+      font-size: 1.25rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+    
+    .news-filters {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid #e5e7eb;
+      background: white;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+    
+    .filter-btn:hover {
+      border-color: #dc2626;
+      color: #dc2626;
+    }
+    
+    .filter-btn.active {
+      background: #dc2626;
+      border-color: #dc2626;
+      color: white;
+    }
+    
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .news-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      transition: box-shadow 0.2s;
+    }
+    
+    .news-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .news-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .news-tag.official {
+      background: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .news-tag.community {
+      background: #eff6ff;
+      color: #2563eb;
+    }
+    
+    .news-tag.industry {
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+    
+    .news-tag.tutorial {
+      background: #fef3c7;
+      color: #d97706;
+    }
+    
+    .news-meta time {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .news-card h3 {
+      margin: 0.5rem 0;
+      font-size: 1.25rem;
+    }
+    
+    .news-card p {
+      color: #6b7280;
+      margin: 0.75rem 0;
+    }
+    
+    .read-more {
+      display: inline-block;
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .read-more:hover {
+      text-decoration: underline;
+    }
+    
+    .news-subscribe {
+      background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      margin: 3rem 0;
+      text-align: center;
+      border: 1px solid #fecaca;
+    }
+    
+    .news-subscribe h3 {
+      margin-top: 0;
+    }
+    
+    .subscribe-form {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .subscribe-form input {
+      padding: 0.75rem 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      width: 300px;
+      max-width: 100%;
+    }
+    
+    .subscribe-form input:focus {
+      outline: none;
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px #fecaca;
+    }
+    
+    .subscribe-form button {
+      padding: 0.75rem 1.5rem;
+      background: #dc2626;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .subscribe-form button:hover {
+      background: #b91c1c;
+    }
+    
+    .subscribe-note {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin: 0;
+    }
+  </style>
+
+  <script>
+    // 新闻过滤功能
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // 更新按钮状态
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.news-card').forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // 订阅功能
+    document.querySelector('.subscribe-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = e.target.querySelector('input').value;
+      alert('感谢订阅！我们会将新闻发送到：' + email);
+      e.target.reset();
+    });
+  </script>
+</BaseLayout>

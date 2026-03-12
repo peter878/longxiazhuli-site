@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={Astro.props.description || "龙虾助理 - 教你养好 AI 龙虾 (OpenClaw)"} />
+    <title>{Astro.props.title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary: #dc2626;
+        --primary-hover: #b91c1c;
+        --primary-light: #fef2f2;
+        --bg: #ffffff;
+        --text: #1f2937;
+        --text-light: #6b7280;
+        --border: #e5e7eb;
+        --sidebar-width: 280px;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--bg);
+      }
+      header {
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        background: var(--bg);
+        z-index: 100;
+      }
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .nav-links a:hover { color: var(--primary); }
+      .search-box {
+        position: relative;
+      }
+      .search-input {
+        padding: 0.5rem 1rem 0.5rem 2.5rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        width: 250px;
+        transition: all 0.2s;
+      }
+      .search-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px var(--primary-light);
+      }
+      .search-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-light);
+        pointer-events: none;
+      }
+      .main-layout {
+        display: grid;
+        grid-template-columns: var(--sidebar-width) 1fr;
+        gap: 3rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .sidebar {
+        position: sticky;
+        top: 5rem;
+        height: calc(100vh - 7rem);
+        overflow-y: auto;
+        padding-right: 1rem;
+      }
+      .sidebar-nav {
+        list-style: none;
+      }
+      .sidebar-nav > li {
+        margin-bottom: 1.5rem;
+      }
+      .sidebar-nav h3 {
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.05em;
+      }
+      .sidebar-nav a {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        color: var(--text);
+        text-decoration: none;
+        border-radius: 0.375rem;
+        transition: all 0.2s;
+      }
+      .sidebar-nav a:hover {
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+      .sidebar-nav a.active {
+        background: var(--primary-light);
+        color: var(--primary);
+        font-weight: 500;
+      }
+      main {
+        min-height: calc(100vh - 200px);
+        max-width: 900px;
+      }
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 2rem 0;
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.875rem;
+        background: #f9fafb;
+      }
+      h1 { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.2; }
+      h2 { font-size: 1.75rem; margin: 2.5rem 0 1rem; }
+      h3 { font-size: 1.25rem; margin: 1.5rem 0 0.75rem; }
+      p { margin-bottom: 1rem; }
+      a { color: var(--primary); }
+      .hero {
+        text-align: center;
+        padding: 4rem 0;
+        background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+        border-radius: 1rem;
+        margin-bottom: 3rem;
+      }
+      .hero h1 { color: var(--primary); }
+      .btn {
+        display: inline-block;
+        background: var(--primary);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        margin-top: 1rem;
+        transition: background 0.2s;
+      }
+      .btn:hover { background: var(--primary-hover); }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      .card {
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        transition: box-shadow 0.2s;
+      }
+      .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+      .card h3 { margin-top: 0; }
+      .tag {
+        display: inline-block;
+        background: #fef2f2;
+        color: var(--primary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      code {
+        background: #f3f4f6;
+        padding: 0.125rem 0.375rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+        font-family: 'JetBrains Mono', monospace;
+      }
+      pre {
+        background: #1f2937;
+        color: #f9fafb;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.875rem;
+      }
+      pre code { background: none; padding: 0; }
+      .tip { padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0; }
+      .tip.success { background: #f0fdf4; border-left: 4px solid #16a34a; }
+      .tip.warning { background: #fef3c7; border-left: 4px solid #f59e0b; }
+      .tip h3 { margin-top: 0; }
+      
+      /* Mobile responsive */
+      @media (max-width: 1024px) {
+        .main-layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          display: none;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .container {
+          padding: 0 1rem;
+        }
+        .search-input {
+          width: 180px;
+        }
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <a href="/" class="logo">🦞 龙虾助理</a>
+          <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" class="search-input" placeholder="搜索文档... (Ctrl+K)" id="search-input">
+          </div>
+          <ul class="nav-links">
+            <li><a href="/guide/">入门教程</a></li>
+            <li><a href="/advanced/">进阶使用</a></li>
+            <li><a href="/cases/">实战案例</a></li>
+            <li><a href="/news/">新闻资讯</a></li>
+            <li><a href="/faq/">常见问题</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
+    <div class="main-layout">
+      <aside class="sidebar">
+        <nav>
+          <ul class="sidebar-nav">
+            <li>
+              <h3>入门教程</h3>
+              <ul>
+                <li><a href="/guide/">OpenClaw 是什么</a></li>
+                <li><a href="/guide/install/" class="active">快速安装</a></li>
+                <li><a href="/guide/first-chat/">第一次对话</a></li>
+                <li><a href="/guide/workspace/">工作区结构</a></li>
+              </ul>
+            </li>
+            <li>
+              <h3>进阶使用</h3>
+              <ul>
+                <li><a href="/advanced/memory/">记忆系统</a></li>
+                <li><a href="/advanced/skills/">技能配置</a></li>
+                <li><a href="/advanced/browser/">浏览器自动化</a></li>
+                <li><a href="/advanced/cron/">定时任务</a></li>
+                <li><a href="/advanced/subagents/">子代理</a></li>
+              </ul>
+            </li>
+            <li>
+              <h3>安全防护</h3>
+              <ul>
+                <li><a href="/security/api-key/">API Key 管理</a></li>
+                <li><a href="/security/permissions/">权限配置</a></li>
+                <li><a href="/security/safety/">防止误操作</a></li>
+              </ul>
+            </li>
+            <li>
+              <h3>实战案例</h3>
+              <ul>
+                <li><a href="/cases/gold-price/">查金价/股票</a></li>
+                <li><a href="/cases/auto-report/">写日报/周报</a></li>
+                <li><a href="/cases/price-monitor/">价格监控</a></li>
+                <li><a href="/cases/file-organizer/">整理文件</a></li>
+                <li><a href="/cases/travel-planner/">旅行规划</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      
+      <main>
+        <slot />
+      </main>
+    </div>
+    
+    <footer>
+      <div class="container">
+        <p>© 2026 龙虾助理 (longxiazhuli.com) - 教你养好 AI 龙虾 🦞</p>
+        <p>OpenClaw 知识分享平台</p>
+      </div>
+    </footer>
+    
+    <script>
+      // 搜索快捷键
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          document.getElementById('search-input').focus();
+        }
+      });
+      
+      // 简单搜索功能（前端搜索）
+      const searchInput = document.getElementById('search-input');
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        if (query.length > 2) {
+          // 可以在这里添加搜索逻辑
+          console.log('搜索:', query);
+        }
+      });
+    </script>
+  </body>
+</html>
