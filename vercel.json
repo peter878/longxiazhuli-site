@@ -1,0 +1,8 @@
+{
+  "name": "longxiazhuli",
+  "framework": "astro",
+  "buildCommand": "astro build",
+  "outputDirectory": "dist",
+  "devCommand": "astro dev",
+  "installCommand": "npm install"
+}
