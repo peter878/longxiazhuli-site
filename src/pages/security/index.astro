@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="安全防护 - 龙虾助理">
+  <h1>🛡️ 安全防护</h1>
+  <p class="lead">确保你的 AI 助理安全可靠</p>
+
+  <div class="intro">
+    <p>AI 助理的安全使用至关重要。本模块将带你了解如何保护隐私、管理权限、防止误操作，让你安心使用 AI 助理。</p>
+  </div>
+
+  <div class="security-grid">
+    <div class="security-card">
+      <h3>🔑 API Key 管理</h3>
+      <p>学习如何安全地存储和管理 API Key，避免泄露和滥用。</p>
+      <ul>
+        <li>API Key 存储最佳实践</li>
+        <li>定期更换密钥</li>
+        <li>访问权限控制</li>
+        <li>泄露应急处理</li>
+      </ul>
+      <a href="/security/api-key/" class="btn">学习 API Key 管理 →</a>
+    </div>
+
+    <div class="security-card">
+      <h3>🔐 权限配置</h3>
+      <p>遵循最小权限原则，合理配置 AI 助理的系统和文件访问权限。</p>
+      <ul>
+        <li>权限分级管理</li>
+        <li>文件系统隔离</li>
+        <li>网络访问控制</li>
+        <li>沙箱环境配置</li>
+      </ul>
+      <a href="/security/permissions/" class="btn">学习权限配置 →</a>
+    </div>
+
+    <div class="security-card">
+      <h3>⚠️ 防止误操作</h3>
+      <p>建立安全机制，防止 AI 助理执行危险操作或造成意外损失。</p>
+      <ul>
+        <li>敏感操作确认机制</li>
+        <li>操作日志审计</li>
+        <li>紧急停止功能</li>
+        <li>数据备份策略</li>
+      </ul>
+      <a href="/security/safety/" class="btn">学习防止误操作 →</a>
+    </div>
+  </div>
+
+  <div class="security-tips">
+    <h2>📋 安全使用要点</h2>
+    <div class="tips-list">
+      <div class="tip-item">
+        <span class="tip-icon">🔒</span>
+        <div>
+          <h4>数据隐私保护</h4>
+          <p>不要在 AI 对话中输入银行卡号、密码、身份证号等敏感信息</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🔑</span>
+        <div>
+          <h4>密钥安全</h4>
+          <p>API Key 应存储在安全位置，不要提交到代码仓库或公开分享</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">⚡</span>
+        <div>
+          <h4>权限最小化</h4>
+          <p>仅授予 AI 完成特定任务所需的最低权限，定期审查权限设置</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">📝</span>
+        <div>
+          <h4>操作审计</h4>
+          <p>启用操作日志记录，便于追溯异常行为和排查问题</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h2>🚨 安全提醒</h2>
+    <p>根据工信部和各地安全厂商的最新提醒，使用 AI 助理时请务必：</p>
+    <ul>
+      <li>✅ 从官方渠道下载软件</li>
+      <li>✅ 定期检查更新和漏洞修复</li>
+      <li>✅ 启用防火墙和杀毒软件</li>
+      <li>✅ 启用操作日志记录</li>
+    </ul>
+    <a href="/news/" class="btn btn-secondary">查看安全新闻 →</a>
+  </div>
+
+  <style>
+    .lead {
+      font-size: 1.25rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+    
+    .intro {
+      background: #f9fafb;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      margin: 2rem 0;
+      border-left: 4px solid #dc2626;
+    }
+    
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .security-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      transition: all 0.2s;
+    }
+    
+    .security-card:hover {
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+      border-color: #dc2626;
+    }
+    
+    .security-card h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+    
+    .security-card ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+      color: #6b7280;
+    }
+    
+    .security-card li {
+      margin: 0.5rem 0;
+    }
+    
+    .security-tips {
+      background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      margin: 3rem 0;
+      border: 1px solid #fecaca;
+    }
+    
+    .security-tips h2 {
+      margin-top: 0;
+    }
+    
+    .tips-list {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .tip-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    
+    .tip-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    
+    .tip-item h4 {
+      margin: 0 0 0.5rem 0;
+    }
+    
+    .tip-item p {
+      margin: 0;
+      color: #6b7280;
+    }
+    
+    .cta-box {
+      background: #1f2937;
+      color: white;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      margin: 3rem 0;
+    }
+    
+    .cta-box h2 {
+      margin-top: 0;
+      color: #fca5a5;
+    }
+    
+    .cta-box ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .cta-box li {
+      margin: 0.5rem 0;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #dc2626;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      margin-top: 1rem;
+    }
+    
+    .btn:hover {
+      background: #b91c1c;
+    }
+    
+    .btn-secondary {
+      background: #6b7280;
+    }
+    
+    .btn-secondary:hover {
+      background: #4b5563;
+    }
+  </style>
+</BaseLayout>
