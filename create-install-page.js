@@ -1,4 +1,6 @@
----
+const fs = require('fs');
+
+const content = `---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
@@ -141,7 +143,7 @@ sudo yum install -y nodejs</code></pre>
   <div class="code-compare">
     <div>
       <strong>Windows:</strong>
-      <pre><code>%APPDATA%\openclaw\config.json</code></pre>
+      <pre><code>%APPDATA%\\openclaw\\config.json</code></pre>
     </div>
     <div>
       <strong>Mac/Linux:</strong>
@@ -201,61 +203,29 @@ npm install -g openclaw</code></pre>
   </div>
 
   <style>
-    .toc {
-      background: #f9fafb;
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      margin: 2rem 0;
-      border-left: 4px solid #dc2626;
-    }
+    .toc { background: #f9fafb; padding: 1.5rem; border-radius: 0.75rem; margin: 2rem 0; border-left: 4px solid #dc2626; }
     .toc h3 { margin-top: 0; }
     .toc ul { list-style: none; padding: 0; margin: 0.5rem 0 0; }
     .toc li { margin: 0.5rem 0; }
     .toc a { color: #374151; text-decoration: none; }
     .toc a:hover { color: #dc2626; text-decoration: underline; }
     .step { position: relative; padding-left: 4rem; margin: 2rem 0; }
-    .step-number {
-      position: absolute; left: 0; top: 0;
-      width: 2.5rem; height: 2.5rem;
-      background: #dc2626; color: white;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: bold; font-size: 1.25rem;
-    }
+    .step-number { position: absolute; left: 0; top: 0; width: 2.5rem; height: 2.5rem; background: #dc2626; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; }
     .step h3 { margin-top: 0; }
     .tip { padding: 1rem 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; }
     .tip.warning { background: #fef3c7; border-left: 4px solid #f59e0b; }
-    .code-compare {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem; margin: 1rem 0;
-    }
+    .code-compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0; }
     .code-compare div { background: #f9fafb; padding: 1rem; border-radius: 0.5rem; }
-    .faq {
-      background: #f9fafb; padding: 1.5rem; border-radius: 0.5rem;
-      margin: 1.5rem 0; border-left: 4px solid #0ea5e9;
-    }
+    .faq { background: #f9fafb; padding: 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; border-left: 4px solid #0ea5e9; }
     .faq h3 { margin-top: 0; color: #0369a1; }
-    .feedback-section {
-      background: #f0fdf4; padding: 2rem; border-radius: 0.75rem;
-      margin: 3rem 0; text-align: center; border: 1px solid #bbf7d0;
-    }
+    .feedback-section { background: #f0fdf4; padding: 2rem; border-radius: 0.75rem; margin: 3rem 0; text-align: center; border: 1px solid #bbf7d0; }
     .feedback-section h3 { margin-top: 0; }
     .feedback-buttons { display: flex; gap: 1rem; justify-content: center; margin: 1rem 0; }
-    .feedback-btn {
-      padding: 0.75rem 1.5rem; border: 2px solid #e5e7eb; background: white;
-      border-radius: 0.5rem; cursor: pointer; font-size: 1rem; transition: all 0.2s;
-    }
+    .feedback-btn { padding: 0.75rem 1.5rem; border: 2px solid #e5e7eb; background: white; border-radius: 0.5rem; cursor: pointer; font-size: 1rem; transition: all 0.2s; }
     .feedback-btn:hover { border-color: #dc2626; background: #fef2f2; }
     .feedback-note { color: #6b7280; font-size: 0.875rem; margin: 0; }
-    .nav-buttons {
-      display: flex; justify-content: space-between; gap: 1rem;
-      margin-top: 3rem; flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-block; background: #dc2626; color: white;
-      padding: 0.75rem 1.5rem; border-radius: 0.5rem;
-      text-decoration: none; transition: background 0.2s;
-    }
+    .nav-buttons { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3rem; flex-wrap: wrap; }
+    .btn { display: inline-block; background: #dc2626; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; transition: background 0.2s; }
     .btn:hover { background: #b91c1c; }
     .btn-secondary { background: #6b7280; }
     .btn-secondary:hover { background: #4b5563; }
@@ -278,3 +248,7 @@ npm install -g openclaw</code></pre>
     });
   </script>
 </BaseLayout>
+`;
+
+fs.writeFileSync('src/pages/guide/install.astro', content, 'utf8');
+console.log('✅ File created successfully!');
