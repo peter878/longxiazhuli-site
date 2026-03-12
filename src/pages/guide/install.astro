@@ -1,18 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const npmInstall = `npm install -g openclaw`;
-const pnpmInstall = `pnpm add -g openclaw`;
-const initCommand = `mkdir my-assistant
-cd my-assistant
-openclaw init`;
-const startCommand = `openclaw start`;
-const configExample = `{
-  "defaultModel": "bailian/qwen3.5-plus",
-  "apiKey": "你的 API_KEY"
-}`;
-const verifyCommands = `openclaw --version
-openclaw status
-openclaw ask "你好，请介绍一下自己"`;
 ---
 
 <BaseLayout title="5 分钟快速安装 OpenClaw - 龙虾助理">
@@ -36,7 +23,7 @@ openclaw ask "你好，请介绍一下自己"`;
   <h3>前置要求</h3>
   <ul>
     <li>Windows 10/11</li>
-    <li>Node.js 18+ ( <a href="https://nodejs.org/" target="_blank">下载地址</a> )</li>
+    <li>Node.js 18+ (<a href="https://nodejs.org/" target="_blank">下载地址</a>)</li>
     <li>PowerShell 或 CMD</li>
   </ul>
 
@@ -45,18 +32,16 @@ openclaw ask "你好，请介绍一下自己"`;
     <li>访问 <a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></li>
     <li>下载 LTS 版本（推荐 20.x）</li>
     <li>运行安装程序，一路 Next</li>
-    <li>验证安装：
-      <pre><code>node --version
-npm --version</code></pre>
-    </li>
+    <li>验证安装：<pre><code>node --version
+npm --version</code></pre></li>
   </ol>
 
   <h3>步骤 2 - 安装 OpenClaw</h3>
   <p>以管理员身份打开 PowerShell，运行：</p>
-  <pre><code>{npmInstall}</code></pre>
+  <pre><code>npm install -g openclaw</code></pre>
   
   <p>或使用 pnpm（如果你有的话）：</p>
-  <pre><code>{pnpmInstall}</code></pre>
+  <pre><code>pnpm add -g openclaw</code></pre>
 
   <h3>步骤 3 - 配置环境变量（如果需要）</h3>
   <p>如果提示"找不到 openclaw 命令"：</p>
@@ -64,17 +49,17 @@ npm --version</code></pre>
     <li>打开"此电脑" → 属性 → 高级系统设置</li>
     <li>点击"环境变量"</li>
     <li>在"系统变量"中找到 Path，点击编辑</li>
-    <li>新建，添加：
-      <pre><code>C:\Users\你的用户名\AppData\Roaming\npm</code></pre>
-    </li>
+    <li>新建，添加：<pre><code>C:\Users\你的用户名\AppData\Roaming\npm</code></pre></li>
     <li>确定保存，重新打开 PowerShell</li>
   </ol>
 
   <h3>步骤 4 - 初始化工作区</h3>
-  <pre><code>{initCommand}</code></pre>
+  <pre><code>mkdir my-assistant
+cd my-assistant
+openclaw init</code></pre>
 
   <h3>步骤 5 - 启动 OpenClaw</h3>
-  <pre><code>{startCommand}</code></pre>
+  <pre><code>openclaw start</code></pre>
 
   <hr/>
 
@@ -98,10 +83,10 @@ npm --version</code></pre>
 npm --version</code></pre>
 
   <h3>步骤 3 - 安装 OpenClaw</h3>
-  <pre><code>{npmInstall}</code></pre>
+  <pre><code>npm install -g openclaw</code></pre>
   
   <p>或使用 pnpm：</p>
-  <pre><code>{pnpmInstall}</code></pre>
+  <pre><code>pnpm add -g openclaw</code></pre>
 
   <h3>步骤 4 - 配置环境变量（如果需要）</h3>
   <p>如果提示"找不到 openclaw 命令"，添加到 shell 配置：</p>
@@ -116,10 +101,12 @@ export PATH="/opt/homebrew/share/npm/bin:$PATH"</code></pre>
 source ~/.zshrc</code></pre>
 
   <h3>步骤 5 - 初始化工作区</h3>
-  <pre><code>{initCommand}</code></pre>
+  <pre><code>mkdir my-assistant
+cd my-assistant
+openclaw init</code></pre>
 
   <h3>步骤 6 - 启动 OpenClaw</h3>
-  <pre><code>{startCommand}</code></pre>
+  <pre><code>openclaw start</code></pre>
 
   <hr/>
 
@@ -151,10 +138,10 @@ sudo yum install -y nodejs</code></pre>
 npm --version</code></pre>
 
   <h3>步骤 2 - 安装 OpenClaw</h3>
-  <pre><code>sudo {npmInstall}</code></pre>
+  <pre><code>sudo npm install -g openclaw</code></pre>
   
   <p>或使用 pnpm：</p>
-  <pre><code>sudo {pnpmInstall}</code></pre>
+  <pre><code>sudo pnpm add -g openclaw</code></pre>
 
   <h3>步骤 3 - 配置环境变量（如果需要）</h3>
   <p>添加到 <code>~/.bashrc</code> 或 <code>~/.zshrc</code>：</p>
@@ -164,10 +151,12 @@ npm --version</code></pre>
   <pre><code>source ~/.bashrc</code></pre>
 
   <h3>步骤 4 - 初始化工作区</h3>
-  <pre><code>{initCommand}</code></pre>
+  <pre><code>mkdir my-assistant
+cd my-assistant
+openclaw init</code></pre>
 
   <h3>步骤 5 - 启动 OpenClaw</h3>
-  <pre><code>{startCommand}</code></pre>
+  <pre><code>openclaw start</code></pre>
 
   <hr/>
 
@@ -176,7 +165,7 @@ npm --version</code></pre>
   <p>OpenClaw 需要配置大模型 API 才能工作。推荐使用阿里云百炼：</p>
 
   <ol>
-    <li>访问阿里云百炼控制台 ( <a href="https://bailian.console.aliyun.com/" target="_blank">链接</a> )</li>
+    <li>访问阿里云百炼控制台 (<a href="https://bailian.console.aliyun.com/" target="_blank">链接</a>)</li>
     <li>注册/登录账号</li>
     <li>创建 API Key</li>
     <li>复制 Key 到配置文件</li>
@@ -188,11 +177,16 @@ npm --version</code></pre>
     <li><strong>Mac/Linux:</strong> <code>~/.openclaw/config.json</code></li>
   </ul>
   
-  <pre><code>{configExample}</code></pre>
+  <pre><code>{
+  "defaultModel": "bailian/qwen3.5-plus",
+  "apiKey": "你的 API_KEY"
+}</code></pre>
 
   <h2>验证安装（所有系统通用）</h2>
 
-  <pre><code>{verifyCommands}</code></pre>
+  <pre><code>openclaw --version
+openclaw status
+openclaw ask "你好，请介绍一下自己"</code></pre>
 
   <h2>常见问题</h2>
 
