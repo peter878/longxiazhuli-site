@@ -1,4 +1,4 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
@@ -32,7 +32,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <li>访问 <a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></li>
     <li>下载 LTS 版本（推荐 20.x）</li>
     <li>运行安装程序，一路 Next</li>
-    <li>验证安装：<pre><code>node --version`nnpm --version</code></pre></li>
+    <li>验证安装：<pre><code>node --version
+npm --version</code></pre></li>
   </ol>
 
   <h3>步骤 2 - 安装 OpenClaw</h3>
@@ -53,7 +54,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </ol>
 
   <h3>步骤 4 - 初始化工作区</h3>
-  <pre><code>mkdir my-assistant`ncd my-assistant`nopenclaw init</code></pre>
+  <pre><code>mkdir my-assistant
+cd my-assistant
+openclaw init</code></pre>
 
   <h3>步骤 5 - 启动 OpenClaw</h3>
   <pre><code>openclaw start</code></pre>
@@ -76,7 +79,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <pre><code>brew install node</code></pre>
   
   <p>验证安装：</p>
-  <pre><code>node --version`nnpm --version</code></pre>
+  <pre><code>node --version
+npm --version</code></pre>
 
   <h3>步骤 3 - 安装 OpenClaw</h3>
   <pre><code>npm install -g openclaw</code></pre>
@@ -86,13 +90,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <h3>步骤 4 - 配置环境变量（如果需要）</h3>
   <p>如果提示"找不到 openclaw 命令"，添加到 shell 配置：</p>
-  <pre><code># Intel Mac`nexport PATH="/usr/local/share/npm/bin:$PATH"`n`n# Apple Silicon Mac`nexport PATH="/opt/homebrew/share/npm/bin:$PATH"</code></pre>
+  <pre><code># Intel Mac
+export PATH="/usr/local/share/npm/bin:$PATH"
+
+# Apple Silicon Mac
+export PATH="/opt/homebrew/share/npm/bin:$PATH"</code></pre>
   
   <p>添加到 <code>~/.zshrc</code> 或 <code>~/.bash_profile</code>：</p>
-  <pre><code>echo 'export PATH="/opt/homebrew/share/npm/bin:$PATH"' >> ~/.zshrc`nsource ~/.zshrc</code></pre>
+  <pre><code>echo 'export PATH="/opt/homebrew/share/npm/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc</code></pre>
 
   <h3>步骤 5 - 初始化工作区</h3>
-  <pre><code>mkdir my-assistant`ncd my-assistant`nopenclaw init</code></pre>
+  <pre><code>mkdir my-assistant
+cd my-assistant
+openclaw init</code></pre>
 
   <h3>步骤 6 - 启动 OpenClaw</h3>
   <pre><code>openclaw start</code></pre>
@@ -111,16 +122,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <h3>步骤 1 - 安装 Node.js</h3>
   
   <h4>Ubuntu/Debian:</h4>
-  <pre><code>curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -`nsudo apt-get install -y nodejs</code></pre>
+  <pre><code>curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs</code></pre>
 
   <h4>CentOS/RHEL:</h4>
-  <pre><code>curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -`nsudo yum install -y nodejs</code></pre>
+  <pre><code>curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
+sudo yum install -y nodejs</code></pre>
 
   <h4>Arch Linux:</h4>
   <pre><code>sudo pacman -S nodejs npm</code></pre>
 
   <p>验证安装：</p>
-  <pre><code>node --version`nnpm --version</code></pre>
+  <pre><code>node --version
+npm --version</code></pre>
 
   <h3>步骤 2 - 安装 OpenClaw</h3>
   <pre><code>sudo npm install -g openclaw</code></pre>
@@ -136,7 +150,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <pre><code>source ~/.bashrc</code></pre>
 
   <h3>步骤 4 - 初始化工作区</h3>
-  <pre><code>mkdir my-assistant`ncd my-assistant`nopenclaw init</code></pre>
+  <pre><code>mkdir my-assistant
+cd my-assistant
+openclaw init</code></pre>
 
   <h3>步骤 5 - 启动 OpenClaw</h3>
   <pre><code>openclaw start</code></pre>
@@ -160,21 +176,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <li><strong>Mac/Linux:</strong> <code>~/.openclaw/config.json</code></li>
   </ul>
   
-  <pre><code>{`n  "defaultModel": "bailian/qwen3.5-plus",`n  "apiKey": "你的 API_KEY"`n}</code></pre>
+  <pre><code>{
+  "defaultModel": "bailian/qwen3.5-plus",
+  "apiKey": "你的 API_KEY"
+}</code></pre>
 
   <h2>验证安装（所有系统通用）</h2>
 
-  <pre><code>openclaw --version`nopenclaw status`nopenclaw ask "你好，请介绍一下自己"</code></pre>
+  <pre><code>openclaw --version
+openclaw status
+openclaw ask "你好，请介绍一下自己"</code></pre>
 
   <h2>常见问题</h2>
 
   <h3>Q - 安装失败怎么办？</h3>
   <p>清理 npm 缓存后重试：</p>
-  <pre><code>npm cache clean --force`nnpm install -g openclaw</code></pre>
+  <pre><code>npm cache clean --force
+npm install -g openclaw</code></pre>
 
   <h3>Q - 权限错误（Linux/Mac）？</h3>
   <p>使用 sudo 或修改 npm 目录权限：</p>
-  <pre><code># Mac/Linux`nsudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}</code></pre>
+  <pre><code># Mac/Linux
+sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}</code></pre>
 
   <h3>Q - Windows Defender 报错？</h3>
   <p>可能是 PowerShell 执行策略限制：</p>

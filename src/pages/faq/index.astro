@@ -1,0 +1,571 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="常见问题 FAQ - 龙虾助理">
+  <h1>❓ 常见问题 FAQ</h1>
+  <p class="tag">遇到问题？先看看这里有没有答案</p>
+
+  <div class="tip">
+    <p><strong>说明：</strong>这些问题都是用户真实遇到的，按出现频率排序。</p>
+  </div>
+
+  <h2>问题分类</h2>
+  
+  <div class="category-grid">
+    <div class="category-card">
+      <h3>🔧 安装配置</h3>
+      <ul>
+        <li><a href="#install-fail">安装失败</a></li>
+        <li><a href="#command-not-found">找不到命令</a></li>
+        <li><a href="#api-key-invalid">API Key 无效</a></li>
+        <li><a href="#config-location">配置文件位置</a></li>
+      </ul>
+    </div>
+    
+    <div class="category-card">
+      <h3>🤖 AI 行为</h3>
+      <ul>
+        <li><a href="#ai-not-respond">AI 不回应</a></li>
+        <li><a href="#wrong-answer">回答错误</a></li>
+        <li><a href="#forget-context">忘记上下文</a></li>
+        <li><a href="#slow-response">响应慢</a></li>
+      </ul>
+    </div>
+    
+    <div class="category-card">
+      <h3>📁 文件操作</h3>
+      <ul>
+        <li><a href="#cannot-read-file">无法读取文件</a></li>
+        <li><a href="#file-encoding">文件编码问题</a></li>
+        <li><a href="#permission-denied">权限被拒绝</a></li>
+      </ul>
+    </div>
+    
+    <div class="category-card">
+      <h3>🌐 网络问题</h3>
+      <ul>
+        <li><a href="#network-error">网络错误</a></li>
+        <li><a href="#api-timeout">API 超时</a></li>
+        <li><a href="#proxy-setting">代理设置</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>🔧 安装配置问题</h2>
+
+  <h3 id="install-fail">Q1 - 安装失败怎么办？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>运行 <code>npm install -g openclaw</code> 时报错
+    </div>
+    <div class="solution">
+      <h4>解决方案：</h4>
+      <ol>
+        <li>清理 npm 缓存：<pre><code>npm cache clean --force</code></pre></li>
+        <li>检查 Node.js 版本：<pre><code>node --version</code></pre>（需要 18+）</li>
+        <li>使用管理员权限运行</li>
+        <li>如果还不行，尝试用 pnpm：<pre><code>pnpm add -g openclaw</code></pre></li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：高</span>
+      <span class="tag">难度：低</span>
+    </div>
+  </div>
+
+  <h3 id="command-not-found">Q2 - 找不到 openclaw 命令？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>安装成功后，运行 <code>openclaw</code> 提示"不是内部或外部命令"
+    </div>
+    <div class="solution">
+      <h4>解决方案：</h4>
+      
+      <h5>Windows:</h5>
+      <ol>
+        <li>找到 npm 全局路径：<pre><code>npm config get prefix</code></pre></li>
+        <li>添加到系统环境变量 PATH：<pre><code>C:\Users\你的用户名\AppData\Roaming\npm</code></pre></li>
+        <li>重启 PowerShell</li>
+      </ol>
+      
+      <h5>Mac/Linux:</h5>
+      <ol>
+        <li>添加到 shell 配置：<pre><code>export PATH=$(npm config get prefix)/bin:$PATH</code></pre></li>
+        <li>添加到 <code>~/.zshrc</code> 或 <code>~/.bashrc</code></li>
+        <li>执行 <code>source ~/.zshrc</code></li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：高</span>
+      <span class="tag">难度：中</span>
+    </div>
+  </div>
+
+  <h3 id="api-key-invalid">Q3 - API Key 无效？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>配置 API Key 后，AI 无法响应或提示 Key 无效
+    </div>
+    <div class="solution">
+      <h4>检查清单：</h4>
+      <ul>
+        <li>✅ Key 是否正确复制（无多余空格、换行）</li>
+        <li>✅ 账号是否有足够额度（余额/免费额度）</li>
+        <li>✅ 模型名称是否正确（如 <code>bailian/qwen3.5-plus</code>）</li>
+        <li>✅ API Key 是否已激活（有些需要手动激活）</li>
+        <li>✅ 网络是否能访问 API 服务</li>
+      </ul>
+      
+      <h4>测试方法：</h4>
+      <pre><code>openclaw ask "你好"</code></pre>
+      <p>如果还是不行，尝试更换一个 API Key 或联系服务商。</p>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：高</span>
+      <span class="tag">难度：低</span>
+    </div>
+  </div>
+
+  <h3 id="config-location">Q4 - 配置文件在哪里？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>想手动修改配置，找不到配置文件
+    </div>
+    <div class="solution">
+      <h4>配置文件位置：</h4>
+      <ul>
+        <li><strong>Windows:</strong> <code>%APPDATA%\openclaw\config.json</code></li>
+        <li><strong>Mac:</strong> <code>~/.openclaw/config.json</code></li>
+        <li><strong>Linux:</strong> <code>~/.openclaw/config.json</code></li>
+      </ul>
+      
+      <h4>快速打开：</h4>
+      <pre><code># Windows
+notepad %APPDATA%\openclaw\config.json
+
+# Mac/Linux
+nano ~/.openclaw/config.json</code></pre>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：中</span>
+      <span class="tag">难度：低</span>
+    </div>
+  </div>
+
+  <h2>🤖 AI 行为问题</h2>
+
+  <h3 id="ai-not-respond">Q5 - AI 不回应或响应空白？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>发送消息后，AI 没有任何回应
+    </div>
+    <div class="solution">
+      <h4>可能原因：</h4>
+      <ul>
+        <li>网络连接问题</li>
+        <li>API Key 无效或额度不足</li>
+        <li>模型服务暂时不可用</li>
+        <li>消息内容触发安全过滤</li>
+      </ul>
+      
+      <h4>排查步骤：</h4>
+      <ol>
+        <li>检查网络：<pre><code>ping bailian.aliyuncs.com</code></pre></li>
+        <li>测试 API：<pre><code>openclaw ask "1+1 等于几"</code></pre></li>
+        <li>查看日志：<pre><code>openclaw status</code></pre></li>
+        <li>尝试更换模型</li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：中</span>
+      <span class="tag">难度：中</span>
+    </div>
+  </div>
+
+  <h3 id="wrong-answer">Q6 - AI 回答错误或不准确？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>AI 的回答明显错误，或者答非所问
+    </div>
+    <div class="solution">
+      <h4>改进方法：</h4>
+      <ol>
+        <li><strong>问题更具体：</strong>
+          <pre><code>❌ "帮我写代码"
+✅ "帮我写一个 Python 函数，计算两个数的和"</code></pre>
+        </li>
+        <li><strong>提供上下文：</strong>
+          <pre><code>"我正在开发一个网站，需要..."</code></pre>
+        </li>
+        <li><strong>指定格式：</strong>
+          <pre><code>"请用表格形式列出..."</code></pre>
+        </li>
+        <li><strong>要求验证：</strong>
+          <pre><code>"请检查你的答案是否正确"</code></pre>
+        </li>
+      </ol>
+      
+      <h4>如果还是不对：</h4>
+      <ul>
+        <li>尝试更换更强的模型</li>
+        <li>把大问题拆成小问题</li>
+        <li>提供示例让 AI 参考</li>
+      </ul>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：高</span>
+      <span class="tag">难度：低</span>
+    </div>
+  </div>
+
+  <h3 id="forget-context">Q7 - AI 忘记之前的对话？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>聊着聊着 AI 忘记前面说过的话
+    </div>
+    <div class="solution">
+      <h4>原因说明：</h4>
+      <p>AI 的上下文窗口有限，超出长度会遗忘早期内容。</p>
+      
+      <h4>解决方法：</h4>
+      <ol>
+        <li><strong>主动提醒：</strong>
+          <pre><code>"还记得我刚才说的项目吗？"</code></pre>
+        </li>
+        <li><strong>使用记忆功能：</strong>
+          <pre><code>"把这个记到 MEMORY.md"</code></pre>
+        </li>
+        <li><strong>开启长上下文模式：</strong>
+          <pre><code>/context long</code></pre>
+        </li>
+        <li><strong>分段对话：</strong>
+          <p>一个话题聊完后，开启新对话</p>
+        </li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：中</span>
+      <span class="tag">难度：中</span>
+    </div>
+  </div>
+
+  <h3 id="slow-response">Q8 - AI 响应很慢？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>发送消息后要等很久才有回复
+    </div>
+    <div class="solution">
+      <h4>可能原因：</h4>
+      <ul>
+        <li>网络延迟高</li>
+        <li>模型负载高（高峰期）</li>
+        <li>问题太复杂，需要长时间推理</li>
+        <li>本地电脑性能不足</li>
+      </ul>
+      
+      <h4>优化建议：</h4>
+      <ul>
+        <li>更换更快的模型（如 qwen-turbo）</li>
+        <li>避开高峰期（工作日上午较快）</li>
+        <li>简化问题，拆成多步</li>
+        <li>检查网络质量</li>
+      </ul>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：中</span>
+      <span class="tag">难度：低</span>
+    </div>
+  </div>
+
+  <h2>📁 文件操作问题</h2>
+
+  <h3 id="cannot-read-file">Q9 - AI 无法读取我的文件？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>让 AI 读取文件，提示无法访问
+    </div>
+    <div class="solution">
+      <h4>检查清单：</h4>
+      <ul>
+        <li>✅ 文件路径是否正确（区分大小写）</li>
+        <li>✅ 文件是否在 AI 工作区内</li>
+        <li>✅ 文件是否被其他程序占用</li>
+        <li>✅ 是否有读取权限</li>
+      </ul>
+      
+      <h4>解决方法：</h4>
+      <ol>
+        <li>使用绝对路径：<pre><code>C:\Users\...\file.txt</code></pre></li>
+        <li>将文件移到工作区：<pre><code>cp file.txt ./workspace/</code></pre></li>
+        <li>关闭占用文件的程序</li>
+        <li>检查文件权限</li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：中</span>
+      <span class="tag">难度：中</span>
+    </div>
+  </div>
+
+  <h3 id="file-encoding">Q10 - 文件内容是乱码？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>读取中文文件时显示乱码
+    </div>
+    <div class="solution">
+      <h4>原因：</h4>
+      <p>文件编码不是 UTF-8（Windows 默认 GBK）</p>
+      
+      <h4>解决方案：</h4>
+      <ol>
+        <li>用文本编辑器另存为 UTF-8</li>
+        <li>PowerShell 转换：<pre><code>Get-Content file.txt | Set-Content file-utf8.txt -Encoding UTF8</code></pre></li>
+        <li>让 AI 自动检测编码</li>
+      </ol>
+      
+      <h4>预防方法：</h4>
+      <p>所有文本文件统一用 UTF-8 编码保存</p>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：高</span>
+      <span class="tag">难度：低</span>
+    </div>
+  </div>
+
+  <h3 id="permission-denied">Q11 - 权限被拒绝？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>AI 尝试写入文件时提示权限不足
+    </div>
+    <div class="solution">
+      <h4>解决方案：</h4>
+      
+      <h5>Windows:</h5>
+      <ol>
+        <li>以管理员身份运行 PowerShell</li>
+        <li>或修改文件夹权限</li>
+      </ol>
+      
+      <h5>Mac/Linux:</h5>
+      <ol>
+        <li>修改文件所有者：<pre><code>sudo chown -R $(whoami) ./workspace</code></pre></li>
+        <li>修改文件权限：<pre><code>chmod -R 755 ./workspace</code></pre></li>
+      </ol>
+      
+      <h4>最佳实践：</h4>
+      <p>只在用户工作区内操作，不要访问系统目录</p>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：低</span>
+      <span class="tag">难度：中</span>
+    </div>
+  </div>
+
+  <h2>🌐 网络问题</h2>
+
+  <h3 id="network-error">Q12 - 网络错误无法访问 API？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>提示网络错误，无法连接 API 服务
+    </div>
+    <div class="solution">
+      <h4>排查步骤：</h4>
+      <ol>
+        <li>测试网络连通性：<pre><code>ping bailian.aliyuncs.com</code></pre></li>
+        <li>检查防火墙设置</li>
+        <li>尝试更换网络（如手机热点）</li>
+        <li>检查 DNS 设置</li>
+      </ol>
+      
+      <h4>临时方案：</h4>
+      <ul>
+        <li>使用代理服务器</li>
+        <li>等待网络恢复</li>
+        <li>切换到本地模型（如果有）</li>
+      </ul>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：中</span>
+      <span class="tag">难度：中</span>
+    </div>
+  </div>
+
+  <h3 id="api-timeout">Q13 - API 请求超时？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>请求发送到一半超时
+    </div>
+    <div class="solution">
+      <h4>可能原因：</h4>
+      <ul>
+        <li>网络不稳定</li>
+        <li>请求内容太长</li>
+        <li>服务器负载高</li>
+      </ul>
+      
+      <h4>解决方法：</h4>
+      <ol>
+        <li>增加超时时间配置</li>
+        <li>拆分长请求为多个短请求</li>
+        <li>重试机制（稍后自动重试）</li>
+        <li>更换更快的 API 端点</li>
+      </ol>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：低</span>
+      <span class="tag">难度：中</span>
+    </div>
+  </div>
+
+  <h3 id="proxy-setting">Q14 - 如何配置代理？</h3>
+  <div class="faq-item">
+    <div class="problem">
+      <strong>问题描述：</strong>需要通过代理访问 API
+    </div>
+    <div class="solution">
+      <h4>配置方法：</h4>
+      
+      <h5>系统代理：</h5>
+      <pre><code># Windows
+set HTTP_PROXY=http://proxy:port
+set HTTPS_PROXY=http://proxy:port
+
+# Mac/Linux
+export HTTP_PROXY=http://proxy:port
+export HTTPS_PROXY=http://proxy:port</code></pre>
+      
+      <h5>npm 代理：</h5>
+      <pre><code>npm config set proxy http://proxy:port
+npm config set https-proxy http://proxy:port</code></pre>
+      
+      <h5>OpenClaw 配置：</h5>
+      <p>在 <code>config.json</code> 中添加：</p>
+      <pre><code>{
+  "proxy": "http://proxy:port"
+}</code></pre>
+    </div>
+    <div class="meta">
+      <span class="tag">出现频率：低</span>
+      <span class="tag">难度：高</span>
+    </div>
+  </div>
+
+  <h2>提交问题</h2>
+
+  <p>遇到问题但这里没有答案？欢迎提交！</p>
+  <ul>
+    <li>📧 邮箱：contact@longxiazhuli.com</li>
+    <li>💬 讨论区：即将上线</li>
+    <li>🐛 GitHub Issues：即将开放</li>
+  </ul>
+
+  <style>
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .category-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      background: #f9fafb;
+    }
+    
+    .category-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    
+    .category-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .category-card li {
+      margin: 0.5rem 0;
+    }
+    
+    .category-card a {
+      color: #dc2626;
+      text-decoration: none;
+    }
+    
+    .category-card a:hover {
+      text-decoration: underline;
+    }
+    
+    .faq-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      background: #fff;
+    }
+    
+    .problem {
+      background: #fef2f2;
+      border-left: 4px solid #dc2626;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .solution {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .solution h4 {
+      margin-top: 0;
+      color: #166534;
+    }
+    
+    .solution h5 {
+      color: #166534;
+      margin-top: 1rem;
+    }
+    
+    .meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .meta .tag {
+      background: #e5e7eb;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      color: #374151;
+    }
+    
+    pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 0.5rem 0;
+    }
+    
+    code {
+      font-family: 'Consolas', 'Monaco', monospace;
+    }
+    
+    .tip {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1.5rem 0;
+    }
+  </style>
+</BaseLayout>
