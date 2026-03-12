@@ -34,9 +34,13 @@
 - [x] 权限配置最佳实践 (security/permissions.astro)
 - [x] 防止 AI 误操作 (security/safety.astro)
 
-### 实战案例 (2/2 篇) ✅
+### 实战案例 (5/5 篇) ✅
 - [x] 自动查金价/股票 (cases/gold-price.astro)
 - [x] 自动写日报/周报 (cases/auto-report.astro)
+- [x] 自动监控商品价格 (cases/price-monitor.astro)
+- [x] 自动整理文件 (cases/file-organizer.astro)
+- [x] 自动规划旅行行程 (cases/travel-planner.astro)
+- [x] 案例列表页 (cases/index.astro)
 
 ---
 
@@ -79,5 +83,5 @@
 
 ---
 
-*最后更新：2026-03-12 10:25*
-*进度：15/15 篇 (100%) 🎉*
+*最后更新：2026-03-12 11:40*
+*进度：18/18 篇 (100%) 🎉*

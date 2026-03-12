@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="自动整理文件 - 龙虾助理">
+  <h1>📁 自动整理文件</h1>
+  <p class="tag">实战案例 第 4 篇</p>
+
+  <div class="tip">
+    <p><strong>一句话总结：</strong>下载文件夹乱成狗？让 AI 自动分类整理，还你一个整洁的电脑！</p>
+  </div>
+
+  <h2>痛点场景</h2>
+  
+  <ul>
+    <li>😫 下载文件夹几百个文件，找不到东西</li>
+    <li>😫 桌面堆满各种文件</li>
+    <li>😫 懒得手动分类整理</li>
+  </ul>
+
+  <h2>实现步骤</h2>
+
+  <h3>步骤 1: 告诉 AI 整理规则</h3>
+  <pre><code>你：帮我整理下载文件夹
+
+AI: 好的，我会按以下规则分类：
+📄 文档：.pdf, .doc, .docx, .xls, .xlsx, .ppt
+🖼️ 图片：.jpg, .png, .gif, .webp
+🎵 音乐：.mp3, .flac, .wav
+🎬 视频：.mp4, .avi, .mkv
+📦 压缩包：.zip, .rar, .7z
+💻 安装包：.exe, .dmg, .msi
+📝 其他：无法分类的</code></pre>
+
+  <h3>步骤 2: 执行整理</h3>
+  <pre><code>AI: 开始整理...
+扫描：Downloads (342 个文件)
+分类中...
+
+✅ 整理完成！
+📄 文档：23 个 → Documents/
+🖼️ 图片：89 个 → Pictures/
+🎵 音乐：12 个 → Music/
+🎬 视频：45 个 → Videos/
+📦 压缩包：18 个 → Archives/
+💻 安装包：34 个 → Installers/
+📝 其他：121 个 → Others/</code></pre>
+
+  <h2>整理规则</h2>
+
+  <h3>按文件类型</h3>
+  <pre><code>Downloads/
+├── Documents/      # 文档
+├── Pictures/       # 图片
+├── Music/          # 音乐
+├── Videos/         # 视频
+├── Archives/       # 压缩包
+├── Installers/     # 安装包
+└── Others/         # 其他</code></pre>
+
+  <h3>按项目分类</h3>
+  <pre><code>你：按项目整理我的工作文件
+
+AI: 已按项目分类：
+📁 Project-A/
+  ├── 需求文档/
+  ├── 设计稿/
+  └── 会议记录/
+📁 Project-B/
+  ├── 合同/
+  └── 发票/</code></pre>
+
+  <h3>按时间分类</h3>
+  <pre><code>你：把文件按月份整理
+
+AI: 已按时间分类：
+📁 2026-03/
+  ├── 2026-03-01_合同.pdf
+  ├── 2026-03-05_发票.jpg
+  └── ...
+📁 2026-02/
+  └── ...</code></pre>
+
+  <h2>高级用法</h2>
+
+  <h3>智能重命名</h3>
+  <pre><code>原文件：
+- 未命名 1.pdf
+- 微信图片_20260312.jpg
+- 新建 Microsoft Word 文档.docx
+
+AI 重命名后：
+- 2026-03-12_合同_供应商 A.pdf
+- 2026-03-12_产品照片_01.jpg
+- 2026-03-10_会议纪要_项目 B.docx</code></pre>
+
+  <h3>重复文件清理</h3>
+  <pre><code>你：帮我找出重复的文件
+
+AI: 发现 15 组重复文件：
+📄 合同.pdf (3 个副本)
+  - Downloads/合同.pdf
+  - Desktop/合同.pdf
+  - Documents/合同.pdf
+  
+  建议：保留 1 个，删除 2 个，节省 15MB
+
+[确认后]
+✅ 已清理 12 个重复文件，释放 89MB 空间</code></pre>
+
+  <h3>大文件清理</h3>
+  <pre><code>你：帮我清理超过 1GB 的文件
+
+AI: 发现以下大文件：
+🎬 电影.mkv (4.2GB) - 3 个月前
+🎮 游戏安装包.exe (8.5GB) - 6 个月前
+📦 备份.zip (2.1GB) - 1 年前
+
+建议：
+- 电影：已看过，可删除
+- 游戏：已安装，可删除安装包
+- 备份：确认是否需要</code></pre>
+
+  <h2>自动化配置</h2>
+
+  <h3>每周自动整理</h3>
+  <pre><code># HEARTBEAT.md
+# 每周五下午整理
+- [ ] 周五 17:00 整理 Downloads 文件夹
+- [ ] 清理回收站
+- [ ] 整理桌面文件</code></pre>
+
+  <h3>文件夹监控</h3>
+  <pre><code>你：Downloads 文件夹超过 100 个文件就提醒我整理
+
+AI: ✅ 已设置监控
+- 监控文件夹：Downloads
+- 阈值：100 个文件
+- 当前：87 个文件
+- 动作：超过阈值时提醒你</code></pre>
+
+  <h2>实战案例</h2>
+
+  <h3>案例 1：设计师文件整理</h3>
+  <pre><code>文件类型：
+- .psd, .ai, .fig → 设计稿
+- .png, .jpg → 导出图
+- .mp4 → 演示视频
+
+整理后：
+📁 设计项目/
+  ├── 源文件/
+  ├── 导出图/
+  └── 参考素材/</code></pre>
+
+  <h3>案例 2：程序员代码整理</h3>
+  <pre><code>文件类型：
+- .zip → 下载的源码
+- .pdf → 技术文档
+- .md → 笔记
+
+整理后：
+📁 Code/
+  ├── 源码/
+  ├── 文档/
+  └── 笔记/</code></pre>
+
+  <h3>案例 3：学生资料整理</h3>
+  <pre><code>文件类型：
+- .pdf, .ppt → 课件
+- .docx → 作业
+- .xlsx → 成绩单
+
+整理后：
+📁 学习资料/
+  ├── 2026 春季学期/
+  │   ├── 课件/
+  │   ├── 作业/
+  │   └── 考试/</code></pre>
+
+  <h2>注意事项</h2>
+
+  <div class="tip" style="background: #fef2f2;">
+    <h3 style="margin-top: 0; color: #991b1b;">⚠️ 重要提醒</h3>
+    <ul style="margin: 0;">
+      <li>整理前先备份重要文件</li>
+      <li>不确定的文件先放到"其他"分类</li>
+      <li>定期清理回收站</li>
+      <li>云同步文件夹（如 OneDrive）整理前注意同步状态</li>
+    </ul>
+  </div>
+
+  <h2>扩展用法</h2>
+
+  <ul>
+    <li>📊 生成文件统计报告（每月新增多少文件）</li>
+    <li>️ 自动删除 30 天前的临时文件</li>
+    <li>☁️ 自动上传重要文件到云盘</li>
+    <li>📱 手机照片自动整理（按日期/地点）</li>
+  </ul>
+
+  <div class="tip success">
+    <h3 style="margin-top: 0;">🎯 现在试试</h3>
+    <ol style="margin: 0;">
+      <li>打开你的 Downloads 文件夹</li>
+      <li>让 AI 帮你分类整理</li>
+      <li>看着乱糟糟的文件夹变整洁！</li>
+    </ol>
+  </div>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="/cases/price-monitor/" class="btn">← 上一步：价格监控</a>
+    <a href="/cases/gold-price/" class="btn" style="margin-left: 1rem;">回到：查金价 →</a>
+  </div>
+</BaseLayout>
