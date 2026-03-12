@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="进阶使用 - 龙虾助理">
+  <h1>📖 进阶使用</h1>
+  <p class="lead">让你的 AI 龙虾越来越能干</p>
+
+  <div class="intro">
+    <p>掌握了基础操作后，来学习更多高级技能，让你的 AI 助理变得更强大！</p>
+  </div>
+
+  <div class="modules-grid">
+    <div class="module-card">
+      <h3>🧠 记忆系统</h3>
+      <p>让 AI 记住你的偏好、习惯和重要信息，成为你的第二大脑。</p>
+      <ul>
+        <li>MEMORY.md 长期记忆管理</li>
+        <li>每日日志自动记录</li>
+        <li>记忆整理和优化</li>
+      </ul>
+      <a href="/advanced/memory/" class="btn">学习记忆系统 →</a>
+    </div>
+
+    <div class="module-card">
+      <h3>🔧 技能配置</h3>
+      <p>配置和扩展 AI 的能力，集成各种工具和服务。</p>
+      <ul>
+        <li>内置技能配置</li>
+        <li>自定义技能开发</li>
+        <li>第三方服务集成</li>
+      </ul>
+      <a href="/advanced/skills/" class="btn">学习技能配置 →</a>
+    </div>
+
+    <div class="module-card">
+      <h3>🌐 浏览器自动化</h3>
+      <p>让 AI 帮你操作浏览器，打开网页、点击按钮、填写表单。</p>
+      <ul>
+        <li>网页内容提取</li>
+        <li>自动化操作</li>
+        <li>截图和监控</li>
+      </ul>
+      <a href="/advanced/browser/" class="btn">学习浏览器自动化 →</a>
+    </div>
+
+    <div class="module-card">
+      <h3>⏰ 定时任务</h3>
+      <p>设置定时任务，让 AI 在指定时间自动执行操作。</p>
+      <ul>
+        <li>Cron 表达式配置</li>
+        <li>定时提醒和监控</li>
+        <li>周期性任务</li>
+      </ul>
+      <a href="/advanced/cron/" class="btn">学习定时任务 →</a>
+    </div>
+
+    <div class="module-card">
+      <h3>🤖 子代理</h3>
+      <p>创建和管理多个 AI 代理，并行处理复杂任务。</p>
+      <ul>
+        <li>子代理创建和配置</li>
+        <li>任务分配和协调</li>
+        <li>结果汇总</li>
+      </ul>
+      <a href="/advanced/subagents/" class="btn">学习子代理 →</a>
+    </div>
+  </div>
+
+  <div class="tip">
+    <h3>💡 学习建议</h3>
+    <ol>
+      <li>按顺序学习，从记忆系统开始</li>
+      <li>每个模块都有实战案例</li>
+      <li>学完一个模块再学下一个</li>
+      <li>遇到问题查看 FAQ</li>
+    </ol>
+  </div>
+
+  <style>
+    .lead { font-size: 1.25rem; color: #6b7280; margin-bottom: 2rem; }
+    .intro { background: #f9fafb; padding: 2rem; border-radius: 0.75rem; margin: 2rem 0; border-left: 4px solid #dc2626; }
+    .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; }
+    .module-card { border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 2rem; transition: all 0.3s; }
+    .module-card:hover { box-shadow: 0 8px 16px rgba(0,0,0,0.1); transform: translateY(-4px); border-color: #dc2626; }
+    .module-card h3 { margin-top: 0; font-size: 1.5rem; }
+    .module-card ul { margin: 1.5rem 0; padding-left: 1.5rem; color: #6b7280; }
+    .module-card li { margin: 0.5rem 0; }
+    .btn { display: inline-block; background: #dc2626; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; transition: background 0.2s; }
+    .btn:hover { background: #b91c1c; }
+    .tip { background: #fef3c7; padding: 2rem; border-radius: 0.75rem; margin: 3rem 0; border-left: 4px solid #f59e0b; }
+    .tip h3 { margin-top: 0; color: #92400e; }
+    .tip ol { margin: 1rem 0; padding-left: 1.5rem; }
+    .tip li { margin: 0.5rem 0; }
+  </style>
+</BaseLayout>
