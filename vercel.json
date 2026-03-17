@@ -4,5 +4,16 @@
   "buildCommand": "astro build",
   "outputDirectory": "dist",
   "devCommand": "astro dev",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
 }
