@@ -1,0 +1,15 @@
+{
+  "backupName": "vercel-analytics",
+  "backupPath": "C:\\Users\\liu-p\\.openclaw\\workspace\\longxiazhuli-site\\backups\\vercel-analytics",
+  "timestamp": "2026-03-17T03:29:05.826Z",
+  "files": [
+    "src/layouts/BaseLayout.astro",
+    "src/pages/index.astro",
+    "src/pages/faq/index.astro",
+    "src/pages/news/index.astro",
+    "src/pages/cases/index.astro",
+    "package.json",
+    "vercel.json"
+  ],
+  "gitCommit": "7d3119f64a4358076089d53963bb06058095d921"
+}
