@@ -1,0 +1,677 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="浏览器自动化办公 - 实战案例" description="使用 OpenClaw 浏览器自动化功能处理重复性办公任务">
+  <div class="breadcrumb">
+    → <a href="/cases/">实战案例</a> → 浏览器自动化
+  </div>
+
+  <article class="case-study">
+    <header>
+      <div class="tag">效率神器</div>
+      <h1>🌐 浏览器自动化：让 AI 帮你处理重复性办公任务</h1>
+      <p class="lead">自动填写表单、批量下载文件、跨网站数据整理...解放你的双手！</p>
+    </header>
+
+    <section class="content">
+      <h2>🎯 适用场景</h2>
+      <div class="scenarios">
+        <div class="scenario">
+          <span class="scenario-icon">📊</span>
+          <h3>数据收集</h3>
+          <p>从多个网站抓取产品价格、竞品信息、市场数据</p>
+        </div>
+        <div class="scenario">
+          <span class="scenario-icon">📝</span>
+          <h3>表单填写</h3>
+          <p>批量提交报名表、申请表、信息登记等重复表单</p>
+        </div>
+        <div class="scenario">
+          <span class="scenario-icon">📥</span>
+          <h3>文件下载</h3>
+          <p>自动下载日报、周报、月度报表等定期文件</p>
+        </div>
+        <div class="scenario">
+          <span class="scenario-icon">🔄</span>
+          <h3>数据同步</h3>
+          <p>在多个系统间同步客户信息、订单数据等</p>
+        </div>
+      </div>
+
+      <h2>🛠️ 前置条件</h2>
+      <div class="requirements">
+        <div class="req-item">
+          <span class="req-icon">✅</span>
+          <div>
+            <strong>OpenClaw v1.5.0+</strong>
+            <small>支持浏览器自动化功能</small>
+          </div>
+        </div>
+        <div class="req-item">
+          <span class="req-icon">✅</span>
+          <div>
+            <strong>Node.js 22+</strong>
+            <small>推荐 Node 24</small>
+          </div>
+        </div>
+        <div class="req-item">
+          <span class="req-icon">✅</span>
+          <div>
+            <strong>浏览器</strong>
+            <small>Chrome / Edge / Firefox</small>
+          </div>
+        </div>
+      </div>
+
+      <h2>📚 实战案例 1：自动收集竞品价格</h2>
+      
+      <div class="example">
+        <h3>场景描述</h3>
+        <p>你需要每天监控 3 个电商平台的竞品价格，手动查看耗时 30 分钟。现在让 AI 帮你自动完成！</p>
+        
+        <h3>实现步骤</h3>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <div>
+              <h4>创建浏览器脚本</h4>
+              <pre><code>// scripts/price-collector.cjs
+const { browser } = require('openclaw');
+
+async function collectPrices() {
+  const products = ['产品 A', '产品 B', '产品 C'];
+  const platforms = [
+    { name: '淘宝', url: 'https://taobao.com' },
+    { name: '京东', url: 'https://jd.com' },
+    { name: '拼多多', url: 'https://pinduoduo.com' }
+  ];
+  
+  const results = [];
+  
+  for (const platform of platforms) {
+    await browser.navigate(platform.url);
+    
+    for (const product of products) {
+      // 搜索产品
+      await browser.type('[name="q"]', product);
+      await browser.press('Enter');
+      await browser.wait(2000);
+      
+      // 提取价格
+      const price = await browser.evaluate(() => {
+        const el = document.querySelector('.price');
+        return el ? el.textContent : 'N/A';
+      });
+      
+      results.push({
+        platform: platform.name,
+        product,
+        price,
+        timestamp: new Date().toISOString()
+      });
+    }
+  }
+  
+  // 保存结果
+  const fs = require('fs');
+  fs.writeFileSync(
+    'price-data.json',
+    JSON.stringify(results, null, 2)
+  );
+  
+  console.log('✅ 价格收集完成！');
+}
+
+module.exports = collectPrices;</code></pre>
+            </div>
+          </div>
+          
+          <div class="step">
+            <span class="step-num">2</span>
+            <div>
+              <h4>配置定时任务</h4>
+              <p>在 <code>HEARTBEAT.md</code> 中添加：</p>
+              <pre><code># 每日竞品价格收集
+- 每天早上 9:00 自动收集竞品价格
+- 保存到 price-data.json
+- 如果价格变化超过 10%，发送提醒</code></pre>
+            </div>
+          </div>
+          
+          <div class="step">
+            <span class="step-num">3</span>
+            <div>
+              <h4>运行测试</h4>
+              <pre><code># 手动运行一次
+node scripts/price-collector.cjs
+
+# 查看输出
+cat price-data.json</code></pre>
+            </div>
+          </div>
+        </div>
+        
+        <h3>效果对比</h3>
+        <div class="comparison">
+          <div class="comparison-item before">
+            <h4>❌ 之前（手动）</h4>
+            <ul>
+              <li>每天耗时 30 分钟</li>
+              <li>容易遗漏数据</li>
+              <li>格式不统一</li>
+            </ul>
+          </div>
+          <div class="comparison-item after">
+            <h4>✅ 现在（自动）</h4>
+            <ul>
+              <li>每天耗时 2 分钟</li>
+              <li>数据完整准确</li>
+              <li>格式统一，可直接分析</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2>📚 实战案例 2：批量填写报名表</h2>
+      
+      <div class="example">
+        <h3>场景描述</h3>
+        <p>公司组织培训，需要为 20 名员工填写在线报名表，每份表单需要 5 分钟。让 AI 帮你批量完成！</p>
+        
+        <h3>实现代码</h3>
+        <pre><code>// scripts/batch-register.cjs
+const { browser } = require('openclaw');
+
+// 员工名单
+const employees = [
+  { name: '张三', email: 'zhangsan@company.com', dept: '技术部' },
+  { name: '李四', email: 'lisi@company.com', dept: '产品部' },
+  { name: '王五', email: 'wangwu@company.com', dept: '市场部' },
+  // ... 更多员工
+];
+
+async function batchRegister() {
+  const formUrl = 'https://example.com/training-signup';
+  
+  for (const emp of employees) {
+    // 打开表单
+    await browser.navigate(formUrl);
+    await browser.wait(1000);
+    
+    // 填写表单
+    await browser.type('[name="name"]', emp.name);
+    await browser.type('[name="email"]', emp.email);
+    await browser.select('[name="department"]', emp.dept);
+    
+    // 提交
+    await browser.click('button[type="submit"]');
+    await browser.wait(2000);
+    
+    console.log(`✅ ${emp.name} 报名成功`);
+  }
+  
+  console.log('🎉 所有员工报名完成！');
+}
+
+module.exports = batchRegister;</code></pre>
+        
+        <div class="tip warning">
+          <h3>⚠️ 注意事项</h3>
+          <ul>
+            <li>确保目标网站允许自动化操作</li>
+            <li>添加适当的延迟，避免请求过快</li>
+            <li>处理可能的错误（网络问题、表单验证等）</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>📚 实战案例 3：自动下载日报</h2>
+      
+      <div class="example">
+        <h3>场景描述</h3>
+        <p>每天需要从 OA 系统下载日报模板，填写后再上传。让 AI 自动完成下载和上传！</p>
+        
+        <h3>实现代码</h3>
+        <pre><code>// scripts/daily-report.cjs
+const { browser } = require('openclaw');
+const fs = require('fs');
+const path = require('path');
+
+async function downloadDailyReport() {
+  // 登录 OA 系统
+  await browser.navigate('https://oa.company.com');
+  await browser.type('#username', 'your-username');
+  await browser.type('#password', 'your-password');
+  await browser.click('button[type="submit"]');
+  await browser.wait(2000);
+  
+  // 进入日报页面
+  await browser.navigate('https://oa.company.com/reports/daily');
+  await browser.wait(1000);
+  
+  // 下载模板
+  await browser.click('a.download-template');
+  await browser.wait(5000); // 等待下载完成
+  
+  // 获取今天的日期
+  const today = new Date().toISOString().split('T')[0];
+  const downloadPath = path.join(__dirname, '..', 'downloads', `日报-${today}.xlsx`);
+  
+  console.log(`✅ 日报模板已下载：${downloadPath}`);
+  
+  // TODO: 这里可以添加自动填写逻辑
+  // 使用 exceljs 等库填写日报内容
+  
+  return downloadPath;
+}
+
+module.exports = downloadDailyReport;</code></pre>
+      </div>
+
+      <h2>🎓 高级技巧</h2>
+      
+      <h3>1. 使用选择器定位元素</h3>
+      <pre><code>// CSS 选择器
+await browser.type('.search-input', 'keyword');
+await browser.click('#submit-btn');
+
+// XPath（复杂场景）
+await browser.evaluate(() => {
+  const el = document.evaluate('//button[text()="提交"]', document);
+  el.click();
+});
+
+// 文本定位
+await browser.click({ text: '下一步' });</code></pre>
+
+      <h3>2. 等待元素加载</h3>
+      <pre><code>// 等待固定时间
+await browser.wait(2000);
+
+// 等待元素出现
+await browser.wait({ selector: '.result', timeout: 5000 });
+
+// 等待文本消失
+await browser.wait({ textGone: '加载中...', timeout: 10000 });</code></pre>
+
+      <h3>3. 处理弹窗和对话框</h3>
+      <pre><code>// 处理确认对话框
+await browser.dialog({ accept: true });
+
+// 处理文件上传
+await browser.upload('input[type="file"]', 'path/to/file.pdf');</code></pre>
+
+      <h3>4. 截图调试</h3>
+      <pre><code>// 全屏截图
+await browser.screenshot({ fullPage: true, path: 'debug.png' });
+
+// 元素截图
+await browser.screenshot({ 
+  selector: '.error-message',
+  path: 'error.png'
+});</code></pre>
+
+      <h2>⚠️ 常见问题</h2>
+      
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Q: 浏览器打不开怎么办？</h4>
+          <p>检查浏览器是否已安装，尝试指定浏览器路径：</p>
+          <pre><code>export CHROME_PATH="/usr/bin/google-chrome"</code></pre>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q: 元素定位失败？</h4>
+          <p>使用浏览器开发者工具检查元素选择器，或使用更稳定的定位方式（如 data-testid）。</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q: 网站有验证码怎么办？</h4>
+          <p>浏览器自动化不适合处理验证码。建议：1) 寻找 API 接口 2) 手动处理验证码 3) 使用打码平台</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q: 如何调试自动化脚本？</h4>
+          <p>1) 添加截图 2) 降低执行速度 3) 使用 browser.eval 检查页面状态 4) 分步测试</p>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <h3>🚀 开始你的自动化之旅</h3>
+        <p>选择一个重复性任务，用浏览器自动化解放双手！</p>
+        <div class="cta-links">
+          <a href="/advanced/browser/" class="btn">查看技术文档 →</a>
+          <a href="/cases/" class="btn btn-outline">更多案例</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="article-footer">
+      <div class="meta-info">
+        <span>📅 最后更新：2026-03-19</span>
+        <span>👤 作者：龙虾助理</span>
+      </div>
+      <a href="/cases/" class="back-link">← 返回案例列表</a>
+    </footer>
+  </article>
+
+  <style>
+    .breadcrumb {
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .breadcrumb a {
+      color: #dc2626;
+      text-decoration: none;
+    }
+    
+    .case-study {
+      max-width: 900px;
+    }
+    
+    header .tag {
+      display: inline-block;
+      background: #eff6ff;
+      color: #2563eb;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .lead {
+      font-size: 1.25rem;
+      color: #6b7280;
+    }
+    
+    .content h2 {
+      margin: 3rem 0 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .content h3 {
+      margin: 2rem 0 1rem;
+      font-size: 1.25rem;
+    }
+    
+    .content h4 {
+      margin: 1.5rem 0 0.75rem;
+      font-size: 1.1rem;
+    }
+    
+    .scenarios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .scenario {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .scenario-icon {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .scenario h3 {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    
+    .scenario p {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin: 0;
+    }
+    
+    .requirements {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .req-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: #f0fdf4;
+      border-radius: 0.5rem;
+    }
+    
+    .req-icon {
+      font-size: 1.5rem;
+    }
+    
+    .req-item strong {
+      display: block;
+    }
+    
+    .req-item small {
+      color: #6b7280;
+    }
+    
+    .example {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .step {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .step-num {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: #dc2626;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .step h4 {
+      margin-top: 0;
+    }
+    
+    pre {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+    }
+    
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .comparison-item {
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+    
+    .comparison-item.before {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+    }
+    
+    .comparison-item.after {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+    
+    .comparison-item h4 {
+      margin-top: 0;
+    }
+    
+    .comparison-item ul {
+      margin: 0.5rem 0 0 1.5rem;
+      font-size: 0.875rem;
+    }
+    
+    .tip {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .tip.warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+    }
+    
+    .tip h3 {
+      margin-top: 0;
+    }
+    
+    .tip ul {
+      margin: 0.5rem 0 0 1.5rem;
+    }
+    
+    .faq {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .faq-item {
+      background: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .faq-item h4 {
+      margin-top: 0;
+      color: #dc2626;
+    }
+    
+    .faq-item p {
+      margin: 0.5rem 0 0;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    .cta-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .cta-box h3 {
+      margin-top: 0;
+    }
+    
+    .cta-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    
+    .btn:hover {
+      background: #1d4ed8;
+    }
+    
+    .btn-outline {
+      background: white;
+      color: #2563eb;
+      border: 1px solid #2563eb;
+    }
+    
+    .btn-outline:hover {
+      background: #eff6ff;
+    }
+    
+    .article-footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .meta-info {
+      display: flex;
+      gap: 2rem;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .back-link {
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      .step {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+      
+      .meta-info {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</BaseLayout>

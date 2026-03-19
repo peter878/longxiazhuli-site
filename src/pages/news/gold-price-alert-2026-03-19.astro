@@ -1,0 +1,396 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="黄金价格监控提醒 - 龙虾助理" description="使用 OpenClaw 定时任务监控黄金价格，自动提醒操作时机">
+  <div class="breadcrumb">
+    → <a href="/news/">新闻资讯</a> → 黄金监控
+  </div>
+
+  <article class="news-detail">
+    <header>
+      <h1>🥇 黄金价格监控提醒系统上线</h1>
+      <div class="meta">
+        <span class="tag security">安全提醒</span>
+        <time datetime="2026-03-19">2026-03-19 09:19</time>
+      </div>
+    </header>
+
+    <section class="content">
+      <h2>📊 当前持仓信息</h2>
+      <div class="info-card">
+        <div class="info-grid">
+          <div class="info-item">
+            <label>持仓克重</label>
+            <value>2.2699 克</value>
+          </div>
+          <div class="info-item">
+            <label>成本价</label>
+            <value>1,210.43 元/克</value>
+          </div>
+          <div class="info-item">
+            <label>总投入</label>
+            <value>约 2,747 元</value>
+          </div>
+        </div>
+      </div>
+
+      <h2>🎯 关键价位</h2>
+      <div class="price-levels">
+        <div class="price-level stop-loss">
+          <span class="level-icon">🔴</span>
+          <div>
+            <strong>止损位</strong>
+            <span class="price">1,050 元/克</span>
+            <small>跌破需考虑止损</small>
+          </div>
+        </div>
+        
+        <div class="price-level add-position">
+          <span class="level-icon">🟡</span>
+          <div>
+            <strong>加仓位</strong>
+            <span class="price">1,100 元/克</span>
+            <small>可分批加仓</small>
+          </div>
+        </div>
+        
+        <div class="price-level resistance">
+          <span class="level-icon">🟢</span>
+          <div>
+            <strong>压力位</strong>
+            <span class="price">1,180 / 1,220 元/克</span>
+            <small>突破可看高一线</small>
+          </div>
+        </div>
+        
+        <div class="price-level target">
+          <span class="level-icon">🎯</span>
+          <div>
+            <strong>目标位</strong>
+            <span class="price">1,300+ 元/克</span>
+            <small>中长期目标</small>
+          </div>
+        </div>
+      </div>
+
+      <h2>💡 如何使用 OpenClaw 设置价格监控</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h3>创建监控脚本</h3>
+            <pre><code>// scripts/gold-monitor.cjs
+const fetch = require('node-fetch');
+
+async function checkGoldPrice() {
+  // 调用金价 API
+  const response = await fetch('https://api.goldprice.com/latest');
+  const data = await response.json();
+  const currentPrice = data.CNY; // 人民币价格
+  
+  // 判断是否触发提醒
+  if (currentPrice < 1050) {
+    return '🔴 警告：金价已跌破止损位！';
+  } else if (currentPrice < 1100) {
+    return '🟡 提示：金价接近加仓位';
+  } else if (currentPrice > 1220) {
+    return '🟢 好消息：金价突破压力位！';
+  }
+  
+  return `当前金价：${currentPrice} 元/克，持有观望`;
+}
+
+module.exports = checkGoldPrice;</code></pre>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h3>配置定时任务</h3>
+            <p>在 <code>HEARTBEAT.md</code> 中添加：</p>
+            <pre><code># 每日金价检查
+- 每天早上 9:00 检查黄金价格
+- 如果价格触及关键价位，发送提醒</code></pre>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            <h3>设置 Cron 定时任务</h3>
+            <pre><code># 编辑 crontab
+crontab -e
+
+# 添加每日 9:00 执行
+0 9 * * * node /path/to/gold-monitor.cjs</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <h2>📈 操作建议</h2>
+      <div class="tip warning">
+        <h3>⚠️ 当前状态：持有观望</h3>
+        <p>金价在关键价位之间震荡，建议：</p>
+        <ul>
+          <li>密切关注 1,180 压力位的突破情况</li>
+          <li>如跌破 1,100，考虑分批加仓</li>
+          <li>严格止损 1,050，控制风险</li>
+          <li>中长期目标看至 1,300+</li>
+        </ul>
+      </div>
+
+      <div class="disclaimer">
+        <p><strong>免责声明：</strong> 以上内容仅供参考，不构成投资建议。黄金投资有风险，入市需谨慎。请根据个人风险承受能力做出决策。</p>
+      </div>
+    </section>
+
+    <footer class="article-footer">
+      <a href="/news/" class="back-link">← 返回新闻列表</a>
+      <div class="share">
+        <span>分享给需要的朋友</span>
+      </div>
+    </footer>
+  </article>
+
+  <style>
+    .breadcrumb {
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .breadcrumb a {
+      color: #dc2626;
+      text-decoration: none;
+    }
+    
+    .news-detail {
+      max-width: 800px;
+    }
+    
+    .news-detail header {
+      margin-bottom: 3rem;
+    }
+    
+    .news-detail h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #6b7280;
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .tag.security {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+    
+    .content h2 {
+      margin: 2.5rem 0 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .info-card {
+      background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+      border: 1px solid #fecaca;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    
+    .info-item label {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    .info-item value {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    
+    .price-levels {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .price-level {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .price-level.stop-loss {
+      background: #fef2f2;
+      border-color: #fecaca;
+    }
+    
+    .price-level.add-position {
+      background: #fefce8;
+      border-color: #fef08a;
+    }
+    
+    .price-level.resistance {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+    
+    .price-level.target {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+    
+    .level-icon {
+      font-size: 1.5rem;
+    }
+    
+    .price-level strong {
+      display: block;
+      font-size: 1rem;
+    }
+    
+    .price-level .price {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    
+    .price-level small {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .step {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .step-num {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: #dc2626;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+    
+    .step h3 {
+      margin-top: 0;
+    }
+    
+    pre {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+    }
+    
+    code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .tip {
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+    }
+    
+    .tip.warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+    }
+    
+    .tip h3 {
+      margin-top: 0;
+    }
+    
+    .tip ul {
+      margin: 1rem 0 0 1.5rem;
+    }
+    
+    .tip li {
+      margin: 0.5rem 0;
+    }
+    
+    .disclaimer {
+      background: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    .article-footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .back-link {
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      .step {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

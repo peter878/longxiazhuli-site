@@ -1,0 +1,656 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="手机自动化：用 OpenClaw 控制你的 App - 实战案例" description="使用 OpenClaw + 红手指 Operator 实现手机 App 自动化操作">
+  <div class="breadcrumb">
+    → <a href="/cases/">实战案例</a> → 手机自动化
+  </div>
+
+  <article class="case-study">
+    <header>
+      <div class="tag">进阶案例</div>
+      <h1>📱 手机自动化：用 OpenClaw 控制你的 App</h1>
+      <p class="lead">结合红手指 Operator，让 AI 帮你操作手机 App：点外卖、打车、购物、回消息...</p>
+    </header>
+
+    <section class="content">
+      <h2>🎯 场景介绍</h2>
+      <p>你是否想过，能不能像指挥助理一样指挥手机：</p>
+      <ul>
+        <li>"帮我点一杯星巴克，美式，大杯，送到公司"</li>
+        <li>"叫一辆车到机场，明天早上 8 点"</li>
+        <li>"在淘宝找一款 200 元以下的机械键盘"</li>
+        <li>"把微信里张三发的文件保存到网盘"</li>
+      </ul>
+      <p>现在，<strong>OpenClaw + 红手指 Operator</strong> 让这一切成为可能！</p>
+
+      <div class="tip success">
+        <h3>✅ 2026-03-12 重要更新</h3>
+        <p>百度正式发布<strong>红手指 Operator</strong>，这是全球首款手机 OpenClaw 应用，标志着 OpenClaw 正式进入移动时代！</p>
+      </div>
+
+      <h2>🛠️ 技术架构</h2>
+      <div class="architecture">
+        <div class="arch-item">
+          <h4>🖥️ OpenClaw（PC 端）</h4>
+          <p>负责处理复杂任务：</p>
+          <ul>
+            <li>全网搜集热点信息</li>
+            <li>跨网页寻找资源</li>
+            <li>深度数据抓取</li>
+            <li>多 Agent 协同调度</li>
+          </ul>
+        </div>
+        
+        <div class="arch-item">
+          <h4>📱 Operator（手机端）</h4>
+          <p>负责原生 App 操作：</p>
+          <ul>
+            <li>跨 App 交互</li>
+            <li>多线程任务执行</li>
+            <li>触屏模拟操作</li>
+            <li>实时屏幕识别</li>
+          </ul>
+        </div>
+        
+        <div class="arch-connector">
+          <span>⇄ 协同工作 ⇄</span>
+          <small>让 OpenClaw 的执行能力随时随地可用</small>
+        </div>
+      </div>
+
+      <h2>📋 前置条件</h2>
+      <div class="requirements">
+        <div class="req-item">
+          <span class="req-icon">✅</span>
+          <div>
+            <strong>已安装 OpenClaw</strong>
+            <small>参考 <a href="/guide/">入门教程</a></small>
+          </div>
+        </div>
+        <div class="req-item">
+          <span class="req-icon">✅</span>
+          <div>
+            <strong>安卓手机一台</strong>
+            <small>Android 8.0+</small>
+          </div>
+        </div>
+        <div class="req-item">
+          <span class="req-icon">✅</span>
+          <div>
+            <strong>红手指 Operator App</strong>
+            <small>从应用商店下载安装</small>
+          </div>
+        </div>
+        <div class="req-item">
+          <span class="req-icon">✅</span>
+          <div>
+            <strong>无障碍权限</strong>
+            <small>在系统设置中开启</small>
+          </div>
+        </div>
+      </div>
+
+      <h2>🚀 配置步骤</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h3>安装红手指 Operator</h3>
+            <p>在安卓手机应用商店搜索"红手指 Operator"并安装。</p>
+            <div class="screenshot-placeholder">
+              <span>📱 应用商店截图</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h3>开启无障碍权限</h3>
+            <pre><code>设置 → 辅助功能 → 无障碍 → 红手指 Operator → 开启</code></pre>
+            <div class="tip warning">
+              <strong>注意：</strong> 无障碍权限是必需的，Operator 需要它来模拟触屏操作。
+            </div>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            <h3>配置 OpenClaw 连接</h3>
+            <p>在 <code>TOOLS.md</code> 中添加 Operator 配置：</p>
+            <pre><code>### Operator 配置
+
+- 设备名称：MyPhone
+- 连接方式：WebSocket
+- 端口：8765</code></pre>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">4</span>
+          <div>
+            <h3>测试连接</h3>
+            <pre><code># 发送测试指令
+openclaw nodes --action status
+
+# 应该看到设备在线
+Device: MyPhone
+Status: online
+Battery: 85%</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <h2>💡 实战示例</h2>
+      
+      <h3>示例 1：自动点外卖</h3>
+      <div class="example">
+        <div class="example-prompt">
+          <strong>🗣️ 你对 AI 说：</strong>
+          <p>"帮我点一份麦当劳，巨无霸套餐，中可乐，送到公司"</p>
+        </div>
+        <div class="example-flow">
+          <div class="flow-step">
+            <span>1</span>
+            <p>AI 打开美团/饿了么 App</p>
+          </div>
+          <div class="flow-step">
+            <span>2</span>
+            <p>搜索"麦当劳"，进入店铺</p>
+          </div>
+          <div class="flow-step">
+            <span>3</span>
+            <p>添加"巨无霸套餐"到购物车</p>
+          </div>
+          <div class="flow-step">
+            <span>4</span>
+            <p>选择"中可乐"，确认订单</p>
+          </div>
+          <div class="flow-step">
+            <span>5</span>
+            <p>使用默认地址支付</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>示例 2：自动打车</h3>
+      <div class="example">
+        <div class="example-prompt">
+          <strong>🗣️ 你对 AI 说：</strong>
+          <p>"明天早上 8 点叫车到首都机场 T3"</p>
+        </div>
+        <div class="example-flow">
+          <div class="flow-step">
+            <span>1</span>
+            <p>AI 打开滴滴出行 App</p>
+          </div>
+          <div class="flow-step">
+            <span>2</span>
+            <p>输入目的地"首都机场 T3"</p>
+          </div>
+          <div class="flow-step">
+            <span>3</span>
+            <p>选择预约用车，设置时间</p>
+          </div>
+          <div class="flow-step">
+            <span>4</span>
+            <p>确认车型和价格</p>
+          </div>
+          <div class="flow-step">
+            <span>5</span>
+            <p>完成预约</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>示例 3：微信文件保存</h3>
+      <div class="example">
+        <div class="example-prompt">
+          <strong>🗣️ 你对 AI 说：</strong>
+          <p>"把张三刚才发的 PDF 保存到百度网盘"</p>
+        </div>
+        <div class="example-flow">
+          <div class="flow-step">
+            <span>1</span>
+            <p>AI 打开微信，进入与张三的聊天</p>
+          </div>
+          <div class="flow-step">
+            <span>2</span>
+            <p>找到最新的 PDF 文件</p>
+          </div>
+          <div class="flow-step">
+            <span>3</span>
+            <p>长按文件，选择"保存"</p>
+          </div>
+          <div class="flow-step">
+            <span>4</span>
+            <p>打开百度网盘 App</p>
+          </div>
+          <div class="flow-step">
+            <span>5</span>
+            <p>上传保存的文件</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>⚠️ 注意事项</h2>
+      <div class="warnings">
+        <div class="warning-item">
+          <span class="warn-icon">🔒</span>
+          <div>
+            <strong>隐私安全</strong>
+            <p>Operator 需要无障碍权限，请确保从官方渠道下载，不要授予不必要的权限。</p>
+          </div>
+        </div>
+        <div class="warning-item">
+          <span class="warn-icon">⚡</span>
+          <div>
+            <strong>耗电增加</strong>
+            <p>后台运行会消耗更多电量，建议在不使用时关闭。</p>
+          </div>
+        </div>
+        <div class="warning-item">
+          <span class="warn-icon">🚫</span>
+          <div>
+            <strong>合规使用</strong>
+            <p>不要用于自动化刷单、抢票等可能违反平台规则的场景。</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>🎓 进阶技巧</h2>
+      <ul class="tips-list">
+        <li>
+          <strong>组合任务：</strong> "早上 7 点叫我起床，然后点一杯咖啡，8 点叫车到公司"
+        </li>
+        <li>
+          <strong>条件触发：</strong> "如果明天天气好，就帮我预约公园的门票"
+        </li>
+        <li>
+          <strong>定期执行：</strong> "每周五下午 5 点帮我点一杯奶茶"
+        </li>
+        <li>
+          <strong>跨 App 协作：</strong> "把微博看到的有趣内容截图发到微信朋友圈"
+        </li>
+      </ul>
+
+      <div class="cta-box">
+        <h3>🚀 开始你的手机自动化之旅</h3>
+        <p>现在就安装红手指 Operator，体验 AI 控制手机的魔法！</p>
+        <div class="cta-links">
+          <a href="/guide/" class="btn">← 返回入门教程</a>
+          <a href="/cases/" class="btn btn-outline">查看更多案例</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="article-footer">
+      <div class="meta-info">
+        <span>📅 最后更新：2026-03-19</span>
+        <span>👤 作者：龙虾助理</span>
+      </div>
+      <a href="/cases/" class="back-link">← 返回案例列表</a>
+    </footer>
+  </article>
+
+  <style>
+    .breadcrumb {
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .breadcrumb a {
+      color: #dc2626;
+      text-decoration: none;
+    }
+    
+    .case-study {
+      max-width: 900px;
+    }
+    
+    header .tag {
+      display: inline-block;
+      background: #fef2f2;
+      color: #dc2626;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .lead {
+      font-size: 1.25rem;
+      color: #6b7280;
+    }
+    
+    .content h2 {
+      margin: 3rem 0 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .content h3 {
+      margin: 2rem 0 1rem;
+      font-size: 1.25rem;
+    }
+    
+    .content ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .content li {
+      margin: 0.5rem 0;
+    }
+    
+    .architecture {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+    
+    .arch-item {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .arch-item h4 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    
+    .arch-item ul {
+      margin: 0.5rem 0 0 1.5rem;
+      font-size: 0.875rem;
+    }
+    
+    .arch-connector {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 1rem;
+      background: #fef2f2;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      color: #dc2626;
+    }
+    
+    .arch-connector small {
+      display: block;
+      font-weight: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    
+    .requirements {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .req-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: #f0fdf4;
+      border-radius: 0.5rem;
+    }
+    
+    .req-icon {
+      font-size: 1.5rem;
+    }
+    
+    .req-item strong {
+      display: block;
+    }
+    
+    .req-item small {
+      color: #6b7280;
+    }
+    
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .step {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .step-num {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: #dc2626;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .step h3 {
+      margin-top: 0;
+    }
+    
+    .screenshot-placeholder {
+      background: #f3f4f6;
+      border: 2px dashed #d1d5db;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+      color: #6b7280;
+      margin: 1rem 0;
+    }
+    
+    pre {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+    }
+    
+    .example {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .example-prompt {
+      background: #eff6ff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .example-prompt p {
+      margin: 0.5rem 0 0;
+      font-style: italic;
+    }
+    
+    .example-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .flow-step span {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #dc2626;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    .flow-step p {
+      margin: 0;
+      font-size: 0.875rem;
+    }
+    
+    .warnings {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .warning-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0.5rem;
+    }
+    
+    .warn-icon {
+      font-size: 1.5rem;
+    }
+    
+    .warning-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    
+    .warning-item p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: #92400e;
+    }
+    
+    .tips-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .tips-list li {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 0.5rem;
+      margin: 0.75rem 0;
+    }
+    
+    .tips-list strong {
+      color: #dc2626;
+    }
+    
+    .cta-box {
+      background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+      border: 1px solid #fecaca;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .cta-box h3 {
+      margin-top: 0;
+    }
+    
+    .cta-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #dc2626;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    
+    .btn:hover {
+      background: #b91c1c;
+    }
+    
+    .btn-outline {
+      background: white;
+      color: #dc2626;
+      border: 1px solid #dc2626;
+    }
+    
+    .btn-outline:hover {
+      background: #fef2f2;
+    }
+    
+    .article-footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .meta-info {
+      display: flex;
+      gap: 2rem;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .back-link {
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      .architecture {
+        grid-template-columns: 1fr;
+      }
+      
+      .step {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .meta-info {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</BaseLayout>

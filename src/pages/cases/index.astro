@@ -13,6 +13,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <h2>案例列表</h2>
 
   <div class="case-grid">
+    <div class="case-card featured">
+      <span class="new-tag">NEW</span>
+      <h3>📱 手机自动化：控制 App</h3>
+      <p>结合红手指 Operator，让 AI 帮你点外卖、打车、购物、回消息</p>
+      <a href="/cases/mobile-automation/">查看案例 →</a>
+    </div>
+
+    <div class="case-card featured">
+      <span class="new-tag">NEW</span>
+      <h3>🌐 浏览器自动化办公</h3>
+      <p>自动填写表单、批量下载文件、跨网站数据整理，解放双手</p>
+      <a href="/cases/browser-automation/">查看案例 →</a>
+    </div>
+
     <div class="case-card">
       <h3>💰 自动查金价/股票</h3>
       <p>每天自动监控持仓价格，不用自己打开 APP</p>
@@ -98,6 +112,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     
     .case-card a:hover {
       text-decoration: underline;
+    }
+    
+    .case-card.featured {
+      border-color: #dc2626;
+      background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+      position: relative;
+    }
+    
+    .new-tag {
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      background: #dc2626;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
     }
   </style>
 

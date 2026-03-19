@@ -17,6 +17,38 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <div class="news-list">
     <!-- 最新文章 -->
+    <article class="news-card" data-category="official">
+      <div class="news-meta">
+        <span class="news-tag official">大厂动态</span>
+        <time datetime="2026-03-19">2026-03-19</time>
+      </div>
+      <h3>🏢 国内大厂 OpenClaw 布局全景图：百度领跑，阿里字节腾讯跟进</h3>
+      <p>【深度分析】2026 年第一季度，国内科技巨头纷纷布局 OpenClaw 生态。百度红手指 Operator 已正式发布，阿里内测中，字节和腾讯规划中...</p>
+      <ul>
+        <li><strong>百度</strong>：红手指 Operator 已上线，支持跨 App 操作</li>
+        <li><strong>阿里</strong>：电商 + 云服务双轮驱动，预计 Q2 灰度测试</li>
+        <li><strong>字节</strong>：内容 + 办公场景，规划 Q3 发布</li>
+        <li><strong>腾讯</strong>：社交 + 游戏场景，研发中</li>
+      </ul>
+      <a href="/news/china-tech-giants-openclaw" class="read-more">阅读更多 →</a>
+    </article>
+
+    <article class="news-card" data-category="tutorial">
+      <div class="news-meta">
+        <span class="news-tag tutorial">教程更新</span>
+        <time datetime="2026-03-19">2026-03-19</time>
+      </div>
+      <h3>📄 网站合规指南：添加 robots.txt 和隐私政策</h3>
+      <p>【本站更新】为提升网站 SEO 和合规性，本站已完成以下更新：</p>
+      <ul>
+        <li><strong>robots.txt</strong>：配置搜索引擎抓取规则，提交 sitemap</li>
+        <li><strong>隐私政策</strong>：明确说明数据收集和使用方式</li>
+        <li><strong>服务条款</strong>：规范用户使用行为和免责声明</li>
+      </ul>
+      <p><strong>建议：</strong> 所有网站运营者都应添加这些基础合规文件，尤其是涉及用户数据的网站。</p>
+      <a href="/privacy" class="read-more">阅读更多 →</a>
+    </article>
+
     <article class="news-card" data-category="security">
       <div class="news-meta">
         <span class="news-tag security">安全提醒</span>
