@@ -17,6 +17,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <div class="news-list">
     <!-- 最新文章 -->
+    <article class="news-card" data-category="tutorial">
+      <div class="news-meta">
+        <span class="news-tag tutorial">教程更新</span>
+        <time datetime="2026-03-20">2026-03-20</time>
+      </div>
+      <h3>🦞 安装指南页面正式上线：5 分钟快速上手 OpenClaw</h3>
+      <p>【本站讯】经过一周的完善，龙虾助理网站今日正式上线安装指南页面，帮助新手用户快速部署 OpenClaw 环境。</p>
+      <ul>
+        <li><strong>系统要求</strong>：Node.js v18+、npm v8+、500MB 磁盘空间</li>
+        <li><strong>快速安装</strong>：只需 3 条命令，5 分钟完成部署</li>
+        <li><strong>多平台支持</strong>：Windows、macOS、Linux 全覆盖</li>
+        <li><strong>配置指南</strong>：飞书、Telegram、Discord 等多种连接方式</li>
+      </ul>
+      <p><strong>新手入门系列已完成：</strong></p>
+      <ul>
+        <li>第 0 篇：5 分钟快速安装 OpenClaw ✅</li>
+        <li>第 1 篇：OpenClaw 是什么？✅</li>
+        <li>第 2 篇：第一次和龙虾对话 ✅</li>
+        <li>第 3 篇：工作区文件结构详解 ✅</li>
+      </ul>
+      <a href="/guide/install" class="read-more">阅读更多 →</a>
+    </article>
+
     <article class="news-card" data-category="official">
       <div class="news-meta">
         <span class="news-tag official">大厂动态</span>
@@ -69,60 +92,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
     <article class="news-card" data-category="official">
       <div class="news-meta">
-        <span class="news-tag official">官方发布</span>
-        <time datetime="2026-03-12">2026-03-12</time>
-      </div>
-      <h3>百度发布红手指 Operator：全球首款手机 OpenClaw 应用上线</h3>
-      <p>【本站讯】2026 年 3 月 12 日，百度官方微博宣布，红手指 Operator 应用正式上线安卓市场，这是全球首款手机 OpenClaw 应用，标志着 OpenClaw 正式进入移动时代。</p>
-      
-      <p><strong>核心功能：</strong></p>
-      <ul>
-        <li><strong>跨 App 操作</strong>：能够完成打车、外卖订餐、社交软件交互等跨 App、多线程的交互操作</li>
-        <li><strong>聊天式交互</strong>：用户安装注册后，通过聊天界面即可指挥手机"龙虾"执行任务</li>
-        <li><strong>全场景覆盖</strong>：出行、购物、听歌等生活场景，信息搜集、定时推送等办公场景</li>
-      </ul>
-      
-      <p><strong>技术架构：</strong></p>
-      <ul>
-        <li><strong>OpenClaw</strong>：负责处理 PC 与网页端的复杂任务，如全网搜集热点、跨网页寻找资源、深度数据抓取等</li>
-        <li><strong>Operator</strong>：负责原生 App 环境中的任务执行，实现跨 App、多线程交互操作</li>
-        <li><strong>协同工作</strong>：两者配合让 OpenClaw 的执行能力随时随地可用</li>
-      </ul>
-      
-      <p><strong>百度 OpenClaw 布局：</strong></p>
-      <p>百度是国内最早积极布局 OpenClaw 的科技公司之一。2 月 14 日，百度 App 正式支持一键调用 OpenClaw。百度智能云推出极简版 OpenClaw 部署流程，并将百度 AI 搜索、百科、电商以及千帆深度研究 Agent 等以 Skill 形式上架开放社区 ClawHub。</p>
-      
-      <p><strong>信息来源：</strong><a href="https://weibo.com/2525235360/QvJa29awD" target="_blank">百度官方微博</a></p>
-      
-      <a href="/news/baidu-operator-launch" class="read-more">阅读更多 →</a>
-    </article>
-
-    <article class="news-card" data-category="tutorial">
-      <div class="news-meta">
-        <span class="news-tag tutorial">教程更新</span>
-        <time datetime="2026-03-19">2026-03-19</time>
-      </div>
-      <h3>📄 网站合规指南：添加 robots.txt 和隐私政策</h3>
-      <p>【本站更新】为提升网站 SEO 和合规性，本站已完成以下更新：</p>
-      <ul>
-        <li><strong>robots.txt</strong>：配置搜索引擎抓取规则，提交 sitemap</li>
-        <li><strong>隐私政策</strong>：明确说明数据收集和使用方式</li>
-        <li><strong>服务条款</strong>：规范用户使用行为和免责声明</li>
-      </ul>
-      <p><strong>建议：</strong> 所有网站运营者都应添加这些基础合规文件，尤其是涉及用户数据的网站。</p>
-      <a href="/privacy" class="read-more">阅读更多 →</a>
-    </article>
-
-    <article class="news-card" data-category="official">
-
-    <article class="news-card" data-category="official">
-      <div class="news-meta">
         <span class="news-tag official">官方动态</span>
         <time datetime="2026-03-10">2026-03-10</time>
       </div>
       <h3>OpenClaw v1.5.0 发布：支持浏览器自动化和定时任务</h3>
       <p>本次更新带来了期待已久的浏览器自动化功能，现在 AI 可以帮你打开网页、点击按钮、填写表单。同时新增了 Cron 定时任务系统...</p>
-      <a href="/guide/installation" class="read-more">阅读更多 →</a>
+      <a href="/guide/install" class="read-more">阅读更多 →</a>
     </article>
 
     <article class="news-card" data-category="community">
