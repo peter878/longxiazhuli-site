@@ -1,0 +1,453 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="API Key 泄露应急演练 - 龙虾助理">
+  <article class="news-detail">
+    <header class="article-header">
+      <span class="article-tag security">实战演练</span>
+      <time datetime="2026-03-27">2026-03-27</time>
+      <span class="article-author">🦞 龙虾助理</span>
+    </header>
+
+    <h1>🚨 API Key 泄露应急演练：5 步快速止损</h1>
+    
+    <div class="summary">
+      <p><strong>核心要点：</strong>模拟 API Key 泄露场景，演示从发现到恢复的完整应急流程，帮助你快速响应安全事件。</p>
+    </div>
+
+    <h2>🎭 演练场景</h2>
+    
+    <div class="scenario">
+      <h4>场景描述</h4>
+      <p>你在 GitHub 上发现有人上传了包含你 API Key 的配置文件。对方可能是：</p>
+      <ul>
+        <li>不小心提交代码的同事</li>
+        <li>恶意爬取公开仓库的黑客</li>
+        <li>被入侵的第三方服务</li>
+      </ul>
+      <p><strong>时间紧迫：</strong> 每一秒都可能产生费用或被滥用！</p>
+    </div>
+
+    <h2>⚡ 5 步应急响应</h2>
+
+    <h3>第 1 步：立即撤销泄露的 Key（5 分钟内）</h3>
+    
+    <div class="step urgent">
+      <span class="step-number">1</span>
+      <div class="step-content">
+        <h4>🔴 紧急：撤销 API Key</h4>
+        <p><strong>操作路径：</strong></p>
+        <ol>
+          <li>登录 API 提供商控制台（如百度智能云、阿里云等）</li>
+          <li>进入「应用管理」或「API Key 管理」</li>
+          <li>找到泄露的 Key，点击「禁用」或「删除」</li>
+          <li>确认撤销成功</li>
+        </ol>
+        <p><strong>注意：</strong> 撤销后，所有使用该 Key 的服务会立即失效！</p>
+      </div>
+    </div>
+
+    <h3>第 2 步：生成新的 API Key（10 分钟内）</h3>
+    
+    <div class="step">
+      <span class="step-number">2</span>
+      <div class="step-content">
+        <h4>🔑 生成新 Key</h4>
+        <ol>
+          <li>在控制台点击「创建新应用」或「生成新 Key」</li>
+          <li>设置合理的权限（遵循最小权限原则）</li>
+          <li>设置额度限制（防止再次被滥用）</li>
+          <li>复制新 Key，立即存储到安全位置</li>
+        </ol>
+        <pre><code># 安全存储示例（.env 文件）
+OPENCLAW_API_KEY=sk-new_xxxxxxxxxxxxx
+# 立即将 .env 加入 .gitignore
+echo ".env" >> .gitignore</code></pre>
+      </div>
+    </div>
+
+    <h3>第 3 步：更新本地配置（15 分钟内）</h3>
+    
+    <div class="step">
+      <span class="step-number">3</span>
+      <div class="step-content">
+        <h4>🔄 更新所有使用旧 Key 的地方</h4>
+        <p><strong>检查清单：</strong></p>
+        <ul>
+          <li>✅ 本地 .env 文件</li>
+          <li>✅ 服务器环境变量</li>
+          <li>✅ CI/CD 配置（如 GitHub Actions Secrets）</li>
+          <li>✅ 团队成员的配置文件</li>
+          <li>✅ 备份文件中的旧 Key</li>
+        </ul>
+        <pre><code># 测试新 Key 是否生效
+curl -X POST https://api.example.com/v1/chat \
+  -H "Authorization: Bearer sk-new_xxxxx" \
+  -d '{"message": "test"}'</code></pre>
+      </div>
+    </div>
+
+    <h3>第 4 步：审查使用记录（30 分钟内）</h3>
+    
+    <div class="step">
+      <span class="step-number">4</span>
+      <div class="step-content">
+        <h4>🔍 审计异常使用</h4>
+        <p><strong>检查内容：</strong></p>
+        <ul>
+          <li>API 调用日志（时间、IP、用量）</li>
+          <li>费用账单（是否有异常消费）</li>
+          <li>敏感操作记录（是否访问了隐私数据）</li>
+        </ul>
+        <p><strong>发现异常怎么办？</strong></p>
+        <ul>
+          <li>📞 联系 API 提供商客服</li>
+          <li>📝 保存证据（截图、日志）</li>
+          <li>👮 必要时报警处理</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>第 5 步：通知相关人员（1 小时内）</h3>
+    
+    <div class="step">
+      <span class="step-number">5</span>
+      <div class="step-content">
+        <h4>📢 内部通知</h4>
+        <p><strong>通知模板：</strong></p>
+        <div class="template">
+          <pre><code>【安全通知】API Key 泄露事件处理
+
+各位同事：
+
+今日发现 XX 项目的 API Key 泄露，已完成以下处理：
+1. ✅ 已撤销泄露的 Key
+2. ✅ 已生成新 Key 并更新配置
+3. ✅ 已审查使用记录（无异常/发现 XX 异常）
+
+请相关人员：
+- 立即更新本地配置
+- 检查是否有使用旧 Key 的脚本
+- 加强代码审查，避免再次泄露
+
+如有疑问，请联系安全负责人。
+
+安全团队
+2026-03-27</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <h2>🛡️ 预防措施</h2>
+    
+    <h3>技术防护</h3>
+    <ul>
+      <li><strong>Git 预提交钩子</strong>：自动检测并阻止提交包含 Key 的代码</li>
+      <li><strong>密钥管理服务</strong>：使用 AWS Secrets Manager、HashiCorp Vault 等</li>
+      <li><strong>访问审计</strong>：启用详细的 API 调用日志</li>
+      <li><strong>额度告警</strong>：设置用量阈值，超标自动通知</li>
+    </ul>
+
+    <h3>流程规范</h3>
+    <ul>
+      <li><strong>代码审查</strong>：所有提交必须经过 review</li>
+      <li><strong>权限分离</strong>：开发、测试、生产使用不同 Key</li>
+      <li><strong>定期轮换</strong>：每 90 天强制更换一次</li>
+      <li><strong>安全培训</strong>：每季度进行一次安全演练</li>
+    </ul>
+
+    <h2>📋 应急联系清单</h2>
+    
+    <div class="contact-list">
+      <table>
+        <tr>
+          <th>服务商</th>
+          <th>安全邮箱</th>
+          <th>客服电话</th>
+        </tr>
+        <tr>
+          <td>百度智能云</td>
+          <td>security@baidu.com</td>
+          <td>400-888-1177</td>
+        </tr>
+        <tr>
+          <td>阿里云</td>
+          <td>security@alibabacloud.com</td>
+          <td>95187</td>
+        </tr>
+        <tr>
+          <td>腾讯云</td>
+          <td>security@tencent.com</td>
+          <td>400-910-0100</td>
+        </tr>
+        <tr>
+          <td>OpenAI</td>
+          <td>security@openai.com</td>
+          <td>-</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>🎯 演练总结</h2>
+    
+    <div class="summary-box">
+      <h4>关键指标</h4>
+      <ul>
+        <li><strong>响应时间</strong>：从发现到撤销 &lt; 5 分钟 ✅</li>
+        <li><strong>恢复时间</strong>：从撤销到恢复正常 &lt; 1 小时 ✅</li>
+        <li><strong>影响范围</strong>：0 数据泄露，0 经济损失 ✅</li>
+      </ul>
+    </div>
+
+    <div class="tip">
+      <strong>💡 建议：</strong> 每季度进行一次应急演练，保持团队的安全意识和响应能力。
+    </div>
+
+    <div class="related-links">
+      <h3>📖 相关阅读</h3>
+      <ul>
+        <li><a href="/safe/api-key/">API Key 管理最佳实践</a></li>
+        <li><a href="/safe/safety/">防止误操作指南</a></li>
+        <li><a href="/news/ai-security-guide-2026/">2026 年 AI 安全使用指南</a></li>
+      </ul>
+    </div>
+  </article>
+
+  <style>
+    .news-detail {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+      flex-wrap: wrap;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .article-header time {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .article-author {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .summary {
+      background: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid #dc2626;
+    }
+
+    .scenario {
+      background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+      border: 2px solid #f59e0b;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .scenario h4 {
+      margin-top: 0;
+      color: #92400e;
+    }
+
+    .step {
+      display: flex;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .step.urgent {
+      background: #fef2f2;
+      border-color: #dc2626;
+    }
+
+    .step-number {
+      background: #dc2626;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content h4 {
+      margin-top: 0;
+    }
+
+    .template {
+      background: #1f2937;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .template pre {
+      margin: 0;
+      padding: 1rem;
+      font-size: 0.875rem;
+    }
+
+    pre {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .contact-list {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border: 1px solid #e5e7eb;
+      text-align: left;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .summary-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .summary-box h4 {
+      margin-top: 0;
+      color: #166534;
+    }
+
+    .tip {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+      border: 1px solid #bbf7d0;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .tip strong {
+      color: #166534;
+    }
+
+    .related-links {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .related-links h3 {
+      margin-top: 0;
+      color: #374151;
+    }
+
+    .related-links ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+
+    .related-links li {
+      margin: 0.5rem 0;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      color: #1f2937;
+      border-bottom: 2px solid #dc2626;
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      color: #374151;
+    }
+
+    h4 {
+      margin-top: 1rem;
+      color: #4b5563;
+    }
+
+    ul, ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin: 0.5rem 0;
+      color: #4b5563;
+    }
+
+    a {
+      color: #dc2626;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</BaseLayout>

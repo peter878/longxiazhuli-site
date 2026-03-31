@@ -17,6 +17,38 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <div class="news-list">
     <!-- 最新文章 -->
+    <article class="news-card" data-category="security">
+      <div class="news-meta">
+        <span class="news-tag security">安全指南</span>
+        <time datetime="2026-03-30">2026-03-30</time>
+      </div>
+      <h3>🔒 2026 年 AI 助理安全使用指南：10 条保命法则</h3>
+      <p>【安全必读】根据工信部最新安全报告，整理 AI 助理使用的 10 条安全法则，涵盖隐私保护、权限管理、防诈骗等。</p>
+      <ul>
+        <li><strong>敏感信息</strong>：绝不输入银行卡、密码、身份证</li>
+        <li><strong>API Key</strong>：隔离存储、定期轮换</li>
+        <li><strong>权限管理</strong>：最小化原则、操作审计</li>
+      </ul>
+      <a href="/news/ai-security-guide-2026" class="read-more">阅读更多 →</a>
+    </article>
+
+    <article class="news-card" data-category="security">
+      <div class="news-meta">
+        <span class="news-tag security">实战演练</span>
+        <time datetime="2026-03-27">2026-03-27</time>
+      </div>
+      <h3>🚨 API Key 泄露应急演练：5 步快速止损</h3>
+      <p>【实战演练】模拟 API Key 泄露场景，演示从发现到恢复的完整应急流程，5 分钟内撤销、1 小时内恢复。</p>
+      <ul>
+        <li><strong>第 1 步</strong>：立即撤销泄露的 Key</li>
+        <li><strong>第 2 步</strong>：生成新的 API Key</li>
+        <li><strong>第 3 步</strong>：更新所有配置</li>
+        <li><strong>第 4 步</strong>：审查使用记录</li>
+        <li><strong>第 5 步</strong>：通知相关人员</li>
+      </ul>
+      <a href="/news/api-key-leak-drill" class="read-more">阅读更多 →</a>
+    </article>
+
     <article class="news-card" data-category="official">
       <div class="news-meta">
         <span class="news-tag official">社区里程碑</span>
