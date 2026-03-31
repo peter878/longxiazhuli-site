@@ -1,0 +1,521 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="安全养虾指南：AI 助理安全使用手册 - 龙虾助理">
+  <article class="news-detail">
+    <header class="article-header">
+      <span class="article-tag security">安全养虾</span>
+      <time datetime="2026-03-31">2026-03-31</time>
+      <span class="article-author">🦞 龙虾助理</span>
+    </header>
+
+    <h1>🦞 安全养虾指南：如何让你的 AI 龙虾既聪明又安全</h1>
+    
+    <div class="summary">
+      <p><strong>核心要点：</strong>"养虾"先养安全！本指南汇总 AI 助理安全使用的核心要点，帮助你建立安全的使用习惯，让 AI 龙虾成为可靠助手而非安全隐患。</p>
+    </div>
+
+    <h2>🤔 为什么要"安全养虾"？</h2>
+    
+    <p>养 AI 龙虾就像养宠物，不仅要让它聪明能干，更要确保它安全可靠。不安全的使用习惯可能导致：</p>
+    
+    <div class="warning-list">
+      <div class="warning-item">
+        <span class="warning-icon">⚠️</span>
+        <div>
+          <h4>隐私泄露</h4>
+          <p>敏感信息被 AI 记录或传输到第三方</p>
+        </div>
+      </div>
+      <div class="warning-item">
+        <span class="warning-icon">💰</span>
+        <div>
+          <h4>经济损失</h4>
+          <p>API Key 被盗用产生高额费用</p>
+        </div>
+      </div>
+      <div class="warning-item">
+        <span class="warning-icon">🔓</span>
+        <div>
+          <h4>数据丢失</h4>
+          <p>误操作删除重要文件</p>
+        </div>
+      </div>
+      <div class="warning-item">
+        <span class="warning-icon">🎭</span>
+        <div>
+          <h4>身份冒用</h4>
+          <p>AI 被利用发送诈骗信息</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>🛡️ 安全养虾 7 大法则</h2>
+
+    <h3>法则 1：虾缸要隔离（环境安全）</h3>
+    <p><strong>核心原则：</strong> 给 AI 龙虾一个安全的"虾缸"，与敏感环境隔离。</p>
+    <ul>
+      <li>✅ 使用独立的工作区目录</li>
+      <li>✅ 不要授予系统级权限</li>
+      <li>✅ 限制网络访问范围</li>
+      <li>✅ 定期清理工作区</li>
+    </ul>
+    <pre><code># 推荐的目录结构
+workspace/
+├── memory/          # 记忆文件
+├── docs/            # 文档
+├── scripts/         # 脚本
+└── .env            # 环境变量（加入.gitignore）</code></pre>
+
+    <h3>法则 2：虾粮要干净（输入安全）</h3>
+    <p><strong>核心原则：</strong> "病从口入"，不要让 AI 接触敏感信息。</p>
+    <div class="input-safe">
+      <h4>❌ 禁止输入</h4>
+      <ul>
+        <li>银行卡号、密码、支付信息</li>
+        <li>身份证号、护照号</li>
+        <li>公司机密、商业合同</li>
+        <li>他人隐私信息</li>
+      </ul>
+      <h4>✅ 可以输入</h4>
+      <ul>
+        <li>公开的技术文档</li>
+        <li>自己创作的内容</li>
+        <li>脱敏后的数据</li>
+        <li>一般性问题</li>
+      </ul>
+    </div>
+
+    <h3>法则 3：虾绳要拴好（权限控制）</h3>
+    <p><strong>核心原则：</strong> 给 AI 龙虾拴上"权限绳"，防止它乱跑。</p>
+    <ul>
+      <li><strong>只读权限</strong>：默认只允许读取文件</li>
+      <li><strong>写入权限</strong>：明确指定可写的目录</li>
+      <li><strong>执行权限</strong>：严格限制命令执行</li>
+      <li><strong>网络权限</strong>：配置访问白名单</li>
+    </ul>
+
+    <h3>法则 4：虾迹要记录（操作审计）</h3>
+    <p><strong>核心原则：</strong> 记录 AI 龙虾的"行动轨迹"，便于追溯。</p>
+    <pre><code># 启用日志记录
+# 在配置文件中添加
+logging:
+  enabled: true
+  level: info
+  output: logs/agent.log</code></pre>
+    <p><strong>定期检查：</strong> 每周查看一次日志，发现异常行为。</p>
+
+    <h3>法则 5：虾食要定量（额度限制）</h3>
+    <p><strong>核心原则：</strong> 控制 AI 的"饭量"，防止暴饮暴食（费用失控）。</p>
+    <ul>
+      <li>设置每日/每月 API 调用上限</li>
+      <li>启用费用告警通知</li>
+      <li>定期检查账单</li>
+      <li>发现异常立即停用</li>
+    </ul>
+
+    <h3>法则 6：虾病要预防（定期维护）</h3>
+    <p><strong>核心原则：</strong> 定期"体检"，预防胜于治疗。</p>
+    <div class="maintenance-schedule">
+      <h4>📅 维护计划</h4>
+      <ul>
+        <li><strong>每天</strong>：检查工作区状态</li>
+        <li><strong>每周</strong>：审查操作日志</li>
+        <li><strong>每月</strong>：更新软件和依赖</li>
+        <li><strong>每季</strong>：更换 API Key</li>
+        <li><strong>每年</strong>：全面安全审计</li>
+      </ul>
+    </div>
+
+    <h3>法则 7：虾急要有预案（应急响应）</h3>
+    <p><strong>核心原则：</strong> 提前准备"急救包"，遇事不慌。</p>
+    <ul>
+      <li>保存 API 提供商紧急联系方式</li>
+      <li>准备 Key 泄露应急流程</li>
+      <li>定期备份重要数据</li>
+      <li>建立问题报告机制</li>
+    </ul>
+
+    <h2>📋 安全养虾检查清单</h2>
+    
+    <div class="checklist-box">
+      <h4>🦐 新手养虾入门检查</h4>
+      <ul>
+        <li><input type="checkbox" /> 已阅读安全使用指南</li>
+        <li><input type="checkbox" /> API Key 已安全存储（.env 文件）</li>
+        <li><input type="checkbox" /> .env 已加入.gitignore</li>
+        <li><input type="checkbox" /> 工作区目录已创建</li>
+        <li><input type="checkbox" /> 日志功能已启用</li>
+      </ul>
+      
+      <h4>🦞 进阶养虾检查</h4>
+      <ul>
+        <li><input type="checkbox" /> 权限已按最小化配置</li>
+        <li><input type="checkbox" /> 网络访问已限制</li>
+        <li><input type="checkbox" /> 费用告警已设置</li>
+        <li><input type="checkbox" /> 备份脚本已配置</li>
+        <li><input type="checkbox" /> 应急流程已熟悉</li>
+      </ul>
+      
+      <h4>🦑 专家养虾检查</h4>
+      <ul>
+        <li><input type="checkbox" /> 已配置沙箱环境</li>
+        <li><input type="checkbox" /> 已启用多因素认证</li>
+        <li><input type="checkbox" /> 已部署密钥管理服务</li>
+        <li><input type="checkbox" /> 已建立自动化审计</li>
+        <li><input type="checkbox" /> 已进行安全演练</li>
+      </ul>
+    </div>
+
+    <h2>🚨 常见安全隐患</h2>
+    
+    <div class="risk-table">
+      <table>
+        <tr>
+          <th>风险类型</th>
+          <th>危害程度</th>
+          <th>预防措施</th>
+        </tr>
+        <tr>
+          <td>API Key 泄露</td>
+          <td><span class="risk-high">高</span></td>
+          <td>环境变量存储、定期轮换</td>
+        </tr>
+        <tr>
+          <td>敏感信息输入</td>
+          <td><span class="risk-high">高</span></td>
+          <td>建立输入审查习惯</td>
+        </tr>
+        <tr>
+          <td>权限过大</td>
+          <td><span class="risk-medium">中</span></td>
+          <td>最小权限原则</td>
+        </tr>
+        <tr>
+          <td>误删除文件</td>
+          <td><span class="risk-medium">中</span></td>
+          <td>启用确认机制、定期备份</td>
+        </tr>
+        <tr>
+          <td>费用失控</td>
+          <td><span class="risk-low">低</span></td>
+          <td>设置额度限制和告警</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>💡 安全养虾小贴士</h2>
+    
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h4>🔐 密码管理</h4>
+        <p>使用密码管理器生成和存储复杂密码，不要复用密码。</p>
+      </div>
+      <div class="tip-card">
+        <h4>📱 双重验证</h4>
+        <p>为所有重要账户启用 2FA，防止单点突破。</p>
+      </div>
+      <div class="tip-card">
+        <h4>🔄 定期更新</h4>
+        <p>保持 OpenClaw、Node.js 等软件为最新版本。</p>
+      </div>
+      <div class="tip-card">
+        <h4>📊 监控告警</h4>
+        <p>设置异常登录、超额消费等告警通知。</p>
+      </div>
+    </div>
+
+    <h2>📚 相关资源</h2>
+    
+    <ul>
+      <li><a href="/safe/api-key/">API Key 管理详解</a></li>
+      <li><a href="/safe/permissions/">权限配置指南</a></li>
+      <li><a href="/safe/safety/">防止误操作</a></li>
+      <li><a href="/news/ai-security-guide-2026/">2026 年 AI 安全使用指南</a></li>
+      <li><a href="/news/api-key-leak-drill/">API Key 泄露应急演练</a></li>
+    </ul>
+
+    <div class="final-tip">
+      <h3>🦞 养虾先养安，安全第一位！</h3>
+      <p>记住：一只安全的 AI 龙虾，才是真正的好帮手。花 1 小时学习安全知识，可能避免 100 小时的麻烦！</p>
+    </div>
+  </article>
+
+  <style>
+    .news-detail {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+      flex-wrap: wrap;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #fef3c7;
+      color: #d97706;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .article-header time,
+    .article-author {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .summary {
+      background: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid #dc2626;
+    }
+
+    .warning-list {
+      display: grid;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .warning-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem;
+      background: #fef2f2;
+      border-radius: 0.5rem;
+      border-left: 4px solid #dc2626;
+    }
+
+    .warning-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .warning-item h4 {
+      margin: 0 0 0.25rem 0;
+      color: #dc2626;
+    }
+
+    .warning-item p {
+      margin: 0;
+      color: #6b7280;
+    }
+
+    .input-safe {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .input-safe h4 {
+      margin-top: 0;
+    }
+
+    .input-safe ul {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .input-safe li {
+      margin: 0.5rem 0;
+    }
+
+    pre {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .maintenance-schedule {
+      background: #f0fdf4;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin: 1.5rem 0;
+      border: 1px solid #bbf7d0;
+    }
+
+    .maintenance-schedule h4 {
+      margin-top: 0;
+      color: #166534;
+    }
+
+    .checklist-box {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin: 2rem 0;
+    }
+
+    .checklist-box h4 {
+      margin: 1.5rem 0 0.5rem 0;
+      color: #374151;
+    }
+
+    .checklist-box h4:first-child {
+      margin-top: 0;
+    }
+
+    .checklist-box ul {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .risk-table {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border: 1px solid #e5e7eb;
+      text-align: left;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .risk-high {
+      background: #fef2f2;
+      color: #dc2626;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+    }
+
+    .risk-medium {
+      background: #fef3c7;
+      color: #d97706;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+    }
+
+    .risk-low {
+      background: #f0fdf4;
+      color: #16a34a;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .tip-card {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .tip-card h4 {
+      margin-top: 0;
+      color: #1f2937;
+    }
+
+    .tip-card p {
+      margin: 0.5rem 0 0 0;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .final-tip {
+      background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+      border: 2px solid #dc2626;
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .final-tip h3 {
+      margin-top: 0;
+      color: #dc2626;
+    }
+
+    .final-tip p {
+      color: #4b5563;
+      font-size: 1.125rem;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      color: #1f2937;
+      border-bottom: 2px solid #dc2626;
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      color: #374151;
+    }
+
+    h4 {
+      margin-top: 1rem;
+      color: #4b5563;
+    }
+
+    ul, ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin: 0.5rem 0;
+      color: #4b5563;
+    }
+
+    a {
+      color: #dc2626;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</BaseLayout>

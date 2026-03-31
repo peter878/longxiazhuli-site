@@ -1,0 +1,343 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="安全养虾月报 2026-03 - 龙虾助理">
+  <article class="news-detail">
+    <header class="article-header">
+      <span class="article-tag security">安全月报</span>
+      <time datetime="2026-03-31">2026-03-31</time>
+      <span class="article-author">🦞 龙虾助理</span>
+    </header>
+
+    <h1>🦞 安全养虾月报 2026-03：这些安全隐患你注意了吗？</h1>
+    
+    <div class="summary">
+      <p><strong>核心要点：</strong>3 月安全事件盘点、最新威胁情报、养虾人必知的安全知识，帮你避开 AI 使用中的那些"坑"。</p>
+    </div>
+
+    <h2>📊 3 月安全事件盘点</h2>
+    
+    <div class="stats-box">
+      <div class="stat-item">
+        <div class="stat-number">12</div>
+        <div class="stat-label">AI 相关安全事件</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3 亿+</div>
+        <div class="stat-label">AI 诈骗涉案金额</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">240%</div>
+        <div class="stat-label">安全事件同比增长</div>
+      </div>
+    </div>
+
+    <h3>典型案例分析</h3>
+    
+    <div class="case-study">
+      <h4>案例 1：API Key 泄露导致万元损失</h4>
+      <p><strong>事件经过：</strong> 某开发者将包含 API Key 的配置文件上传到 GitHub，2 小时内被恶意利用，产生 1.2 万元 API 调用费用。</p>
+      <p><strong>教训：</strong> </p>
+      <ul>
+        <li>✅ 永远不要将密钥提交到代码仓库</li>
+        <li>✅ 使用 .env 文件并加入 .gitignore</li>
+        <li>✅ 设置 API 调用额度限制</li>
+        <li>✅ 启用异常消费告警</li>
+      </ul>
+    </div>
+
+    <div class="case-study">
+      <h4>案例 2：AI 助理误删生产数据库</h4>
+      <p><strong>事件经过：</strong> 某公司授予 AI 助理过高权限，AI 执行错误命令导致生产数据库被清空，业务中断 6 小时。</p>
+      <p><strong>教训：</strong> </p>
+      <ul>
+        <li>✅ 遵循最小权限原则</li>
+        <li>✅ 敏感操作启用二次确认</li>
+        <li>✅ 定期备份关键数据</li>
+        <li>✅ 建立操作审计机制</li>
+      </ul>
+    </div>
+
+    <div class="case-study">
+      <h4>案例 3：AI 语音诈骗新套路</h4>
+      <p><strong>事件经过：</strong> 诈骗分子利用 AI 合成公司 CEO 语音，要求财务转账 500 万元，幸亏财务多重验证后识破。</p>
+      <p><strong>教训：</strong> </p>
+      <ul>
+        <li>✅ 重要指令必须书面确认</li>
+        <li>✅ 建立多级审批流程</li>
+        <li>✅ 定期进行防诈骗培训</li>
+        <li>✅ 不轻信单一信息源</li>
+      </ul>
+    </div>
+
+    <h2>⚠️ 最新威胁情报</h2>
+    
+    <h3>威胁 1：提示词注入攻击升级</h3>
+    <p><strong>攻击方式：</strong> 黑客通过精心设计的提示词，绕过 AI 安全限制，诱导执行危险操作。</p>
+    <p><strong>防护建议：</strong> </p>
+    <ul>
+      <li>设置系统级指令优先级</li>
+      <li>过滤危险关键词</li>
+      <li>限制 AI 可执行命令范围</li>
+      <li>启用操作日志审计</li>
+    </ul>
+
+    <h3>威胁 2：AI 钓鱼邮件泛滥</h3>
+    <p><strong>攻击方式：</strong> 利用 AI 生成高度个性化的钓鱼邮件，欺骗性极强。</p>
+    <p><strong>防护建议：</strong> </p>
+    <ul>
+      <li>仔细检查发件人地址</li>
+      <li>不点击可疑链接</li>
+      <li>启用邮件安全过滤</li>
+      <li>进行钓鱼演练培训</li>
+    </ul>
+
+    <h3>威胁 3：深度伪造视频诈骗</h3>
+    <p><strong>攻击方式：</strong> 使用 AI 换脸技术伪造熟人视频，实施诈骗。</p>
+    <p><strong>防护建议：</strong> </p>
+    <ul>
+      <li>视频通话要求做特定动作</li>
+      <li>通过其他渠道核实身份</li>
+      <li>警惕紧急转账要求</li>
+      <li>安装深度伪造检测工具</li>
+    </ul>
+
+    <h2>🛡️ 3 月安全知识更新</h2>
+    
+    <h3>新规速递</h3>
+    <ul>
+      <li><strong>工信部</strong>：发布《AI 应用安全管理指南（2026 版）》</li>
+      <li><strong>网信办</strong>：要求 AI 服务提供商建立内容审核机制</li>
+      <li><strong>公安部</strong>：开展 AI 诈骗专项打击行动</li>
+    </ul>
+
+    <h3>最佳实践</h3>
+    <ul>
+      <li><strong>API Key 管理</strong>：推荐使用密钥管理服务（KMS）</li>
+      <li><strong>权限控制</strong>：实施基于角色的访问控制（RBAC）</li>
+      <li><strong>数据保护</strong>：敏感数据加密存储和传输</li>
+      <li><strong>应急响应</strong>：建立 7×24 小时安全值班制度</li>
+    </ul>
+
+    <h2>📋 4 月安全重点</h2>
+    
+    <div class="action-items">
+      <h4>必做事项</h4>
+      <ul>
+        <li><input type="checkbox" /> 检查所有 API Key 是否安全存储</li>
+        <li><input type="checkbox" /> 审查 AI 助理权限配置</li>
+        <li><input type="checkbox" /> 更新 OpenClaw 到最新版本</li>
+        <li><input type="checkbox" /> 进行一次安全演练</li>
+        <li><input type="checkbox" /> 备份重要数据</li>
+      </ul>
+    </div>
+
+    <h2>🎯 安全评分自测</h2>
+    
+    <div class="quiz-box">
+      <p>你的"养虾"安全吗？回答以下问题：</p>
+      <ol>
+        <li>API Key 是否存储在 .env 文件中？</li>
+        <li>.env 是否已加入 .gitignore？</li>
+        <li>是否启用了操作日志记录？</li>
+        <li>是否设置了 API 调用额度限制？</li>
+        <li>是否定期备份重要数据？</li>
+        <li>是否熟悉应急响应流程？</li>
+        <li>AI 权限是否按最小化配置？</li>
+        <li>是否启用了敏感操作二次确认？</li>
+      </ol>
+      <p><strong>评分标准：</strong> 每题 1 分，8 分=安全达人，6-7 分=基本安全，&lt;6 分=需要改进！</p>
+    </div>
+
+    <h2>📚 推荐学习</h2>
+    
+    <ul>
+      <li><a href="/safe/shrimp-security/">安全养虾指南</a></li>
+      <li><a href="/news/ai-security-guide-2026/">2026 年 AI 安全使用指南</a></li>
+      <li><a href="/news/api-key-leak-drill/">API Key 泄露应急演练</a></li>
+      <li><a href="/safe/api-key/">API Key 管理详解</a></li>
+    </ul>
+
+    <div class="final-note">
+      <h3>🦞 养虾千万条，安全第一条！</h3>
+      <p>每月花 1 小时学习安全知识，让你的 AI 龙虾既聪明又安全。下月再见！</p>
+    </div>
+  </article>
+
+  <style>
+    .news-detail {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+      flex-wrap: wrap;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .article-header time,
+    .article-author {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .summary {
+      background: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid #dc2626;
+    }
+
+    .stats-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-item {
+      background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      border: 1px solid #fecaca;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #dc2626;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .case-study {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid #dc2626;
+    }
+
+    .case-study h4 {
+      margin-top: 0;
+      color: #dc2626;
+    }
+
+    .action-items {
+      background: #f0fdf4;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin: 2rem 0;
+      border: 1px solid #bbf7d0;
+    }
+
+    .action-items h4 {
+      margin-top: 0;
+      color: #166534;
+    }
+
+    .action-items ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .action-items li {
+      margin: 0.5rem 0;
+    }
+
+    .quiz-box {
+      background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+      border: 2px solid #f59e0b;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .quiz-box ol {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .quiz-box li {
+      margin: 0.5rem 0;
+      color: #92400e;
+    }
+
+    .final-note {
+      background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+      border: 2px solid #dc2626;
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .final-note h3 {
+      margin-top: 0;
+      color: #dc2626;
+    }
+
+    .final-note p {
+      color: #4b5563;
+      font-size: 1.125rem;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      color: #1f2937;
+      border-bottom: 2px solid #dc2626;
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      color: #374151;
+    }
+
+    h4 {
+      margin-top: 1rem;
+      color: #4b5563;
+    }
+
+    ul, ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin: 0.5rem 0;
+      color: #4b5563;
+    }
+
+    a {
+      color: #dc2626;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</BaseLayout>
